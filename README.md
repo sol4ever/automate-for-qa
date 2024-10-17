@@ -1,6 +1,6 @@
 Automate for QA
 
-Ten projekt jest stworzony, aby ułatwić naukę automatyzacji testów dla inżynierów QA. 
+Projekt jest stworzony, aby ułatwić naukę automatyzacji testów dla inżynierów QA. 
 Zawiera frontend zbudowany w React oraz backend oparty na Express.js. 
 Backend udostępnia API REST do zarządzania produktami i użytkownikami. 
 Projekt zawiera również funkcje takie jak uwierzytelnianie logowania, zarządzanie produktami i użytkownikami oraz analitykę.
