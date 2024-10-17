@@ -1,0 +1,65 @@
+.users-landing-container {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+nav {
+  background-color: #efefef;
+  width: 200px;
+  flex-shrink: 0;
+  color: #1c1e21 !important;
+}
+
+nav .MuiListItemButton-root {
+  transition: background-color 0.3s, transform 0.3s;
+  border-radius: 2px;
+  background-color: #efefef;
+}
+
+nav .MuiListItemButton-root:hover {
+  background-color: white !important;
+  transform: scale(1.0);
+  border-radius: 2px;
+  color: #F29727;
+}
+
+nav .MuiListItemButton-root.active {
+  background-color: white !important;
+  color: #BF4C0A !important;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif sans-serif !important;
+  border-radius: 2px;
+}
+
+nav .MuiListItemButton-root.active .MuiListItemText-root {
+  color: #BF4C0A !important;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif sans-serif !important;
+  border-radius: 2px;
+}
+
+nav .MuiListItemButton-root .MuiListItemText-root {
+  transition: color 0.3s;
+}
+
+nav .MuiList-root {
+  padding: 0;
+  margin: 0;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+nav .MuiListItemButton-root .MuiTypography-root {
+  font-weight: 600 !important;
+}
+
+/* For active state */
+nav .MuiListItemButton-root.active .MuiTypography-root {
+  font-weight: 600 !important;
+}

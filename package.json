@@ -1,0 +1,58 @@
+{
+  "name": "automate-for-qa",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "homepage": "https://automate-for-qa.onrender.com",
+  "dependencies": {
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
+    "@floating-ui/react-dom": "^2.1.0",
+    "@mui/icons-material": "^5.16.7",
+    "@mui/lab": "^5.0.0-alpha.170",
+    "@mui/material": "^5.16.7",
+    "@mui/x-data-grid": "^7.19.0",
+    "@mui/x-date-pickers": "^7.7.0",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.7.2",
+    "dayjs": "^1.11.13",
+    "dompurify": "^3.1.7",
+    "helmet": "^8.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.2.0",
+    "react-router": "^6.22.3",
+    "react-router-dom": "^6.22.3",
+    "react-scripts": "5.0.1",
+    "recharts": "^2.12.5",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "start:local": "env-cmd -f .env.local react-scripts start",
+    "build": "react-scripts build",
+    "build:production": "env-cmd -f .env.production react-scripts build"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "env-cmd": "^10.1.0"
+  }
+}

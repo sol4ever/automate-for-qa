@@ -1,0 +1,255 @@
+.newUser {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: auto;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.newUserTitle {
+  text-align: left;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.newUserForm {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+  max-width: 900px;
+}
+
+.newUserLeft, .newUserRight {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: fit-content;
+}
+
+.newUserRight {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; 
+  height: 100%; 
+}
+
+.userUpdateRight {
+  flex: 1; 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.userUpdateUpload {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: auto; 
+}
+
+.userUpdateUpload:hover {
+  border-radius: 5px;
+  box-shadow: 0px 0px 8px 3px rgba(242, 151, 39, 0.2) !important;
+}
+
+.userUpdateImg {
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.uploadLabel {
+  color: gray;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.newUserItem {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.newUserItem label {
+  color: gray;
+  font-weight: 600;
+  font-size: 14px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  margin-left: 5px;
+}
+
+.newUserItem input[type='text'],
+.newUserItem input[type='email'],
+.newUserItem input[type='tel'],
+.newUserItem select,
+.DatePickerInput {
+  border: none;
+  width: 250px !important;
+  height: 30px;
+  border-bottom: 1px solid #F29727 !important;
+  transition: all 0.3s ease;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.newUserItem input:focus,
+.newUserItem select:focus,
+.DatePickerInput:focus {
+  border-bottom: 1px solid #F29727;
+  outline: none !important;
+  border-radius: 4px !important;
+  box-shadow: 0px 0px 8px 3px rgba(242, 151, 39, 0.2) !important;
+}
+
+.newUserItem .MuiInputBase-root {
+  padding: 0 !important;
+  width: 250px !important;
+  height: 30px !important;
+  border-bottom: 1px solid #F29727 !important;
+  display: flex;
+  align-items: center;
+  overflow: hidden; /* Hide scroll bar */
+  box-shadow: 0px 0px 8px 3px rgba(242, 151, 39, 0.2) !important;
+  border-radius: 4px !important;
+}
+
+.newUserItem .MuiInputBase-input {
+  padding: 0 !important;
+  height: 30px !important;
+  line-height: 30px !important;
+  box-shadow: none !important;
+}
+
+.newUserItem .MuiOutlinedInput-notchedOutline {
+  border: none !important;
+}
+
+.newUserItem .MuiInputAdornment-root {
+  margin: 0 !important;
+  height: 30px !important;
+  display: flex;
+  align-items: center;
+}
+
+.newUserItem .MuiOutlinedInput-root {
+  padding-right: 0 !important;
+  border-radius: 0 !important;
+}
+
+.MuiStack-root {
+  padding: 0 !important;
+  margin: 0 !important;
+  height: 30px !important; 
+  display: flex;
+  align-items: center;
+  overflow: hidden; 
+}
+
+/* NewUser Radio Buttons Styling */
+.newUserTitleOptions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  width: 350px;
+}
+
+.titleOption {
+  display: flex;
+  align-items: center;
+  margin-right: 5px; 
+  margin-bottom: 0px !important;
+  font-weight: 600; 
+  color: #444; 
+}
+
+.titleOption input[type="radio"] {
+  accent-color: #F29727; 
+  width: 18px;
+  height: 18px;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  appearance: none; 
+  position: relative;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.titleOption input[type="radio"]::before {
+  content: '';
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid #F29727; 
+}
+
+.titleOption input[type="radio"]:checked::before {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background-color: #F29727; 
+  border-radius: 50%;
+}
+
+.titleOption label {
+  margin-bottom: 0px !important;
+}
+
+.decisionButtonGroup {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px; 
+  position: absolute;
+  bottom: 0; 
+  right: 0; 
+}
+
+
+.newUserRow {
+  display: flex;
+  align-items: center;
+}
+
+.errorMessage {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+@media (max-width: 768px) {
+  .newUser {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .formContainer {
+    width: 100%;
+  }
+
+  .newUserForm {
+    width: 100%;
+  }
+
+  .newUserLeft,
+  .newUserRight {
+    width: 100%;
+  }
+}

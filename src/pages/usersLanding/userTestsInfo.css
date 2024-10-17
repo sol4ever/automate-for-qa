@@ -1,0 +1,49 @@
+.user-tests-info {
+  text-align: left;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+
+h2 {
+  text-align: left;
+  margin-top: 20px;
+  color: #F2811D;
+}
+
+h3, h4 {
+  text-align: left;
+  margin-top: 20px;
+  color: #120F63;
+}
+
+p {
+  text-align: left;
+  margin-top: 10px;
+}
+
+.code-container {
+  position: relative;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+pre {
+  overflow-x: auto;
+  padding: 10px;
+  font-size: 24px;
+  color: #120F63;
+}
+
+code {
+  font-family: 'Courier New', Courier, monospace;
+  white-space: pre-wrap;
+  display: block;
+  color: #000000;
+}

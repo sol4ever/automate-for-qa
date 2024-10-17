@@ -1,0 +1,94 @@
+body,
+html {
+  position: relative;
+}
+
+.entityList {
+  flex: 1;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.entityTitleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.entityListTitle {
+  font-size: 24px;
+  font-weight: 600;
+  justify-content: space-between;
+}
+
+.searchContainer {
+  margin: 20px 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.searchInput {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 200px;
+}
+
+.dataGrid {
+  flex: 1;
+}
+
+.entityListItem {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.entityListImg {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.entityListEdit {
+  border: none;
+  cursor: pointer;
+  margin-right: 20px;
+  color: #BF4C0A !important;
+  border-radius: 20px !important;
+  align-items: center;
+  transition: background-color 0.3s !important;
+  margin-top: 15px !important;
+}
+
+.entityListEdit:hover {
+  color: #F29727 !important;
+}
+
+.entityListDelete {
+  border: none;
+  cursor: pointer;
+  margin-right: 20px;
+  margin-top: 15px !important;
+  color: #BF4C0A !important;
+  border-radius: 20px !important;
+  align-items: center;
+  transition: background-color 0.3s !important;
+}
+
+.entityListDelete:hover {
+  color: #F29727 !important;
+}
+
+.wrappedText {
+  word-wrap: break-word;
+  white-space: normal; 
+}
+
+.MuiDataGrid-row.Mui-selected {
+  background-color: inherit !important;
+  color: inherit !important;
+}

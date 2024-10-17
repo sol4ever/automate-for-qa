@@ -1,0 +1,190 @@
+.copy-button {
+  color: var(--copy-button);
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  padding: 6px 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.copy-button:hover {
+  color: var(--copy-button-hover);
+}
+
+.copy-button svg {
+  margin-right: 5px;
+}
+
+.cancelModalButton {
+  background-color: var(--cancel-button-bg) !important;
+  color: var(--cancel-button-color) !important;
+  border-radius: var(--primary-button-radius) !important;
+  width: 120px;
+  transition: background-color 0.3s !important;
+  padding: 7px 15px !important;
+}
+
+.cancelModalButton:hover {
+  color: var(--cancel-button-hover-color) !important;
+}
+
+.deleteModalButton {
+  background-color: var(--submit-button-bg) !important;
+  color: var(--primary-button) !important;
+  width: 120px;
+  padding: 7px 15px !important;
+  transition: background-color 0.3s;
+  border-radius: var(--primary-button-radius) !important;
+}
+
+.deleteModalButton:hover {
+  background-color: darkred !important;
+}
+
+.resetModalButton {
+  background-color: var(--submit-button-bg) !important;
+  color: var(--primary-button) !important;
+  width: 120px;
+  padding: 7px 15px !important;
+  transition: background-color 0.3s;
+  border-radius: var(--primary-button-radius) !important;
+}
+
+.resetModalButton:hover {
+  background-color: darkred !important;
+}
+
+.submitButtonEditForm {
+  background-color: var(--submit-button-bg) !important;
+  color: var(--primary-button) !important;
+  font-weight: 600;
+  font-size: 16px;
+  width: 120px;
+  border: none;
+  border-radius: 20px !important;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.submitButtonEditForm:hover {
+  background-color: var(--submit-button-bg-hover) !important;
+}
+
+.deleteButtonEditForm {
+  width: 120px;
+  border: none;
+  padding: 5px;
+  background-color: var(--cancel-button-bg) !important;
+  color: var(--cancel-button-color) !important;
+  cursor: pointer;
+  font-size: 16px;
+  margin-right: 5px;
+  border-radius: var(--primary-button-radius) !important;
+}
+
+.deleteButtonEditForm:hover {
+  color: var(--cancel-button-hover-color) !important;
+}
+
+.backButton {
+  width: 140px;
+  height: 40px;
+  border: none;
+  padding: 5px;
+  background-color: #F2811D !important;
+  border-radius: 5px;
+  cursor: pointer;
+  color: var(--primary-button) !important;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: var(--primary-button-radius) !important;
+}
+
+.backButton:hover {
+  background-color: #F2A81D !important;
+  ;
+}
+
+.addButtonList {
+  width: 130px;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  color: #F2811D !important;
+  border-radius: 30px !important;
+  font-weight: 600 !important;
+  font-size: 14px;
+}
+
+.addButtonList:hover {
+  color: #BF4C0A !important;
+}
+
+
+.submitButtonNewForm {
+  background-color: #F2811D;
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+  width: 120px;
+  border: none;
+  padding: 12px;
+  border-radius: 20px !important;
+  margin-top: 20px;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+.submitButtonNewForm:hover {
+  background-color: #BF4C0A;
+}
+
+.cta-button {
+  background-color: #D96E11;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-weight: 600;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif !important;
+  font-feature-settings: "c2sc", "smcp";
+  border-radius: 20px !important;
+  width: 150px;
+}
+
+.cta-button:hover {
+  background-color: #F29727;
+}
+
+.widgetLgButton.Approved {
+  color: white;
+  border: none;
+  background-color: var(--submit-button-bg);
+  border-radius: 20px !important;
+  width: 120px;
+  height: 30px;
+}
+
+.widgetLgButton.Declined {
+  color: white;
+  border: none;
+  background-color: var(--cancel-button-hover-color);
+  border-radius: 20px !important;
+  width: 120px;
+  height: 30px;
+}
+
+.widgetLgButton.Pending {
+  background-color: #F2A81D ;
+  color: white;
+  border: none;
+  border-radius: 20px !important;
+  width: 120px;
+  height: 30px;
+}

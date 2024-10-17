@@ -1,0 +1,11 @@
+/node_modules
+/package-lock.json
+
+/error_Screenshots_local
+/error_Screenshots_dev
+/error_Screenshots_prod
+/success_Screenshots_local
+/success_Screenshots_dev
+/success_Screenshots_prod
+
+/.env

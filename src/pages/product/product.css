@@ -1,0 +1,202 @@
+.product {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.productTopActions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.productTitle {
+  text-align: left;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.productOverviewContainer {
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  background-color: #f9f9f9;
+}
+
+.productOverview {
+  margin-bottom: 20px;
+}
+
+.productTopContent {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.productInfoImgLarge {
+  width: 180px;
+  height: 180px;
+  border-radius: 10px;
+  object-fit: scale-down;
+  margin-right: 20px;
+}
+
+.productDetails {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.productCategory {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.productName {
+  font-weight: 600;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.productDetailsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.productInfoItem {
+  display: flex;
+  align-items:center; 
+}
+
+.productInfoKey {
+  font-weight: bold;
+  color: gray;
+}
+
+.productInfoValue {
+  font-weight: 300;
+  margin-left: 10px;
+  text-align: left; 
+}
+
+.productBottom {
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px; 
+  background-color: #f9f9f9; 
+}
+
+.productForm {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.productFormLeft {
+  display: flex;
+  flex-direction: column;
+}
+
+.productFormLeft>label {
+  margin-bottom: 10px;
+  color: gray;
+  font-weight: 600;
+  font-size: 14px;
+  margin-top: 10px;
+  margin-left: 5px;
+}
+
+.productFormLeft > input[name="price"] {
+  border: none;
+  width: 250px;
+  height: 30px;
+  border-bottom: 1px solid #F29727;
+  transition: all 0.3s ease;
+}
+
+.productFormLeft > input[name="price"]:focus,
+.productFormLeft > input[name="price"]:active {
+  border-bottom: 1px solid #F29727;
+  outline: none;
+  border-radius: 4px;
+  box-shadow: 0px 0px 5px 2px #F29727;
+}
+
+.productFormLeft > .newProductInput {
+  border: none;
+  width: 250px;
+  height: 30px;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid #F29727 !important;
+}
+
+.productFormLeft > .newProductInput:focus,
+.productFormLeft > .newProductInput:active {
+  border-bottom: 1px solid #F29727;
+  outline: none !important;
+  border-radius: 4px;
+  box-shadow: 0px 0px 5px 2px #F29727;
+}
+
+.productFormLeft .MuiOutlinedInput-notchedOutline {
+  border: none !important;
+  border-radius: 4px;
+  box-shadow: 0px 0px 5px 2px #F29727;
+}
+
+.productUploadImg {
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
+  object-fit: scale-down;
+  margin-right: 20px;
+}
+
+.productFormRight {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.uploadLabel {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.uploadIcon {
+  margin-right: 10px;
+}
+
+.decisionButtonGroup {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  bottom: 0 !important;
+  right: 0;
+  background-color: transparent;
+  box-shadow: none !important;
+}
+
+.productInfoBottom {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end !important; 
+  gap: 20px;
+  padding-top: 20px;
+}
+
+.errorMessage {
+  color: #F22F1D;
+  font-size: 12px;
+  margin-top: 5px;
+}

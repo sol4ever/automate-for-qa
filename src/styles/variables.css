@@ -1,0 +1,18 @@
+:root {
+    --copy-button: #F2561D;
+    --copy-button-hover: #b44809;
+
+    --cancel-button-bg: #EEE0d7;
+    --cancel-button-color: #000000;
+    --cancel-button-hover-color: #b44809;
+
+    --submit-button-bg: #F2811D;
+    --submit-button-bg-hover: #BF4C0A;
+    
+    --primary-button-radius: 20px;
+    --primary-button: white;
+
+    --h1: #000;
+    --h2: #000;
+    --h3: #000;
+}

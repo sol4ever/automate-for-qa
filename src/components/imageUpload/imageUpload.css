@@ -1,0 +1,36 @@
+.imageUploadContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: auto;
+  width: 250px;
+  height: fit-content;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.imageUploadContainer:hover {
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px 0px #F2AB27;
+}
+
+.imageUploadImg {
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.uploadLabel {
+  color: gray;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}

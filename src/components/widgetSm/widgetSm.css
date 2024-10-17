@@ -1,0 +1,58 @@
+.widgetSm {
+    flex: 1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-right: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.widgetSmUser {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    align-items: flex-start;
+    flex: 1;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.widgetSmUser:hover {
+    background-color: #EEE0d7;
+    border-radius: 20px;
+}
+
+.widgetUserTitle {
+    color: #D96E11;
+}
+
+.widgetSmPhone,
+.widgetSmProject {
+    font-weight: 300;
+}
+
+.widgetSmButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000 !important;
+    border-radius: 20px !important;
+    width: 120px;
+    height: 30px;
+    border: none;
+    cursor: pointer;
+    background-color: #EEE0d7;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    margin-left: auto !important;
+}
+
+.widgetSmButton:hover {
+    color: #D96E11 !important;
+}
+
+.iconText {
+    margin-left: 5px;
+    font-size: 14px;
+    font-weight: 500 !important;
+}
