@@ -56,10 +56,10 @@ export default function ProductList() {
   const handleDelete = () => {
     const productIdAsString = selectedProductId.toString();
     console.log('Deleting product with ID:', productIdAsString);
-    
+
     const payload = { status: 'deleted' };
     console.log('Payload:', payload);
-  
+
     axios.put(`${process.env.REACT_APP_API_URL}/products/${productIdAsString}`, payload, {
       headers: {
         Authorization: `Bearer ${token}`
@@ -74,8 +74,8 @@ export default function ProductList() {
       setAlert({ severity: 'error', message: 'Nie udało się usunąć produktu!' });
     });
   };
-  
-  
+
+
 
   const handleOpenDeleteModal = (id) => {
     setSelectedProductId(id);
@@ -89,41 +89,61 @@ export default function ProductList() {
   const columns = [
     { field: 'id', headerName: 'ID', flex: 0.3, headerAlign: 'left', align: 'left' },
     {
-      field: 'product', headerName: 'Produkt', flex: 1.5, headerAlign: 'left',
+      field: 'product',
+      headerName: 'Produkt',
+      flex: 1.5,
+      headerAlign: 'left',
       align: 'left',
       renderCell: (params) => (
-        <div className='entityListItem'>
+        <div className='entityListItem' data-testid={`product-item-${params.row.id}`}>
           <img
             className='entityListImg'
             src={DOMPurify.sanitize(params.row.img ? `${process.env.REACT_APP_API_URL}${params.row.img}` : 'https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg')}
             alt={DOMPurify.sanitize(params.row.name)}
+            data-testid={`product-img-${params.row.id}`}
           />
-          {DOMPurify.sanitize(params.row.name)}
+          <span data-testid={`product-name-${params.row.id}`}>{DOMPurify.sanitize(params.row.name)}</span>
         </div>
       )
     },
     {
-      field: 'category', headerName: 'Kategoria', flex: 0.7, headerAlign: 'left', align: 'left',
+      field: 'category',
+      headerName: 'Kategoria',
+      flex: 0.7,
+      headerAlign: 'left',
+      align: 'left',
       renderCell: (params) => (
-        <span>{DOMPurify.sanitize(params.value)}</span>
+        <span data-testid={`product-category-${params.row.id}`}>{DOMPurify.sanitize(params.value)}</span>
       )
     },
     {
-      field: 'brand', headerName: 'Producent', flex: 1, headerAlign: 'left', align: 'left',
+      field: 'brand',
+      headerName: 'Producent',
+      flex: 1,
+      headerAlign: 'left',
+      align: 'left',
       renderCell: (params) => (
-        <span>{DOMPurify.sanitize(params.value)}</span>
+        <span data-testid={`product-brand-${params.row.id}`}>{DOMPurify.sanitize(params.value)}</span>
       )
     },
     {
-      field: 'price', headerName: 'Cena', flex: 0.5, headerAlign: 'left', align: 'left',
+      field: 'price',
+      headerName: 'Cena',
+      flex: 0.5,
+      headerAlign: 'left',
+      align: 'left',
       renderCell: (params) => (
-        <span>{DOMPurify.sanitize(params.value)}</span>
+        <span data-testid={`product-price-${params.row.id}`}>{DOMPurify.sanitize(params.value)}</span>
       )
     },
     {
-      field: 'inStock', headerName: 'Dostępny', flex: 0.5, headerAlign: 'left', align: 'left',
+      field: 'inStock',
+      headerName: 'Dostępny',
+      flex: 0.5,
+      headerAlign: 'left',
+      align: 'left',
       renderCell: (params) => (
-        <span>{DOMPurify.sanitize(params.row.inStock === 'yes' ? 'Tak' : 'Nie')}</span>
+        <span data-testid={`product-inStock-${params.row.id}`}>{DOMPurify.sanitize(params.row.inStock === 'yes' ? 'Tak' : 'Nie')}</span>
       ),
     },
     {
@@ -133,31 +153,48 @@ export default function ProductList() {
       headerAlign: 'left',
       align: 'left',
       renderCell: (params) => (
-        <span>{DOMPurify.sanitize(params.row.promoted ? 'Tak' : 'Nie')}</span>
+        <span data-testid={`product-promoted-${params.row.id}`}>{DOMPurify.sanitize(params.row.promoted ? 'Tak' : 'Nie')}</span>
       ),
     },
     {
-      field: 'action', headerName: '', flex: 0.7, headerAlign: 'left', align: 'left',
+      field: 'action',
+      headerName: '',
+      flex: 0.7,
+      headerAlign: 'left',
+      align: 'left',
       renderCell: (params) => (
-        <div className='entityListActions'>
-          <EditNoteOutlinedIcon className='entityListEdit' onClick={() => navigate(`/products-landing/edit/${params.row.id}`)}></EditNoteOutlinedIcon>
-          <DeleteOutlineOutlinedIcon className='entityListDelete' onClick={() => handleOpenDeleteModal(params.row.id)}></DeleteOutlineOutlinedIcon>
+        <div className='entityListActions' data-testid={`product-actions-${params.row.id}`}>
+          <EditNoteOutlinedIcon
+            className='entityListEdit'
+            onClick={() => navigate(`/products-landing/edit/${params.row.id}`)}
+            data-testid={`edit-button-${params.row.id}`}
+          />
+          <DeleteOutlineOutlinedIcon
+            className='entityListDelete'
+            onClick={() => handleOpenDeleteModal(params.row.id)}
+            data-testid={`delete-button-${params.row.id}`}
+          />
         </div>
       )
     },
   ];
 
+
   return (
     <div className='entityList'>
       <div className="entityTitleContainer">
-        <h1 className="entityListTitle">Lista produktów</h1>
-        <button className="addButtonList" onClick={() => navigate('/products-landing/new')}>
+        <h1 className="entityListTitle" data-testid="entity-list-title">Lista produktów</h1>
+        <button
+          className="addButtonList"
+          onClick={() => navigate('/products-landing/new')}
+          data-testid="add-new-button"
+        >
           <AddCircleOutlineOutlinedIcon />
           Dodaj nowy
         </button>
       </div>
       {products.filter(row => row.status !== 'deleted').length === 0 ? (
-        <p>Brak danych do wyświetlenia. Dodaj nowy produkt aby wyświetlić dane.</p>
+        <p data-testid="no-data-message">Brak danych do wyświetlenia. Dodaj nowy produkt aby wyświetlić dane.</p>
       ) : (
         <>
           <div className="searchContainer">
@@ -167,12 +204,13 @@ export default function ProductList() {
               value={searchText}
               onChange={handleSearchChange}
               className="searchInput"
+              data-testid="search-input"
             />
           </div>
           {filteredRows.length === 0 && searchText ? (
-            <p>Brak wyników wyszukiwania dla wprowadzonych danych.</p>
+            <p data-testid="no-search-results-message">Brak wyników wyszukiwania dla wprowadzonych danych.</p>
           ) : (
-            <div className="dataGrid">
+            <div className="dataGrid" data-testid="data-grid">
               <DataGrid
                 rows={filteredRows}
                 columns={columns}
@@ -190,19 +228,22 @@ export default function ProductList() {
                 components={{
                   Pagination: () => null,
                 }}
+                data-testid="product-data-grid"
               />
             </div>
           )}
         </>
       )}
-      <Notification alert={alert} />
+      <Notification alert={alert} data-testid="notification" />
       <DeleteConfirmationModal
         open={modalOpen}
         onClose={handleCloseModal}
         onConfirm={handleDelete}
         title="Zamierzasz usunąć produkt!"
         message="Czy na pewno chcesz usunąć produkt?"
+        data-testid="delete-confirmation-modal"
       />
     </div>
   );
+
 }

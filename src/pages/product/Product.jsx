@@ -187,7 +187,7 @@ const Product = () => {
 
   const handleUpdate = (e) => {
     e.preventDefault();
-    
+
 
     const updatedDataToSubmit = {
       ...updatedProductData,
@@ -202,21 +202,21 @@ const Product = () => {
           Authorization: `Bearer ${token}`
         }
       })
-      .then(() => {
-        setProductData(updatedProductData);
-        setIsUpdated(true);
-        setAlert({ severity: 'success', message: 'Produkt został zaktualizowany!' });
-      })
-      .catch((error) => {
-        if (error.response && error.response.data.errors) {
-          // Get the first validation error from the backend response
-          const firstErrorKey = Object.keys(error.response.data.errors)[0];
-          const firstErrorMessage = error.response.data.errors[firstErrorKey];
-          setAlert({ severity: 'error', message: firstErrorMessage });
-        } else {
-          setAlert({ severity: 'error', message: 'Błąd podczas aktualizacji produktu.' });
-        }
-      });
+        .then(() => {
+          setProductData(updatedProductData);
+          setIsUpdated(true);
+          setAlert({ severity: 'success', message: 'Produkt został zaktualizowany!' });
+        })
+        .catch((error) => {
+          if (error.response && error.response.data.errors) {
+            // Get the first validation error from the backend response
+            const firstErrorKey = Object.keys(error.response.data.errors)[0];
+            const firstErrorMessage = error.response.data.errors[firstErrorKey];
+            setAlert({ severity: 'error', message: firstErrorMessage });
+          } else {
+            setAlert({ severity: 'error', message: 'Błąd podczas aktualizacji produktu.' });
+          }
+        });
     } else {
       // If frontend validation fails, show the first validation error
       const firstErrorKey = Object.keys(formErrors)[0];
@@ -224,7 +224,7 @@ const Product = () => {
       setErrors(formErrors);
       setAlert({ severity: 'error', message: firstErrorMessage });
     }
-};
+  };
 
 
   const handleDelete = () => {
@@ -257,13 +257,14 @@ const Product = () => {
   };
 
   const renderProductInfoItem = (label, value) => (
-    <div className="productInfoItem" key={label}>
-      <span className="productInfoKey">{label}:</span>
-      <span className="productInfoValue">
+    <div className="productInfoItem" key={label} data-testid={`product-info-item-${label}`}>
+      <span className="productInfoKey" data-testid={`product-info-key-${label}`}>{label}:</span>
+      <span className="productInfoValue" data-testid={`product-info-value-${label}`}>
         {label === 'Dostępny' ? (value === 'Tak' ? 'Tak' : 'Nie') : DOMPurify.sanitize(value)}
       </span>
     </div>
   );
+  
 
   useEffect(() => {
     if (alert) {
@@ -341,27 +342,32 @@ const Product = () => {
   return (
     <div className='product'>
       <div className="productTopActions">
-        <h1 className="productTitle">Produkt</h1>
-        <button className="backButton" onClick={() => navigate('/products-landing/list')}>
+        <h1 className="productTitle" data-testid="product-title">Produkt</h1>
+        <button
+          className="backButton"
+          onClick={() => navigate('/products-landing/list')}
+          data-testid="back-button"
+        >
           &laquo; Powrót do listy
         </button>
       </div>
       <div className="productOverviewContainer">
-        <h2 className="productOverview">Szczegóły produktu</h2>
+        <h2 className="productOverview" data-testid="product-overview">Szczegóły produktu</h2>
         <div className="productTopContent">
           <img
             src={DOMPurify.sanitize(productData.img ? `${process.env.REACT_APP_API_URL}${productData.img}` : 'https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg')}
             alt=""
             className="productInfoImgLarge"
+            data-testid="product-image"
           />
           <div className="productDetails">
-            <div className="productCategory">
+            <div className="productCategory" data-testid="product-category">
               {productData.subcategory}
             </div>
-            <div className="productName">
+            <div className="productName" data-testid="product-name">
               {productData.name}
             </div>
-            <div className="productDetailsGrid">
+            <div className="productDetailsGrid" data-testid="product-details-grid">
               {renderProductInfoItem('ID', productData.id)}
               {renderProductInfoItem('Cena', `${productData.price} PLN`)}
               {renderProductInfoItem('Promowany', productData.promoted ? 'Tak' : 'Nie')}
@@ -372,7 +378,7 @@ const Product = () => {
         </div>
       </div>
       <div className="productBottom">
-        <form className="productForm" onSubmit={handleUpdate}>
+        <form className="productForm" onSubmit={handleUpdate} data-testid="product-form">
           <div className="productFormLeft">
             <GeneralInfo
               productData={updatedProductData}
@@ -380,10 +386,11 @@ const Product = () => {
               handleBlur={handleBlur}
               errors={errors}
               categories={categories}
+              data-testid="general-info"
             />
 
             {updatedProductData.category === 'Akcesoria' && updatedProductData.subcategory && !updatedProductData.brand && (
-              <div className="newProductItem">
+              <div className="newProductItem" data-testid="brand-select-wrapper">
                 <label>Producent</label>
                 <Select
                   name="brand"
@@ -392,17 +399,18 @@ const Product = () => {
                   displayEmpty
                   className="newProductInput"
                   onBlur={handleBlur}
+                  data-testid="brand-select"
                 >
-                  <MenuItem value="" disabled hidden>
+                  <MenuItem value="" disabled hidden data-testid="brand-placeholder">
                     Wybierz producenta
-                     </MenuItem>
+                  </MenuItem>
                   {['Samsung', 'Apple', 'Xiaomi', 'FOREVER'].map((brand) => (
-                    <MenuItem key={brand} value={brand}>
+                    <MenuItem key={brand} value={brand} data-testid={`brand-option-${brand}`}>
                       {brand}
                     </MenuItem>
                   ))}
                 </Select>
-                {errors.brand && <span className="errorMessage">{errors.brand}</span>}
+                {errors.brand && <span className="errorMessage" data-testid="error-brand">{errors.brand}</span>}
               </div>
             )}
 
@@ -411,6 +419,7 @@ const Product = () => {
                 productData={updatedProductData}
                 handleInputChange={handleInputChange}
                 onBlur={handleBlur}
+                data-testid="accessories-fields"
               />
             )}
 
@@ -419,6 +428,7 @@ const Product = () => {
                 productData={updatedProductData}
                 handleInputChange={handleInputChange}
                 onBlur={handleBlur}
+                data-testid="mobile-phone-fields"
               />
             )}
           </div>
@@ -428,9 +438,10 @@ const Product = () => {
               img={updatedProductData.img}
               onClick={() => setIsModalOpen(true)}
               label="Zmień obraz"
+              data-testid="image-upload"
             />
             <div className="productInfoBottom">
-              <div className="newProductItem">
+              <div className="newProductItem" data-testid="price-input-wrapper">
                 <label>Cena</label>
                 <input
                   type="text"
@@ -444,10 +455,11 @@ const Product = () => {
                     }
                   }}
                   onBlur={handleBlur}
+                  data-testid="price-input"
                 />
-                {errors.price && <span className="errorMessage">{errors.price}</span>}
+                {errors.price && <span className="errorMessage" data-testid="error-price">{errors.price}</span>}
               </div>
-              <div className="newProductItem">
+              <div className="newProductItem" data-testid="inStock-select-wrapper">
                 <label>Dostępny</label>
                 <Select
                   name="inStock"
@@ -456,30 +468,54 @@ const Product = () => {
                   onBlur={handleBlur}
                   displayEmpty
                   className="newProductInput"
+                  data-testid="inStock-select"
                 >
-                  <MenuItem value="Tak">Tak</MenuItem>
-                  <MenuItem value="Nie">Nie</MenuItem>
+                  <MenuItem value="Tak" data-testid="inStock-yes">Tak</MenuItem>
+                  <MenuItem value="Nie" data-testid="inStock-no">Nie</MenuItem>
                 </Select>
               </div>
-              <div className="newProductItem">
+              <div className="newProductItem" data-testid="promoted-switch-wrapper">
                 <label>Promowany</label>
-                <OrangeSwitch checked={updatedProductData.promoted} onChange={handlePromotedToggle} />
+                <OrangeSwitch
+                  checked={updatedProductData.promoted}
+                  onChange={handlePromotedToggle}
+                  data-testid="promoted-switch"
+                />
               </div>
-              <ButtonGroup variant="contained" aria-label="contained button group" className="decisionButtonGroup">
-                <button className="deleteButtonEditForm" type='button' onClick={handleOpenDeleteModal}>Usuń</button>
-                <button type="submit" className="submitButtonEditForm">Zapisz</button>
+              <ButtonGroup
+                variant="contained"
+                aria-label="contained button group"
+                className="decisionButtonGroup"
+                data-testid="button-group"
+              >
+                <button
+                  className="deleteButtonEditForm"
+                  type='button'
+                  onClick={handleOpenDeleteModal}
+                  data-testid="delete-button"
+                >
+                  Usuń
+                </button>
+                <button
+                  type="submit"
+                  className="submitButtonEditForm"
+                  data-testid="submit-button"
+                >
+                  Zapisz
+                </button>
               </ButtonGroup>
             </div>
           </div>
         </form>
         {isUpdated}
       </div>
-      <Notification alert={alert} />
+      <Notification alert={alert} data-testid="notification" />
       <ImageUploadModal
         open={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         onSelect={handleImageSelect}
         imageType="products"
+        data-testid="image-upload-modal"
       />
       <DeleteConfirmationModal
         open={modalOpen}
@@ -487,9 +523,11 @@ const Product = () => {
         onConfirm={handleDelete}
         title="Zamierzasz usunąć produkt!"
         message="Czy na pewno chcesz usunąć produkt?"
+        data-testid="delete-confirmation-modal"
       />
     </div>
   );
+
 };
 
 export default Product;

@@ -59,124 +59,159 @@ const MobilePhoneFields = ({ productData, handleInputChange }) => {
     return (
         <>
             <div className="newProductItem">
-                <label>Producent</label>
+                <label data-testid="label-brand">Producent</label>
                 <Select
-                    name='brand'
-                    value={DOMPurify.sanitize(productData.brand)}  
+                    name="brand"
+                    value={DOMPurify.sanitize(productData.brand)}
                     onChange={handleInputChange}
                     displayEmpty
                     className="newProductInput"
                     onBlur={handleBlur}
+                    data-testid="select-brand"
                 >
-                    <MenuItem value='' disabled hidden>Wybierz producenta</MenuItem>
-                    {availableBrands.map(brand => (
-                        <MenuItem key={brand} value={DOMPurify.sanitize(brand)}>
+                    <MenuItem value="" disabled hidden data-testid="brand-placeholder">
+                        Wybierz producenta
+                    </MenuItem>
+                    {availableBrands.map((brand) => (
+                        <MenuItem key={brand} value={DOMPurify.sanitize(brand)} data-testid={`brand-option-${brand}`}>
                             {DOMPurify.sanitize(brand)}
                         </MenuItem>
                     ))}
                 </Select>
-                {errors.brand && <span className="errorMessage">{errors.brand}</span>}
+                {errors.brand && <span className="errorMessage" data-testid="error-brand">{errors.brand}</span>}
             </div>
+
             {productData.brand && (
                 <>
                     <div className="newProductItem">
-                        <label>System operacyjny</label>
+                        <label data-testid="label-os">System operacyjny</label>
                         <Select
-                            name='os'
-                            value={DOMPurify.sanitize(productData.os)}  
+                            name="os"
+                            value={DOMPurify.sanitize(productData.os)}
                             onChange={handleInputChange}
                             displayEmpty
                             className="newProductInput"
                             onBlur={handleBlur}
+                            data-testid="select-os"
                         >
-                            <MenuItem value='' disabled hidden>Wybierz system operacyjny</MenuItem>
+                            <MenuItem value="" disabled hidden data-testid="os-placeholder">
+                                Wybierz system operacyjny
+                            </MenuItem>
                             {osOptions[productData.brand]?.map((os) => (
-                                <MenuItem key={os} value={DOMPurify.sanitize(os)}>{DOMPurify.sanitize(os)}</MenuItem>
+                                <MenuItem key={os} value={DOMPurify.sanitize(os)} data-testid={`os-option-${os}`}>
+                                    {DOMPurify.sanitize(os)}
+                                </MenuItem>
                             ))}
                         </Select>
-                        {errors.os && <span className="errorMessage">{errors.os}</span>}
+                        {errors.os && <span className="errorMessage" data-testid="error-os">{errors.os}</span>}
                     </div>
+
                     <div className="newProductItem">
-                        <label>Rozmiar ekranu (w calach)</label>
+                        <label data-testid="label-screenSize">Rozmiar ekranu (w calach)</label>
                         <Select
-                            name='screenSize'
-                            value={DOMPurify.sanitize(productData.screenSize)}  
+                            name="screenSize"
+                            value={DOMPurify.sanitize(productData.screenSize)}
                             onChange={handleInputChange}
                             displayEmpty
                             className="newProductInput"
                             onBlur={handleBlur}
+                            data-testid="select-screenSize"
                         >
-                            <MenuItem value='' disabled hidden>Wybierz rozmiar ekranu</MenuItem>
-                            {screenSizeOptions.map(size => (
-                                <MenuItem key={size} value={DOMPurify.sanitize(size)}>{DOMPurify.sanitize(size)}</MenuItem>
+                            <MenuItem value="" disabled hidden data-testid="screenSize-placeholder">
+                                Wybierz rozmiar ekranu
+                            </MenuItem>
+                            {screenSizeOptions.map((size) => (
+                                <MenuItem key={size} value={DOMPurify.sanitize(size)} data-testid={`screenSize-option-${size}`}>
+                                    {DOMPurify.sanitize(size)}
+                                </MenuItem>
                             ))}
                         </Select>
-                        {errors.screenSize && <span className="errorMessage">{errors.screenSize}</span>}
+                        {errors.screenSize && <span className="errorMessage" data-testid="error-screenSize">{errors.screenSize}</span>}
                     </div>
+
                     <div className="newProductItem">
-                        <label>Pamięć wbudowana</label>
+                        <label data-testid="label-storage">Pamięć wbudowana</label>
                         <Select
-                            name='storage'
-                            value={DOMPurify.sanitize(productData.storage)}  
+                            name="storage"
+                            value={DOMPurify.sanitize(productData.storage)}
                             onChange={handleInputChange}
                             displayEmpty
                             className="newProductInput"
                             onBlur={handleBlur}
+                            data-testid="select-storage"
                         >
-                            <MenuItem value='' disabled hidden>Wybierz pamięć wbudowaną</MenuItem>
-                            {storageOptions.map(storage => (
-                                <MenuItem key={storage} value={DOMPurify.sanitize(storage)}>{DOMPurify.sanitize(storage)}</MenuItem>
+                            <MenuItem value="" disabled hidden data-testid="storage-placeholder">
+                                Wybierz pamięć wbudowaną
+                            </MenuItem>
+                            {storageOptions.map((storage) => (
+                                <MenuItem key={storage} value={DOMPurify.sanitize(storage)} data-testid={`storage-option-${storage}`}>
+                                    {DOMPurify.sanitize(storage)}
+                                </MenuItem>
                             ))}
                         </Select>
-                        {errors.storage && <span className="errorMessage">{errors.storage}</span>}
+                        {errors.storage && <span className="errorMessage" data-testid="error-storage">{errors.storage}</span>}
                     </div>
+
                     <div className="newProductItem">
-                        <label>RAM</label>
+                        <label data-testid="label-ram">RAM</label>
                         <Select
-                            name='ram'
-                            value={DOMPurify.sanitize(productData.ram)}  
+                            name="ram"
+                            value={DOMPurify.sanitize(productData.ram)}
                             onChange={handleInputChange}
                             displayEmpty
                             className="newProductInput"
                             onBlur={handleBlur}
+                            data-testid="select-ram"
                         >
-                            <MenuItem value='' disabled hidden>Wybierz RAM</MenuItem>
-                            {ramOptions.map(ram => (
-                                <MenuItem key={ram} value={DOMPurify.sanitize(ram)}>{DOMPurify.sanitize(ram)}</MenuItem>
+                            <MenuItem value="" disabled hidden data-testid="ram-placeholder">
+                                Wybierz RAM
+                            </MenuItem>
+                            {ramOptions.map((ram) => (
+                                <MenuItem key={ram} value={DOMPurify.sanitize(ram)} data-testid={`ram-option-${ram}`}>
+                                    {DOMPurify.sanitize(ram)}
+                                </MenuItem>
                             ))}
                         </Select>
-                        {errors.ram && <span className="errorMessage">{errors.ram}</span>}
+                        {errors.ram && <span className="errorMessage" data-testid="error-ram">{errors.ram}</span>}
                     </div>
+
                     <div className="newProductItem">
-                        <label>Pojemność baterii (w mAh)</label>
+                        <label data-testid="label-battery">Pojemność baterii (w mAh)</label>
                         <Select
-                            name='battery'
-                            value={DOMPurify.sanitize(productData.battery)}  
+                            name="battery"
+                            value={DOMPurify.sanitize(productData.battery)}
                             onChange={handleInputChange}
                             displayEmpty
                             className="newProductInput"
                             onBlur={handleBlur}
+                            data-testid="select-battery"
                         >
-                            <MenuItem value='' disabled hidden>Wybierz pojemność baterii</MenuItem>
-                            {batteryOptions.map(battery => (
-                                <MenuItem key={battery} value={DOMPurify.sanitize(battery)}>{DOMPurify.sanitize(battery)}</MenuItem>
+                            <MenuItem value="" disabled hidden data-testid="battery-placeholder">
+                                Wybierz pojemność baterii
+                            </MenuItem>
+                            {batteryOptions.map((battery) => (
+                                <MenuItem key={battery} value={DOMPurify.sanitize(battery)} data-testid={`battery-option-${battery}`}>
+                                    {DOMPurify.sanitize(battery)}
+                                </MenuItem>
                             ))}
                         </Select>
-                        {errors.battery && <span className="errorMessage">{errors.battery}</span>}
+                        {errors.battery && <span className="errorMessage" data-testid="error-battery">{errors.battery}</span>}
                     </div>
+
                     <div className="newProductItem">
-                        <label>Kolor</label>
-                        <div className="colorOptions">
-                            {colors.map(color => (
+                        <label data-testid="label-color">Kolor</label>
+                        <div className="colorOptions" data-testid="color-options">
+                            {colors.map((color) => (
                                 <div key={color} className="colorOption">
                                     <input
                                         type="checkbox"
                                         name="color"
-                                        value={DOMPurify.sanitize(color)}  
+                                        value={DOMPurify.sanitize(color)}
                                         checked={productData.color.includes(color)}
                                         onChange={handleCheckboxChange}
+                                        data-testid={`checkbox-color-${color}`}
                                     />
-                                    <label>{DOMPurify.sanitize(color)}</label>
+                                    <label data-testid={`label-color-${color}`}>{DOMPurify.sanitize(color)}</label>
                                 </div>
                             ))}
                         </div>

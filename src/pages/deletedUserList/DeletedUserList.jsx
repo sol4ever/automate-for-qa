@@ -56,44 +56,55 @@ export default function DeletedUserList() {
       headerName: 'Pracownik',
       flex: 1,
       renderCell: (params) => (
-        <div className='entityListItem'>
+        <div className='entityListItem' data-testid={`user-item-${params.row.id}`}>
           <img
             className='entityListImg'
             src={DOMPurify.sanitize(params.row.avatar ? `${process.env.REACT_APP_API_URL}${params.row.avatar}` : 'https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg')}
             alt={DOMPurify.sanitize(params.row.userName)}
+            data-testid={`user-avatar-${params.row.id}`}
           />
-          {DOMPurify.sanitize(params.row.userName)}
+          <span data-testid={`user-name-${params.row.id}`}>{DOMPurify.sanitize(params.row.userName)}</span>
         </div>
       )
     },
     {
-      field: 'email', headerName: 'Email',
+      field: 'email',
+      headerName: 'Email',
       flex: 1,
-      headerAlign: 'left', align: 'left',
+      headerAlign: 'left',
+      align: 'left',
       renderCell: (params) => (
-        <span className="wrappedText">
+        <span className="wrappedText" data-testid={`user-email-${params.row.id}`}>
           {DOMPurify.sanitize(params.value.length > 100 ? `${params.value.slice(0, 100)}...` : params.value)}
         </span>
       )
     },
     {
-      field: 'phone', headerName: 'Telefon', flex: 1,
+      field: 'phone',
+      headerName: 'Telefon',
+      flex: 1,
       renderCell: (params) => (
-        <span className="wrappedText">
+        <span className="wrappedText" data-testid={`user-phone-${params.row.id}`}>
           {DOMPurify.sanitize(params.value.length > 100 ? `${params.value.slice(0, 100)}...` : params.value)}
         </span>
       )
     },
     {
-      field: 'status', headerName: 'Status', flex: 0.5, renderCell: (params) => (
-        <span className="wrappedText">
+      field: 'status',
+      headerName: 'Status',
+      flex: 0.5,
+      renderCell: (params) => (
+        <span className="wrappedText" data-testid={`user-status-${params.row.id}`}>
           {DOMPurify.sanitize(params.value.length > 100 ? `${params.value.slice(0, 100)}...` : params.value)}
         </span>
       )
     },
     {
-      field: 'title', headerName: 'Stanowisko', flex: 0.7, renderCell: (params) => (
-        <span className="wrappedText">
+      field: 'title',
+      headerName: 'Stanowisko',
+      flex: 0.7,
+      renderCell: (params) => (
+        <span className="wrappedText" data-testid={`user-title-${params.row.id}`}>
           {DOMPurify.sanitize(params.value.length > 100 ? `${params.value.slice(0, 100)}...` : params.value)}
         </span>
       )
@@ -103,7 +114,11 @@ export default function DeletedUserList() {
       headerName: '',
       width: 180,
       renderCell: (params) => (
-        <span className="entityListPreview" onClick={() => handleOpenModal(params.row)}>
+        <span
+          className="entityListPreview"
+          onClick={() => handleOpenModal(params.row)}
+          data-testid={`user-preview-${params.row.id}`}
+        >
           <RemoveRedEyeOutlinedIcon className="entityListView" />
           <span className="iconText">Podgląd</span>
         </span>
@@ -111,13 +126,14 @@ export default function DeletedUserList() {
     },
   ];
 
+
   return (
-    <div className='entityList'>
+    <div className='entityList' data-testid="deleted-users-list">
       <div className="entityTitleContainer">
-        <h1 className="entityListTitle">Lista usuniętych pracowników</h1>
+        <h1 className="entityListTitle" data-testid="list-title">Lista usuniętych pracowników</h1>
       </div>
       {users.filter(user => user.status === 'usunięty').length === 0 ? (
-        <p>Brak danych do wyświetlenia.</p>
+        <p data-testid="no-data-message">Brak danych do wyświetlenia.</p>
       ) : (
         <>
           <div className="searchContainer">
@@ -127,13 +143,14 @@ export default function DeletedUserList() {
               value={searchText}
               onChange={handleSearchChange}
               className="searchInput"
+              data-testid="search-input"
             />
           </div>
 
           {filteredRows.length === 0 && searchText ? (
-            <p>Brak wyników wyszukiwania dla wprowadzonych danych.</p>
+            <p data-testid="no-search-results-message">Brak wyników wyszukiwania dla wprowadzonych danych.</p>
           ) : (
-            <div className='dataGrid'>
+            <div className='dataGrid' data-testid="data-grid">
               <DataGrid
                 rows={filteredRows}
                 columns={columns}
@@ -152,6 +169,7 @@ export default function DeletedUserList() {
                 components={{
                   Pagination: () => null,
                 }}
+                data-testid="data-grid-content"
               />
             </div>
           )}
@@ -162,6 +180,7 @@ export default function DeletedUserList() {
           open={isModalOpen}
           onClose={handleCloseModal}
           user={selectedUser}
+          data-testid="user-preview-modal"
         />
       )}
     </div>

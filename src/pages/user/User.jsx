@@ -100,7 +100,7 @@ export default function User() {
   const handleUpdate = () => {
     const { valid, errors } = validateUserForm(formData);
     setErrors(errors);
-  
+
     if (valid) {
       axios
         .put(`${process.env.REACT_APP_API_URL}/users/${userId}`, formData, {
@@ -132,8 +132,8 @@ export default function User() {
       setAlert({ severity: 'error', message: firstErrorMessage });
     }
   };
-  
-  
+
+
 
 
   const handleImageSelect = (imagePath) => {
@@ -145,7 +145,7 @@ export default function User() {
       setAlert({ severity: 'error', message: 'Nie można usunąć pracownika: brak ID użytkownika' });
       return;
     }
-  
+
     axios.put(`${process.env.REACT_APP_API_URL}/users/${selectedUserId}`, { status: 'usunięty' }, {
       headers: {
         Authorization: `Bearer ${token}`
@@ -154,7 +154,7 @@ export default function User() {
       .then(response => {
         setUsers(users.map(user => user.id === selectedUserId ? { ...user, status: 'usunięty' } : user));
         setAlert({ severity: 'success', message: 'Pracownik został usunięty!' });
-  
+
         setTimeout(() => {
           navigate('/users-landing/deleted', { state: { refresh: true } });
         }, 2000);
@@ -169,7 +169,7 @@ export default function User() {
         }
       });
   };
-  
+
 
 
   const handleOpenDeleteModal = () => {
@@ -184,9 +184,13 @@ export default function User() {
   return (
     <div className="user">
       <div className="userTitleContainer">
-        <h1 className="userTitle">Szczegóły konta</h1>
+        <h1 className="userTitle" data-testid="user-title">Szczegóły konta</h1>
         <div>
-          <button className="backButton" onClick={() => navigate('/users-landing/list')}>
+          <button
+            className="backButton"
+            onClick={() => navigate('/users-landing/list')}
+            data-testid="back-button"
+          >
             &laquo; Powrót do listy
           </button>
         </div>
@@ -198,18 +202,23 @@ export default function User() {
               src={userData.avatar ? `${process.env.REACT_APP_API_URL}${userData.avatar}` : 'https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg'}
               alt=""
               className="userShowImg"
+              data-testid="user-avatar"
             />
             <div className="userShowTopTitle">
               {userData.status && (
-                <button className="modalDeletedLabel"
+                <button
+                  className="modalDeletedLabel"
                   style={{
                     backgroundColor: statusColors[userData.status] || 'gray',
                     color: userData.status === 'zawieszony' ? 'black' : 'white',
                   }}
-                >{userData.status}</button>
+                  data-testid="user-status"
+                >
+                  {userData.status}
+                </button>
               )}
-              <span className="userShowUserName">{DOMPurify.sanitize(userData.userName)}</span>
-              <span className="userShowUserTitle">{DOMPurify.sanitize(userData.title)}</span>
+              <span className="userShowUserName" data-testid="user-username">{DOMPurify.sanitize(userData.userName)}</span>
+              <span className="userShowUserTitle" data-testid="user-title">{DOMPurify.sanitize(userData.title)}</span>
               <Rating
                 name="read-only"
                 value={DOMPurify.sanitize(userData.rating || 0)}
@@ -219,49 +228,50 @@ export default function User() {
                     color: '#F2811D',
                   },
                 }}
+                data-testid="user-rating"
               />
             </div>
           </div>
           <div className="userShowBottom">
-            <span className="userShowTitle">Pracownik</span>
-            <div className="userShowInfo">
+            <span className="userShowTitle" data-testid="employee-title">Pracownik</span>
+            <div className="userShowInfo" data-testid="user-username-info">
               <PermIdentity className="userShowIcon" />
               <span className="userShowInfoTitle">
                 {DOMPurify.sanitize(userData.userName)}
               </span>
             </div>
-            <div className="userShowInfo">
+            <div className="userShowInfo" data-testid="user-fullname-info">
               <PermIdentity className="userShowIcon" />
               <span className="userShowInfoTitle">
                 {DOMPurify.sanitize(userData.fullName)}
               </span>
             </div>
-            <div className="userShowInfo">
+            <div className="userShowInfo" data-testid="user-dob-info">
               <CalendarToday className="userShowIcon" />
               <span className="userShowInfoTitle">
                 {DOMPurify.sanitize(userData.dob)}
               </span>
             </div>
-            <div className="userShowInfo">
+            <div className="userShowInfo" data-testid="user-gender-info">
               <PermIdentity className="userShowIcon" />
               <span className="userShowInfoTitle">
                 {DOMPurify.sanitize(userData.gender)}
               </span>
             </div>
-            <span className="userShowTitle">Dane kontaktowe</span>
-            <div className="userShowInfo">
+            <span className="userShowTitle" data-testid="contact-info-title">Dane kontaktowe</span>
+            <div className="userShowInfo" data-testid="user-phone-info">
               <PhoneAndroid className="userShowIcon" />
               <span className="userShowInfoTitle">
                 {DOMPurify.sanitize(userData.phone)}
               </span>
             </div>
-            <div className="userShowInfo">
+            <div className="userShowInfo" data-testid="user-email-info">
               <MailOutline className="userShowIcon" />
               <span className="userShowInfoTitle">
                 {DOMPurify.sanitize(userData.email)}
               </span>
             </div>
-            <div className="userShowInfo">
+            <div className="userShowInfo" data-testid="user-address-info">
               <LocationSearching className="userShowIcon" />
               <span className="userShowInfoTitle">
                 {DOMPurify.sanitize(userData.address)}
@@ -270,7 +280,7 @@ export default function User() {
           </div>
         </div>
         <div className="userUpdate">
-          <span className="userUpdateTitle">Edytuj dane</span>
+          <span className="userUpdateTitle" data-testid="edit-title">Edytuj dane</span>
           <form className="userUpdateForm" onSubmit={(e) => { e.preventDefault(); handleUpdate(); }}>
             <div className="userUpdateLeft">
               <div className="userUpdateItem">
@@ -283,8 +293,9 @@ export default function User() {
                   onChange={handleInputChange}
                   onBlur={() => validateField('userName', formData.userName)}
                   className="userUpdateInput"
+                  data-testid="input-username"
                 />
-                {errors.userName && <span className="error">{errors.userName}</span>}
+                {errors.userName && <span className="error" data-testid="error-username">{errors.userName}</span>}
               </div>
               <div className="userUpdateItem">
                 <label>Pełna nazwa pracownika</label>
@@ -296,8 +307,9 @@ export default function User() {
                   onChange={handleInputChange}
                   onBlur={() => validateField('fullName', formData.fullName)}
                   className="userUpdateInput"
+                  data-testid="input-fullname"
                 />
-                {errors.fullName && <span className="error">{errors.fullName}</span>}
+                {errors.fullName && <span className="error" data-testid="error-fullname">{errors.fullName}</span>}
               </div>
               <div className="userUpdateItem">
                 <label>Email</label>
@@ -309,8 +321,9 @@ export default function User() {
                   onChange={handleInputChange}
                   onBlur={() => validateField('email', formData.email)}
                   className="userUpdateInput"
+                  data-testid="input-email"
                 />
-                {errors.email && <span className="error">{errors.email}</span>}
+                {errors.email && <span className="error" data-testid="error-email">{errors.email}</span>}
               </div>
               <div className="userUpdateItem">
                 <label>Telefon</label>
@@ -322,8 +335,9 @@ export default function User() {
                   onChange={handleInputChange}
                   onBlur={() => validateField('phone', formData.phone)}
                   className="userUpdateInput"
+                  data-testid="input-phone"
                 />
-                {errors.phone && <span className="error">{errors.phone}</span>}
+                {errors.phone && <span className="error" data-testid="error-phone">{errors.phone}</span>}
               </div>
               <div className="userUpdateItem">
                 <label>Adres</label>
@@ -335,8 +349,9 @@ export default function User() {
                   onChange={handleInputChange}
                   onBlur={() => validateField('address', formData.address)}
                   className="userUpdateInput"
+                  data-testid="input-address"
                 />
-                {errors.address && <span className="error">{errors.address}</span>}
+                {errors.address && <span className="error" data-testid="error-address">{errors.address}</span>}
               </div>
               <div className="userUpdateItem" data-testid='dateOfBirth'>
                 <label>Data urodzenia</label>
@@ -346,10 +361,11 @@ export default function User() {
                       value={formData.dob ? dayjs(formData.dob) : null}
                       onChange={handleDateChange}
                       renderInput={(params) => <input {...params} className="userUpdateInput DatePickerInput" />}
+                      data-testid="input-dob"
                     />
                   </DemoContainer>
                 </LocalizationProvider>
-                {errors.dob && <span className="error">{errors.dob}</span>}
+                {errors.dob && <span className="error" data-testid="error-dob">{errors.dob}</span>}
               </div>
               <div className="userUpdateItem">
                 <label>Płeć</label>
@@ -360,6 +376,7 @@ export default function User() {
                   onBlur={() => validateField('gender', formData.gender)}
                   className="userUpdateInput"
                   displayEmpty
+                  data-testid="input-gender"
                 >
                   <MenuItem value={DOMPurify.sanitize()} disabled hidden>
                     Wybierz
@@ -369,13 +386,13 @@ export default function User() {
                   <MenuItem value="Inna">Inne</MenuItem>
                   <MenuItem value="Nie podano">Nie podano</MenuItem>
                 </Select>
-                {errors.gender && <span className="error">{errors.gender}</span>}
+                {errors.gender && <span className="error" data-testid="error-gender">{errors.gender}</span>}
               </div>
               <div className="userUpdateItem">
                 <label>Stanowisko</label>
-                <div className="userUpdateTitleOptions">
+                <div className="userUpdateTitleOptions" data-testid="input-title">
                   {['Software Tester', 'Frontend Developer', 'Backend Developer', 'Business Analyst', 'Chapter Lead', 'Product Owner', 'Fullstack Developer', 'UX Designer'].map((title) => (
-                    <label key={title} className="radioLabel">
+                    <label key={title} className="radioLabel" data-testid={`radio-title-${title}`}>
                       <input
                         type="radio"
                         name="title"
@@ -400,14 +417,15 @@ export default function User() {
                       color: '#F2811D',
                     },
                   }}
+                  data-testid="input-rating"
                 />
               </div>
               <div className="userUpdateItem">
                 <label>Status</label>
-                <ButtonGroup variant="contained" aria-label="contained button group" className="statusButtonGroup">
-                  <Button className="statusButton" onClick={() => handleStatusChange('aktywny')}>Aktywny</Button>
-                  <Button className="statusButton" onClick={() => handleStatusChange('nieaktywny')}>Nieaktywny</Button>
-                  <Button className="statusButton" onClick={() => handleStatusChange('zawieszony')}>Zawieszony</Button>
+                <ButtonGroup variant="contained" aria-label="contained button group" className="statusButtonGroup" data-testid="status-buttons">
+                  <Button className="statusButton" onClick={() => handleStatusChange('aktywny')} data-testid="status-active-button">Aktywny</Button>
+                  <Button className="statusButton" onClick={() => handleStatusChange('nieaktywny')} data-testid="status-inactive-button">Nieaktywny</Button>
+                  <Button className="statusButton" onClick={() => handleStatusChange('zawieszony')} data-testid="status-suspended-button">Zawieszony</Button>
                 </ButtonGroup>
               </div>
             </div>
@@ -419,27 +437,29 @@ export default function User() {
                     alt=""
                     className="userUpdateImg"
                     onClick={() => setModalOpen(true)}
+                    data-testid="user-update-avatar"
                   />
-                  <label className="uploadLabel" onClick={() => setModalOpen(true)}>
+                  <label className="uploadLabel" onClick={() => setModalOpen(true)} data-testid="upload-avatar-label">
                     <PhotoCameraOutlinedIcon data-testid='cameraIcon' />
                     Zmień obraz
                   </label>
                 </div>
                 <ButtonGroup variant="contained" aria-label="contained button group" className="decisionButtonGroup">
-                  <button className="deleteButtonEditForm" type='button' onClick={handleOpenDeleteModal}>Usuń</button>
-                  <button type="submit" className="submitButtonEditForm">Zapisz</button>
+                  <button className="deleteButtonEditForm" type='button' onClick={handleOpenDeleteModal} data-testid="delete-user-button">Usuń</button>
+                  <button type="submit" className="submitButtonEditForm" data-testid="save-user-button">Zapisz</button>
                 </ButtonGroup>
               </div>
             </div>
           </form>
         </div>
       </div>
-      <Notification alert={alert} />
+      <Notification alert={alert} data-testid="notification" />
       <ImageUploadModal
         open={modalOpen}
         onClose={() => setModalOpen(false)}
         onSelect={handleImageSelect}
         imageType="users"
+        data-testid="image-upload-modal"
       />
       <DeleteConfirmationModal
         open={isModalOpen}
@@ -447,6 +467,7 @@ export default function User() {
         onConfirm={handleDelete}
         title="Zamierzasz usunąć pracownika!"
         message="Czy na pewno chcesz usunąć pracownika?"
+        data-testid="delete-confirmation-modal"
       />
     </div>
   );

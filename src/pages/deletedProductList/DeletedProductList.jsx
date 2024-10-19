@@ -46,31 +46,65 @@ export default function DeletedProductList() {
   };
 
   const columns = [
-    { field: 'id', headerName: 'ID', flex: 0.3, headerAlign: 'left', align: 'left' },
+    { field: 'id', headerName: 'ID', flex: 0.3, headerAlign: 'left', align: 'left', renderCell: (params) => <span data-testid={`product-id-${params.row.id}`}>{params.value}</span> },
     {
-      field: 'name', headerName: 'Produkt', flex: 1.5,
+      field: 'name',
+      headerName: 'Produkt',
+      flex: 1.5,
       headerAlign: 'left',
       align: 'left',
       renderCell: (params) => (
-        <div className='entityListItem'>
+        <div className='entityListItem' data-testid={`product-item-${params.row.id}`}>
           <img
             className='entityListImg'
             src={DOMPurify.sanitize(params.row.img ? `${process.env.REACT_APP_API_URL}${params.row.img}` : 'https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg')}
             alt={DOMPurify.sanitize(params.row.name)}
+            data-testid={`product-img-${params.row.id}`}
           />
-          {DOMPurify.sanitize(params.row.name)}
+          <span data-testid={`product-name-${params.row.id}`}>{DOMPurify.sanitize(params.row.name)}</span>
         </div>
       )
     },
-    { field: 'category', headerName: 'Kategoria', flex: 0.7, headerAlign: 'left', align: 'left', renderCell: (params) => <span>{DOMPurify.sanitize(params.value)}</span> },
-    { field: 'brand', headerName: 'Producent', flex: 1, headerAlign: 'left', align: 'left', renderCell: (params) => <span>{DOMPurify.sanitize(params.value)}</span> },
-    { field: 'price', headerName: 'Cena', flex: 0.5, headerAlign: 'left', align: 'centre', renderCell: (params) => <span>{DOMPurify.sanitize(params.value)}</span> },
+    {
+      field: 'category',
+      headerName: 'Kategoria',
+      flex: 0.7,
+      headerAlign: 'left',
+      align: 'left',
+      renderCell: (params) => (
+        <span data-testid={`product-category-${params.row.id}`}>{DOMPurify.sanitize(params.value)}</span>
+      )
+    },
+    {
+      field: 'brand',
+      headerName: 'Producent',
+      flex: 1,
+      headerAlign: 'left',
+      align: 'left',
+      renderCell: (params) => (
+        <span data-testid={`product-brand-${params.row.id}`}>{DOMPurify.sanitize(params.value)}</span>
+      )
+    },
+    {
+      field: 'price',
+      headerName: 'Cena',
+      flex: 0.5,
+      headerAlign: 'left',
+      align: 'center',
+      renderCell: (params) => (
+        <span data-testid={`product-price-${params.row.id}`}>{DOMPurify.sanitize(params.value)}</span>
+      )
+    },
     {
       field: 'action',
       headerName: '',
       flex: 0.7,
       renderCell: (params) => (
-        <span className="entityListPreview" onClick={() => handleOpenModal(params.row)}>
+        <span
+          className="entityListPreview"
+          onClick={() => handleOpenModal(params.row)}
+          data-testid={`product-preview-${params.row.id}`}
+        >
           <RemoveRedEyeOutlinedIcon className="entityListView" />
           <span className="iconText">Podgląd</span>
         </span>
@@ -79,13 +113,13 @@ export default function DeletedProductList() {
   ];
 
   return (
-    <div className="entityList">
+    <div className="entityList" data-testid="deleted-products-list">
       <div className="entityTitleContainer">
-        <h1 className="entityListTitle">Lista usuniętych produktów</h1>
+        <h1 className="entityListTitle" data-testid="list-title">Lista usuniętych produktów</h1>
       </div>
 
       {products.filter(product => product.status === 'deleted').length === 0 ? (
-        <p>Brak danych do wyświetlenia.</p>
+        <p data-testid="no-data-message">Brak danych do wyświetlenia.</p>
       ) : (
         <>
           <div className="searchContainer">
@@ -95,12 +129,13 @@ export default function DeletedProductList() {
               value={searchText}
               onChange={handleSearchChange}
               className="searchInput"
+              data-testid="search-input"
             />
           </div>
           {filteredRows.length === 0 && searchText ? (
-            <p>Brak wyników wyszukiwania dla wprowadzonych danych.</p>
+            <p data-testid="no-search-results-message">Brak wyników wyszukiwania dla wprowadzonych danych.</p>
           ) : (
-            <div className="dataGrid">
+            <div className="dataGrid" data-testid="data-grid">
               <DataGrid
                 rows={filteredRows}
                 columns={columns}
@@ -119,6 +154,7 @@ export default function DeletedProductList() {
                 components={{
                   Pagination: () => null,
                 }}
+                data-testid="data-grid-content"
               />
             </div>
           )}
@@ -129,8 +165,10 @@ export default function DeletedProductList() {
           open={isModalOpen}
           onClose={handleCloseModal}
           product={selectedProduct}
+          data-testid="product-preview-modal"
         />
       )}
     </div>
   );
+
 }

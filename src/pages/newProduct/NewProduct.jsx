@@ -169,35 +169,35 @@ const NewProduct = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Product data being sent:', productData);
-  
+
     const { valid, formErrors } = validateProductForm(productData);
     setErrors(formErrors);
-  
+
     if (valid) {
-      const dataToSend = { ...productData, status: productData.status || '' }; 
-  
+      const dataToSend = { ...productData, status: productData.status || '' };
+
       axios.post(`${process.env.REACT_APP_API_URL}/products`, dataToSend, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((response) => {
-        setProducts([...products, response.data]);
-        setAlert({ severity: 'success', message: 'Produkt został dodany!' });
-        setTimeout(() => {
-          navigate('/products-landing/list');
-        }, 2000);
-      })
-      .catch((error) => {
-        if (error.response && error.response.data.errors) {
-          // Get the first validation error from the backend response
-          const firstErrorKey = Object.keys(error.response.data.errors)[0];
-          const firstErrorMessage = error.response.data.errors[firstErrorKey];
-          setAlert({ severity: 'error', message: firstErrorMessage });
-        } else {
-          setAlert({ severity: 'error', message: 'Nie udało się dodać produktu!' });
-        }
-      });
+        .then((response) => {
+          setProducts([...products, response.data]);
+          setAlert({ severity: 'success', message: 'Produkt został dodany!' });
+          setTimeout(() => {
+            navigate('/products-landing/list');
+          }, 2000);
+        })
+        .catch((error) => {
+          if (error.response && error.response.data.errors) {
+            // Get the first validation error from the backend response
+            const firstErrorKey = Object.keys(error.response.data.errors)[0];
+            const firstErrorMessage = error.response.data.errors[firstErrorKey];
+            setAlert({ severity: 'error', message: firstErrorMessage });
+          } else {
+            setAlert({ severity: 'error', message: 'Nie udało się dodać produktu!' });
+          }
+        });
     } else {
       // If frontend validation fails, show the first validation error
       const firstErrorKey = Object.keys(formErrors)[0];
@@ -208,14 +208,14 @@ const NewProduct = () => {
       });
     }
   };
-  
 
-  
+
+
 
   return (
     <div className="newProduct">
-      <h1 className="newProductTitle">Nowy produkt</h1>
-      <form className="newProductForm" onSubmit={handleSubmit}>
+      <h1 className="newProductTitle" data-testid="new-product-title">Nowy produkt</h1>
+      <form className="newProductForm" onSubmit={handleSubmit} data-testid="new-product-form">
         <div className="newProductLeft">
           <GeneralInfo
             productData={productData}
@@ -229,10 +229,11 @@ const NewProduct = () => {
               productData={productData}
               handleInputChange={handleInputChange}
               onBlur={handleBlur}
+              data-testid="mobile-phone-fields"
             />
           )}
           {productData.category === 'Akcesoria' && productData.subcategory && !productData.brand && (
-            <div className="newProductItem">
+            <div className="newProductItem" data-testid="accessories-brand-select">
               <label>Producent</label>
               <Select
                 name="brand"
@@ -241,17 +242,18 @@ const NewProduct = () => {
                 displayEmpty
                 className="newProductInput"
                 onBlur={handleBlur}
+                data-testid="brand-select"
               >
-                <MenuItem value="" disabled hidden>
+                <MenuItem value="" disabled hidden data-testid="brand-select-placeholder">
                   Wybierz producenta
-                  </MenuItem>
+                </MenuItem>
                 {['Samsung', 'Apple', 'Xiaomi', 'FOREVER'].map((brand) => (
-                  <MenuItem key={brand} value={brand}>
+                  <MenuItem key={brand} value={brand} data-testid={`brand-option-${brand}`}>
                     {brand}
                   </MenuItem>
                 ))}
               </Select>
-              {errors.brand && <span className="errorMessage">{errors.brand}</span>}
+              {errors.brand && <span className="errorMessage" data-testid="error-brand">{errors.brand}</span>}
             </div>
           )}
           {productData.category === 'Akcesoria' && productData.brand && (
@@ -259,6 +261,7 @@ const NewProduct = () => {
               productData={productData}
               handleInputChange={handleInputChange}
               onBlur={handleBlur}
+              data-testid="accessories-fields"
             />
           )}
         </div>
@@ -267,9 +270,10 @@ const NewProduct = () => {
             img={DOMPurify.sanitize(productData.img)}
             onClick={() => setIsModalOpen(true)}
             label="Wybierz obraz"
+            data-testid="image-upload"
           />
           <div className="productInfoBottom">
-            <div className="newProductItem">
+            <div className="newProductItem" data-testid="price-input-wrapper">
               <label>Cena</label>
               <input
                 type="text"
@@ -283,11 +287,12 @@ const NewProduct = () => {
                   }
                 }}
                 onBlur={handleBlur}
+                data-testid="price-input"
               />
-              {errors.price && <span className="errorMessage">{errors.price}</span>}
+              {errors.price && <span className="errorMessage" data-testid="error-price">{errors.price}</span>}
             </div>
 
-            <div className="newProductItem">
+            <div className="newProductItem" data-testid="inStock-select-wrapper">
               <label>Dostępny</label>
               <Select
                 name="inStock"
@@ -296,30 +301,42 @@ const NewProduct = () => {
                 onBlur={handleBlur}
                 displayEmpty
                 className="newProductInput"
+                data-testid="inStock-select"
               >
-                <MenuItem value={DOMPurify.sanitize('Tak')}>Tak</MenuItem>
-                <MenuItem value={DOMPurify.sanitize('Nie')}>Nie</MenuItem>
+                <MenuItem value={DOMPurify.sanitize('Tak')} data-testid="inStock-yes">Tak</MenuItem>
+                <MenuItem value={DOMPurify.sanitize('Nie')} data-testid="inStock-no">Nie</MenuItem>
               </Select>
             </div>
-            <div className="newProductItem">
+
+            <div className="newProductItem" data-testid="promoted-switch-wrapper">
               <label>Promowany</label>
-              <GreenSwitch checked={productData.promoted} onChange={handlePromotedToggle} />
+              <GreenSwitch
+                checked={productData.promoted}
+                onChange={handlePromotedToggle}
+                data-testid="promoted-switch"
+              />
             </div>
           </div>
-          <button type="submit" className="submitButtonNewForm">
+          <button
+            type="submit"
+            className="submitButtonNewForm"
+            data-testid="submit-button"
+          >
             Dodaj
           </button>
         </div>
       </form>
-      <Notification alert={alert} />
+      <Notification alert={alert} data-testid="notification" />
       <ImageUploadModal
         open={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         onSelect={handleImageSelect}
         imageType="products"
+        data-testid="image-upload-modal"
       />
     </div>
   );
+
 };
 
 export default NewProduct;
