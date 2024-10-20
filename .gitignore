@@ -29,5 +29,4 @@ yarn-error.log*
 .vscode/
 *.code-workspace
 
-junit-results/*.xml
 
