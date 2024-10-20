@@ -148,10 +148,6 @@ export const config = {
                 failure: 'message',
                 stacktrace: 'stack'
             }
-            /* suiteNameFormat: /[^a-zA-Z0-9@]+/,
-             outputFileFormat: function (options) { // optional
-                 return `results-${options.cid}.${options.capabilities}.xml`
-             }*/
         }]
     ],
     mochaOpts: {
@@ -213,6 +209,18 @@ export const config = {
         }
         await browser.url(appBaseURL);
     },
+
+    beforeEach: (async function () {
+        console.log(`Starting test: ${this.currentTest.title}`);
+    }),
+
+    afterEach: (async function () {
+        if (this.currentTest.state === 'failed') {
+            console.log(`[FAIL] ${this.currentTest.title}`);
+        } else {
+            console.log(`[PASS] ${this.currentTest.title}`);
+        }
+    }),
 
 
     // afterTest: async function () {

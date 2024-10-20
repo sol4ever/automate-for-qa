@@ -28,3 +28,7 @@ yarn-error.log*
 
 .vscode/
 *.code-workspace
+
+
+webdriverio_test_project/junit-results/*.xml
+
