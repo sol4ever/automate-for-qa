@@ -9,4 +9,4 @@
 /success_Screenshots_prod
 
 /.env
-/junit-results/*.xml
+junit-results/*.xml

@@ -29,11 +29,12 @@ steps:
 - script: |
     cd ./webdriverio_test_project  
     npm install  
-    npx wdio run wdio.conf.js  
+    npx wdio run wdio.conf.js 
+    ls ./junit-results 
   displayName: 'Run WebdriverIO Tests'
 
 - task: PublishTestResults@2
   inputs:
     testResultsFormat: 'JUnit'
-    testResultsFiles: 'webdriverio_test_project/junit-results/*.xml'
+    testResultsFiles: 'junit-results/*.xml'
     failTaskOnFailedTests: true
