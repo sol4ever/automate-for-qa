@@ -31,6 +31,7 @@ steps:
     npm install  
     npx wdio run wdio.conf.js 
     ls ./junit-results 
+    ls
   displayName: 'Run WebdriverIO Tests'
 
 - task: PublishTestResults@2
