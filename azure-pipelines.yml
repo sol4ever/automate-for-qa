@@ -30,7 +30,7 @@ steps:
     cd ./webdriverio_test_project
     ls
     npm install  
-    npx wdio
+    npm run test:local
     ls
   displayName: 'Run WebdriverIO Tests'
 
