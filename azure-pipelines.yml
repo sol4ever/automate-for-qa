@@ -30,7 +30,8 @@ steps:
     cd ./webdriverio_test_project
     ls
     npm install  
-    npx wdio run wdio.conf.js 
+    npx wdio run wdio.conf.js
+    ls
   displayName: 'Run WebdriverIO Tests'
 
 - task: PublishTestResults@2

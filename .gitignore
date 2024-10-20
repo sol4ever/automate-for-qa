@@ -30,4 +30,4 @@ yarn-error.log*
 *.code-workspace
 
 
-webdriverio_test_project/junit-results/*.xml
+*.xml
