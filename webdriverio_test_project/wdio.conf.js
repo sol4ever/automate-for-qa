@@ -137,6 +137,22 @@ export const config = {
                 },
             },
         ],
+        ['junit', {
+            outputDir: 'junit-results',
+            suiteNameFormat: /[^a-zA-Z0-9@]+/,
+            outputFileFormat: function (options) { // optional
+                return `results-${options.cid}.xml`
+            },
+            errorOptions: {
+                error: 'message',
+                failure: 'message',
+                stacktrace: 'stack'
+            }
+            /* suiteNameFormat: /[^a-zA-Z0-9@]+/,
+             outputFileFormat: function (options) { // optional
+                 return `results-${options.cid}.${options.capabilities}.xml`
+             }*/
+        }]
     ],
     mochaOpts: {
         ui: 'bdd',
@@ -148,47 +164,47 @@ export const config = {
     //===================
 
 
-afterTest: async function (test, context, { error, passed }) {
-    const failedScreenshotDir = path.join(__dirname, `./error_${screenshotsDir}`);
-    const successScreenshotDir = path.join(__dirname, `./success_${screenshotsDir}`);
+    afterTest: async function (test, context, { error, passed }) {
+        const failedScreenshotDir = path.join(__dirname, `./error_${screenshotsDir}`);
+        const successScreenshotDir = path.join(__dirname, `./success_${screenshotsDir}`);
 
-    if (!fs.existsSync(failedScreenshotDir)) {
-        fs.mkdirSync(failedScreenshotDir, { recursive: true });
-    }
-    if (!fs.existsSync(successScreenshotDir)) {
-        fs.mkdirSync(successScreenshotDir, { recursive: true });
-    }
-
-    const sanitizeString = (str) => {
-        return str.replace(/[^a-zA-Z0-9 ]/g, '').replace(/\s+/g, '_');
-    };
-
-    const sanitizedTestTitle = sanitizeString(test.title);
-    const sanitizedSuiteTitle = sanitizeString(test.parent || 'suite');
-
-    const fileName = `Suite_${sanitizedSuiteTitle}__TC_${sanitizedTestTitle}__${currentDate()}_${currentTime()}.png`;
-
-    if (error) {
-        const failedFilePath = path.join(failedScreenshotDir, fileName);
-        try {
-            await browser.saveScreenshot(failedFilePath);
-        } catch (e) {
-            console.error('Error saving failed screenshot:', e);
+        if (!fs.existsSync(failedScreenshotDir)) {
+            fs.mkdirSync(failedScreenshotDir, { recursive: true });
         }
-    }
-
-    if (passed) {
-        const successFilePath = path.join(successScreenshotDir, fileName);
-        try {
-            await browser.saveScreenshot(successFilePath);
-        } catch (e) {
-            console.error('Error saving success screenshot:', e);
+        if (!fs.existsSync(successScreenshotDir)) {
+            fs.mkdirSync(successScreenshotDir, { recursive: true });
         }
-    }
 
-    deleteScreenshotsOlderThan7Days(failedScreenshotDir);
-    deleteScreenshotsOlderThan7Days(successScreenshotDir);
-},
+        const sanitizeString = (str) => {
+            return str.replace(/[^a-zA-Z0-9 ]/g, '').replace(/\s+/g, '_');
+        };
+
+        const sanitizedTestTitle = sanitizeString(test.title);
+        const sanitizedSuiteTitle = sanitizeString(test.parent || 'suite');
+
+        const fileName = `Suite_${sanitizedSuiteTitle}__TC_${sanitizedTestTitle}__${currentDate()}_${currentTime()}.png`;
+
+        if (error) {
+            const failedFilePath = path.join(failedScreenshotDir, fileName);
+            try {
+                await browser.saveScreenshot(failedFilePath);
+            } catch (e) {
+                console.error('Error saving failed screenshot:', e);
+            }
+        }
+
+        if (passed) {
+            const successFilePath = path.join(successScreenshotDir, fileName);
+            try {
+                await browser.saveScreenshot(successFilePath);
+            } catch (e) {
+                console.error('Error saving success screenshot:', e);
+            }
+        }
+
+        deleteScreenshotsOlderThan7Days(failedScreenshotDir);
+        deleteScreenshotsOlderThan7Days(successScreenshotDir);
+    },
 
 
     beforeTest: async function () {

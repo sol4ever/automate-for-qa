@@ -1,0 +1,24 @@
+trigger:
+  branches:
+    include:
+      - tests_enhacements  # Adjust this to your desired branch
+
+pool:
+  vmImage: 'windows-latest'
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '20.x'  # Adjust the Node.js version if necessary
+  displayName: 'Install Node.js'
+
+- script: |
+    npm install
+    npx wdio run wdio.conf.js
+  displayName: 'Install dependencies and run WebdriverIO tests'
+
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: 'webdriverio_test_project/junit-results/*.xml'  # Update to match your actual path
+    failTaskOnFailedTests: true  # Optionally fail the pipeline on test failure
