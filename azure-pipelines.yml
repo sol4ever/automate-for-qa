@@ -1,7 +1,7 @@
 trigger:
   branches:
     include:
-      - tests_enhacements  # Your branch here
+      - tests_enhacements  # branch here
 
 pool:
   vmImage: 'windows-latest'
@@ -25,13 +25,15 @@ steps:
     npm start  # Starts the backend server
   displayName: 'Start Backend'
 
-# Step to run your tests
+# Step to run WebdriverIO tests
 - script: |
-    npx wdio run wdio.conf.js  # WebdriverIO test command
-  displayName: 'Run WebdriverIO tests'
+    cd ./webdriverio_test_project  # Navigate to the test project folder
+    npm install  # Ensure dependencies for WebdriverIO are installed
+    npx wdio run wdio.conf.js  # Run WebdriverIO tests
+  displayName: 'Run WebdriverIO Tests'
 
 - task: PublishTestResults@2
   inputs:
     testResultsFormat: 'JUnit'
-    testResultsFiles: 'webdriverio_test_project/junit-results/*.xml'  # Update path if needed
+    testResultsFiles: './webdriverio_test_project/junit-results/*.xml'
     failTaskOnFailedTests: true
