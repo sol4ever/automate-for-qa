@@ -150,7 +150,7 @@ export const config = {
             },
             onPrepare: function (config, capabilities) {
                 const fs = require('fs');
-                const path = './webdriverio_test_project/junit-results';
+                const path = './junit-results';
                 if (!fs.existsSync(path)) {
                     fs.mkdirSync(path, { recursive: true });
                 }

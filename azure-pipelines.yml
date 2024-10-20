@@ -27,7 +27,9 @@ steps:
 
 # Step to run WebdriverIO tests
 - script: |
-    cd ./webdriverio_test_project  
+    ls
+    cd ./webdriverio_test_project
+    ls
     npm install  
     npx wdio run wdio.conf.js 
     ls ./junit-results 
