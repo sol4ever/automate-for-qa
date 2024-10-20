@@ -1,0 +1,617 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="9" failures="0" errors="0" skipped="0">
+  <testsuite name="Negative Login Tests Boundary and Invalid Inputs" timestamp="2024-10-20T21:02:01" time="21.761" tests="7" failures="0" errors="0" skipped="0">
+    <properties>
+      <property name="specId" value="0"/>
+      <property name="suiteName" value="Negative Login Tests - Boundary and Invalid Inputs"/>
+      <property name="capabilities" value="chrome.130_0_6723_59.windows"/>
+      <property name="file" value="file:///C:/Users/User/Documents/Informatyka/qa_auto_test/webdriverio_test_project/test/specs/negativeLoginTest.js"/>
+    </properties>
+    <testcase classname="chrome.130_0_6723_59.windows.Negative_Login_Tests_-_Boundary_and_Invalid_Inputs" name="should show error for empty username and password and reset button should not be visible" time="1.988">
+      <system-out><![CDATA[
+COMMAND: POST /session/ec52e7836a24bed4e3e78ed896112a83/url - {"url":"http://localhost:3000/home"}
+RESULT: {"url":"http://localhost:3000/home"}
+COMMAND: POST /session/ec52e7836a24bed4e3e78ed896112a83/url - {"url":"http://localhost:3000/"}
+RESULT: {"url":"http://localhost:3000/"}
+COMMAND: POST /session/ec52e7836a24bed4e3e78ed896112a83/element - {"using":"css selector","value":"[data-testid=\"nav-analytics\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"nav-analytics\"]"}
+COMMAND: POST /session/ec52e7836a24bed4e3e78ed896112a83/execute/sync - {"script":"<script> [21 bytes]","args":[{"element-6066-11e4-a52e-4f735466cecf":"f.3E85461ABBD55F0669B7D3BD96B1FCD8.d.B2113158C34F8FD4FA9F093174E6BAA3.e.16","ELEMENT":"f.3E85461ABBD55F0669B7D3BD96B1FCD8.d.B2113158C34F8FD4FA9F093174E6BAA3.e.16"}]}
+RESULT: {"script":"<script> [21 bytes]","args":[{"element-6066-11e4-a52e-4f735466cecf":"f.3E85461ABBD55F0669B7D3BD96B1FCD8.d.B2113158C34F8FD4FA9F093174E6BAA3.e.16","ELEMENT":"f.3E85461ABBD55F0669B7D3BD96B1FCD8.d.B2113158C34F8FD4FA9F093174E6BAA3.e.16"}]}
+COMMAND: POST /session/ec52e7836a24bed4e3e78ed896112a83/execute/sync - {"script":"<script> [21 bytes]","args":[{"element-6066-11e4-a52e-4f735466cecf":"f.3E85461ABBD55F0669B7D3BD96B1FCD8.d.B2113158C34F8FD4FA9F093174E6BAA3.e.16","ELEMENT":"f.3E85461ABBD55F0669B7D3BD96B1FCD8.d.B2113158C34F8FD4FA9F093174E6BAA3.e.16"}]}
+RESULT: {"script":"<script> [21 bytes]","args":[{"element-6066-11e4-a52e-4f735466cecf":"f.3E85461ABBD55F0669B7D3BD96B1FCD8.d.B2113158C34F8FD4FA9F093174E6BAA3.e.16","ELEMENT":"f.3E85461ABBD55F0669B7D3BD96B1FCD8.d.B2113158C34F8FD4FA9F093174E6BAA3.e.16"}]}
+COMMAND: POST /session/ec52e7836a24bed4e3e78ed896112a83/element/f.3E85461ABBD55F0669B7D3BD96B1FCD8.d.B2113158C34F8FD4FA9F093174E6BAA3.e.16/click - {}
+RESULT: {}
+COMMAND: POST /session/ec52e7836a24bed4e3e78ed896112a83/element - {"using":"css selector","value":"[data-testid=\"username-input\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"username-input\"]"}
+COMMAND: POST /session/ec52e7836a24bed4e3e78ed896112a83/element/f.3E85461ABBD55F0669B7D3BD96B1FCD8.d.B2113158C34F8FD4FA9F093174E6BAA3.e.21/clear - {}
+RESULT: {}
+COMMAND: POST /session/ec52e7836a24bed4e3e78ed896112a83/element/f.3E85461ABBD55F0669B7D3BD96B1FCD8.d.B2113158C34F8FD4FA9F093174E6BAA3.e.21/value - {"text":""}
+RESULT: {"text":""}
+COMMAND: POST /session/ec52e7836a24bed4e3e78ed896112a83/element - {"using":"css selector","value":"[data-testid=\"password-input\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"password-input\"]"}
+COMMAND: POST /session/ec52e7836a24bed4e3e78ed896112a83/element/f.3E85461ABBD55F0669B7D3BD96B1FCD8.d.B2113158C34F8FD4FA9F093174E6BAA3.e.23/clear - {}
+RESULT: {}
+COMMAND: POST /session/ec52e7836a24bed4e3e78ed896112a83/element/f.3E85461ABBD55F0669B7D3BD96B1FCD8.d.B2113158C34F8FD4FA9F093174E6BAA3.e.23/value - {"text":""}
+RESULT: {"text":""}
+COMMAND: POST /session/ec52e7836a24bed4e3e78ed896112a83/element - {"using":"css selector","value":"[data-testid=\"login-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"login-button\"]"}
+COMMAND: POST /session/ec52e7836a24bed4e3e78ed896112a83/element/f.3E85461ABBD55F0669B7D3BD96B1FCD8.d.B2113158C34F8FD4FA9F093174E6BAA3.e.26/click - {}
+RESULT: {}
+COMMAND: POST /session/ec52e7836a24bed4e3e78ed896112a83/element - {"using":"css selector","value":"[data-testid=\"login-error\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"login-error\"]"}
+COMMAND: GET /session/ec52e7836a24bed4e3e78ed896112a83/element/f.3E85461ABBD55F0669B7D3BD96B1FCD8.d.B2113158C34F8FD4FA9F093174E6BAA3.e.28/text - {}
+RESULT: {}
+COMMAND: GET /session/ec52e7836a24bed4e3e78ed896112a83/screenshot - {}
+RESULT: {}
+COMMAND: POST /session/ec52e7836a24bed4e3e78ed896112a83/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/ec52e7836a24bed4e3e78ed896112a83/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: DELETE /session/ec52e7836a24bed4e3e78ed896112a83 - {"deleteSessionOpts":{"shutdownDriver":false}}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"deleteSessionOpts":{"shutdownDriver":false}}
+COMMAND: POST /session/ec52e7836a24bed4e3e78ed896112a83/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+]]></system-out>
+    </testcase>
+    <testcase classname="chrome.130_0_6723_59.windows.Negative_Login_Tests_-_Boundary_and_Invalid_Inputs" name="should show error for username with 1 character and password with 1 characters and reset button should not be visible" time="2.015">
+      <system-out><![CDATA[
+COMMAND: POST /session/6bd4ce41d8508bc13621362bdf1d6b65/url - {"url":"http://localhost:3000/home"}
+COMMAND: POST /session/6bd4ce41d8508bc13621362bdf1d6b65/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"url":"http://localhost:3000/home"}
+COMMAND: POST /session/6bd4ce41d8508bc13621362bdf1d6b65/url - {"url":"http://localhost:3000/"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"url":"http://localhost:3000/"}
+COMMAND: POST /session/6bd4ce41d8508bc13621362bdf1d6b65/element - {"using":"css selector","value":"[data-testid=\"nav-analytics\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"nav-analytics\"]"}
+COMMAND: POST /session/6bd4ce41d8508bc13621362bdf1d6b65/execute/sync - {"script":"<script> [21 bytes]","args":[{"element-6066-11e4-a52e-4f735466cecf":"f.97461E5A392CB1227B311093E1E6DC2F.d.6339031DA90DBC03C5B6137CC75092B5.e.31","ELEMENT":"f.97461E5A392CB1227B311093E1E6DC2F.d.6339031DA90DBC03C5B6137CC75092B5.e.31"}]}
+RESULT: {"script":"<script> [21 bytes]","args":[{"element-6066-11e4-a52e-4f735466cecf":"f.97461E5A392CB1227B311093E1E6DC2F.d.6339031DA90DBC03C5B6137CC75092B5.e.31","ELEMENT":"f.97461E5A392CB1227B311093E1E6DC2F.d.6339031DA90DBC03C5B6137CC75092B5.e.31"}]}
+COMMAND: POST /session/6bd4ce41d8508bc13621362bdf1d6b65/execute/sync - {"script":"<script> [21 bytes]","args":[{"element-6066-11e4-a52e-4f735466cecf":"f.97461E5A392CB1227B311093E1E6DC2F.d.6339031DA90DBC03C5B6137CC75092B5.e.31","ELEMENT":"f.97461E5A392CB1227B311093E1E6DC2F.d.6339031DA90DBC03C5B6137CC75092B5.e.31"}]}
+RESULT: {"script":"<script> [21 bytes]","args":[{"element-6066-11e4-a52e-4f735466cecf":"f.97461E5A392CB1227B311093E1E6DC2F.d.6339031DA90DBC03C5B6137CC75092B5.e.31","ELEMENT":"f.97461E5A392CB1227B311093E1E6DC2F.d.6339031DA90DBC03C5B6137CC75092B5.e.31"}]}
+COMMAND: POST /session/6bd4ce41d8508bc13621362bdf1d6b65/element/f.97461E5A392CB1227B311093E1E6DC2F.d.6339031DA90DBC03C5B6137CC75092B5.e.31/click - {}
+RESULT: {}
+COMMAND: POST /session/6bd4ce41d8508bc13621362bdf1d6b65/element - {"using":"css selector","value":"[data-testid=\"username-input\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"username-input\"]"}
+COMMAND: POST /session/6bd4ce41d8508bc13621362bdf1d6b65/element/f.97461E5A392CB1227B311093E1E6DC2F.d.6339031DA90DBC03C5B6137CC75092B5.e.36/clear - {}
+RESULT: {}
+COMMAND: POST /session/6bd4ce41d8508bc13621362bdf1d6b65/element/f.97461E5A392CB1227B311093E1E6DC2F.d.6339031DA90DBC03C5B6137CC75092B5.e.36/value - {"text":"D"}
+RESULT: {"text":"D"}
+COMMAND: POST /session/6bd4ce41d8508bc13621362bdf1d6b65/element - {"using":"css selector","value":"[data-testid=\"password-input\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"password-input\"]"}
+COMMAND: POST /session/6bd4ce41d8508bc13621362bdf1d6b65/element/f.97461E5A392CB1227B311093E1E6DC2F.d.6339031DA90DBC03C5B6137CC75092B5.e.38/clear - {}
+COMMAND: POST /session/6bd4ce41d8508bc13621362bdf1d6b65/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {}
+COMMAND: POST /session/6bd4ce41d8508bc13621362bdf1d6b65/element/f.97461E5A392CB1227B311093E1E6DC2F.d.6339031DA90DBC03C5B6137CC75092B5.e.38/value - {"text":"p"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"text":"p"}
+COMMAND: POST /session/6bd4ce41d8508bc13621362bdf1d6b65/element - {"using":"css selector","value":"[data-testid=\"login-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"login-button\"]"}
+COMMAND: POST /session/6bd4ce41d8508bc13621362bdf1d6b65/element/f.97461E5A392CB1227B311093E1E6DC2F.d.6339031DA90DBC03C5B6137CC75092B5.e.41/click - {}
+RESULT: {}
+COMMAND: POST /session/6bd4ce41d8508bc13621362bdf1d6b65/element - {"using":"css selector","value":"[data-testid=\"login-error\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"login-error\"]"}
+COMMAND: GET /session/6bd4ce41d8508bc13621362bdf1d6b65/element/f.97461E5A392CB1227B311093E1E6DC2F.d.6339031DA90DBC03C5B6137CC75092B5.e.43/text - {}
+RESULT: {}
+COMMAND: GET /session/6bd4ce41d8508bc13621362bdf1d6b65/screenshot - {}
+RESULT: {}
+COMMAND: POST /session/6bd4ce41d8508bc13621362bdf1d6b65/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/6bd4ce41d8508bc13621362bdf1d6b65/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: DELETE /session/6bd4ce41d8508bc13621362bdf1d6b65 - {"deleteSessionOpts":{"shutdownDriver":false}}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"deleteSessionOpts":{"shutdownDriver":false}}
+COMMAND: POST /session/6bd4ce41d8508bc13621362bdf1d6b65/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/6bd4ce41d8508bc13621362bdf1d6b65/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/6bd4ce41d8508bc13621362bdf1d6b65/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+]]></system-out>
+    </testcase>
+    <testcase classname="chrome.130_0_6723_59.windows.Negative_Login_Tests_-_Boundary_and_Invalid_Inputs" name="should show error for username with 9 characters and password with 9 characters and reset button should not be visible" time="2.201">
+      <system-out><![CDATA[
+COMMAND: POST /session/aacce730c24e2a34aabf1631e1441a06/url - {"url":"http://localhost:3000/home"}
+COMMAND: POST /session/aacce730c24e2a34aabf1631e1441a06/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/aacce730c24e2a34aabf1631e1441a06/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"url":"http://localhost:3000/home"}
+COMMAND: POST /session/aacce730c24e2a34aabf1631e1441a06/url - {"url":"http://localhost:3000/"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"url":"http://localhost:3000/"}
+COMMAND: POST /session/aacce730c24e2a34aabf1631e1441a06/element - {"using":"css selector","value":"[data-testid=\"nav-analytics\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"nav-analytics\"]"}
+COMMAND: POST /session/aacce730c24e2a34aabf1631e1441a06/execute/sync - {"script":"<script> [21 bytes]","args":[{"element-6066-11e4-a52e-4f735466cecf":"f.947F7434D84DE5BB18018CE259A081DA.d.90EBFC2ADA7B1D681D68DECAD6120034.e.16","ELEMENT":"f.947F7434D84DE5BB18018CE259A081DA.d.90EBFC2ADA7B1D681D68DECAD6120034.e.16"}]}
+RESULT: {"script":"<script> [21 bytes]","args":[{"element-6066-11e4-a52e-4f735466cecf":"f.947F7434D84DE5BB18018CE259A081DA.d.90EBFC2ADA7B1D681D68DECAD6120034.e.16","ELEMENT":"f.947F7434D84DE5BB18018CE259A081DA.d.90EBFC2ADA7B1D681D68DECAD6120034.e.16"}]}
+COMMAND: POST /session/aacce730c24e2a34aabf1631e1441a06/execute/sync - {"script":"<script> [21 bytes]","args":[{"element-6066-11e4-a52e-4f735466cecf":"f.947F7434D84DE5BB18018CE259A081DA.d.90EBFC2ADA7B1D681D68DECAD6120034.e.16","ELEMENT":"f.947F7434D84DE5BB18018CE259A081DA.d.90EBFC2ADA7B1D681D68DECAD6120034.e.16"}]}
+RESULT: {"script":"<script> [21 bytes]","args":[{"element-6066-11e4-a52e-4f735466cecf":"f.947F7434D84DE5BB18018CE259A081DA.d.90EBFC2ADA7B1D681D68DECAD6120034.e.16","ELEMENT":"f.947F7434D84DE5BB18018CE259A081DA.d.90EBFC2ADA7B1D681D68DECAD6120034.e.16"}]}
+COMMAND: POST /session/aacce730c24e2a34aabf1631e1441a06/element/f.947F7434D84DE5BB18018CE259A081DA.d.90EBFC2ADA7B1D681D68DECAD6120034.e.16/click - {}
+RESULT: {}
+COMMAND: POST /session/aacce730c24e2a34aabf1631e1441a06/element - {"using":"css selector","value":"[data-testid=\"username-input\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"username-input\"]"}
+COMMAND: POST /session/aacce730c24e2a34aabf1631e1441a06/element/f.947F7434D84DE5BB18018CE259A081DA.d.90EBFC2ADA7B1D681D68DECAD6120034.e.21/clear - {}
+RESULT: {}
+COMMAND: POST /session/aacce730c24e2a34aabf1631e1441a06/element/f.947F7434D84DE5BB18018CE259A081DA.d.90EBFC2ADA7B1D681D68DECAD6120034.e.21/value - {"text":"5JZDeKTE2"}
+COMMAND: POST /session/aacce730c24e2a34aabf1631e1441a06/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/aacce730c24e2a34aabf1631e1441a06/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"text":"5JZDeKTE2"}
+COMMAND: POST /session/aacce730c24e2a34aabf1631e1441a06/element - {"using":"css selector","value":"[data-testid=\"password-input\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"password-input\"]"}
+COMMAND: POST /session/aacce730c24e2a34aabf1631e1441a06/element/f.947F7434D84DE5BB18018CE259A081DA.d.90EBFC2ADA7B1D681D68DECAD6120034.e.23/clear - {}
+RESULT: {}
+COMMAND: POST /session/aacce730c24e2a34aabf1631e1441a06/element/f.947F7434D84DE5BB18018CE259A081DA.d.90EBFC2ADA7B1D681D68DECAD6120034.e.23/value - {"text":"ajOP7easp"}
+RESULT: {"text":"ajOP7easp"}
+COMMAND: POST /session/aacce730c24e2a34aabf1631e1441a06/element - {"using":"css selector","value":"[data-testid=\"login-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"login-button\"]"}
+COMMAND: POST /session/aacce730c24e2a34aabf1631e1441a06/element/f.947F7434D84DE5BB18018CE259A081DA.d.90EBFC2ADA7B1D681D68DECAD6120034.e.26/click - {}
+RESULT: {}
+COMMAND: POST /session/aacce730c24e2a34aabf1631e1441a06/element - {"using":"css selector","value":"[data-testid=\"login-error\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"login-error\"]"}
+COMMAND: GET /session/aacce730c24e2a34aabf1631e1441a06/element/f.947F7434D84DE5BB18018CE259A081DA.d.90EBFC2ADA7B1D681D68DECAD6120034.e.28/text - {}
+RESULT: {}
+COMMAND: GET /session/aacce730c24e2a34aabf1631e1441a06/screenshot - {}
+RESULT: {}
+COMMAND: POST /session/aacce730c24e2a34aabf1631e1441a06/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/aacce730c24e2a34aabf1631e1441a06/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: DELETE /session/aacce730c24e2a34aabf1631e1441a06 - {"deleteSessionOpts":{"shutdownDriver":false}}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"deleteSessionOpts":{"shutdownDriver":false}}
+COMMAND: POST /session/aacce730c24e2a34aabf1631e1441a06/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/aacce730c24e2a34aabf1631e1441a06/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/aacce730c24e2a34aabf1631e1441a06/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/aacce730c24e2a34aabf1631e1441a06/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/aacce730c24e2a34aabf1631e1441a06/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+]]></system-out>
+    </testcase>
+    <testcase classname="chrome.130_0_6723_59.windows.Negative_Login_Tests_-_Boundary_and_Invalid_Inputs" name="should show error for username with 21 characters and password with 21 characters and reset button should not be visible" time="2.476">
+      <system-out><![CDATA[
+COMMAND: POST /session/d52acda6bc22d1981112e91aad0a0a24/url - {"url":"http://localhost:3000/home"}
+COMMAND: POST /session/d52acda6bc22d1981112e91aad0a0a24/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/d52acda6bc22d1981112e91aad0a0a24/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/d52acda6bc22d1981112e91aad0a0a24/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"url":"http://localhost:3000/home"}
+COMMAND: POST /session/d52acda6bc22d1981112e91aad0a0a24/url - {"url":"http://localhost:3000/"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"url":"http://localhost:3000/"}
+COMMAND: POST /session/d52acda6bc22d1981112e91aad0a0a24/element - {"using":"css selector","value":"[data-testid=\"nav-analytics\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"nav-analytics\"]"}
+COMMAND: POST /session/d52acda6bc22d1981112e91aad0a0a24/execute/sync - {"script":"<script> [21 bytes]","args":[{"element-6066-11e4-a52e-4f735466cecf":"f.1D9CDD743DB16675CB52BC818D9D7A1A.d.8E07C04E9DF4C8D8EF82649C2B83E692.e.31","ELEMENT":"f.1D9CDD743DB16675CB52BC818D9D7A1A.d.8E07C04E9DF4C8D8EF82649C2B83E692.e.31"}]}
+RESULT: {"script":"<script> [21 bytes]","args":[{"element-6066-11e4-a52e-4f735466cecf":"f.1D9CDD743DB16675CB52BC818D9D7A1A.d.8E07C04E9DF4C8D8EF82649C2B83E692.e.31","ELEMENT":"f.1D9CDD743DB16675CB52BC818D9D7A1A.d.8E07C04E9DF4C8D8EF82649C2B83E692.e.31"}]}
+COMMAND: POST /session/d52acda6bc22d1981112e91aad0a0a24/execute/sync - {"script":"<script> [21 bytes]","args":[{"element-6066-11e4-a52e-4f735466cecf":"f.1D9CDD743DB16675CB52BC818D9D7A1A.d.8E07C04E9DF4C8D8EF82649C2B83E692.e.31","ELEMENT":"f.1D9CDD743DB16675CB52BC818D9D7A1A.d.8E07C04E9DF4C8D8EF82649C2B83E692.e.31"}]}
+RESULT: {"script":"<script> [21 bytes]","args":[{"element-6066-11e4-a52e-4f735466cecf":"f.1D9CDD743DB16675CB52BC818D9D7A1A.d.8E07C04E9DF4C8D8EF82649C2B83E692.e.31","ELEMENT":"f.1D9CDD743DB16675CB52BC818D9D7A1A.d.8E07C04E9DF4C8D8EF82649C2B83E692.e.31"}]}
+COMMAND: POST /session/d52acda6bc22d1981112e91aad0a0a24/element/f.1D9CDD743DB16675CB52BC818D9D7A1A.d.8E07C04E9DF4C8D8EF82649C2B83E692.e.31/click - {}
+RESULT: {}
+COMMAND: POST /session/d52acda6bc22d1981112e91aad0a0a24/element - {"using":"css selector","value":"[data-testid=\"username-input\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"username-input\"]"}
+COMMAND: POST /session/d52acda6bc22d1981112e91aad0a0a24/element/f.1D9CDD743DB16675CB52BC818D9D7A1A.d.8E07C04E9DF4C8D8EF82649C2B83E692.e.36/clear - {}
+RESULT: {}
+COMMAND: POST /session/d52acda6bc22d1981112e91aad0a0a24/element/f.1D9CDD743DB16675CB52BC818D9D7A1A.d.8E07C04E9DF4C8D8EF82649C2B83E692.e.36/value - {"text":"kRKy3qUqBZ2h8C4gWlalr"}
+COMMAND: POST /session/d52acda6bc22d1981112e91aad0a0a24/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/d52acda6bc22d1981112e91aad0a0a24/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/d52acda6bc22d1981112e91aad0a0a24/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"text":"kRKy3qUqBZ2h8C4gWlalr"}
+COMMAND: POST /session/d52acda6bc22d1981112e91aad0a0a24/element - {"using":"css selector","value":"[data-testid=\"password-input\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"password-input\"]"}
+COMMAND: POST /session/d52acda6bc22d1981112e91aad0a0a24/element/f.1D9CDD743DB16675CB52BC818D9D7A1A.d.8E07C04E9DF4C8D8EF82649C2B83E692.e.38/clear - {}
+RESULT: {}
+COMMAND: POST /session/d52acda6bc22d1981112e91aad0a0a24/element/f.1D9CDD743DB16675CB52BC818D9D7A1A.d.8E07C04E9DF4C8D8EF82649C2B83E692.e.38/value - {"text":"zmNDJWk7ARTG4YyN3Zztm"}
+RESULT: {"text":"zmNDJWk7ARTG4YyN3Zztm"}
+COMMAND: POST /session/d52acda6bc22d1981112e91aad0a0a24/element - {"using":"css selector","value":"[data-testid=\"login-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"login-button\"]"}
+COMMAND: POST /session/d52acda6bc22d1981112e91aad0a0a24/element/f.1D9CDD743DB16675CB52BC818D9D7A1A.d.8E07C04E9DF4C8D8EF82649C2B83E692.e.41/click - {}
+RESULT: {}
+COMMAND: POST /session/d52acda6bc22d1981112e91aad0a0a24/element - {"using":"css selector","value":"[data-testid=\"login-error\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"login-error\"]"}
+COMMAND: GET /session/d52acda6bc22d1981112e91aad0a0a24/element/f.1D9CDD743DB16675CB52BC818D9D7A1A.d.8E07C04E9DF4C8D8EF82649C2B83E692.e.43/text - {}
+RESULT: {}
+COMMAND: GET /session/d52acda6bc22d1981112e91aad0a0a24/screenshot - {}
+COMMAND: POST /session/d52acda6bc22d1981112e91aad0a0a24/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/d52acda6bc22d1981112e91aad0a0a24/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/d52acda6bc22d1981112e91aad0a0a24/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {}
+COMMAND: POST /session/d52acda6bc22d1981112e91aad0a0a24/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/d52acda6bc22d1981112e91aad0a0a24/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: DELETE /session/d52acda6bc22d1981112e91aad0a0a24 - {"deleteSessionOpts":{"shutdownDriver":false}}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"deleteSessionOpts":{"shutdownDriver":false}}
+COMMAND: POST /session/d52acda6bc22d1981112e91aad0a0a24/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/d52acda6bc22d1981112e91aad0a0a24/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/d52acda6bc22d1981112e91aad0a0a24/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/d52acda6bc22d1981112e91aad0a0a24/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+]]></system-out>
+    </testcase>
+    <testcase classname="chrome.130_0_6723_59.windows.Negative_Login_Tests_-_Boundary_and_Invalid_Inputs" name="should show error for username with 21 characters and password with 1 character and reset button should not be visible" time="2.214">
+      <system-out><![CDATA[
+COMMAND: POST /session/e0563e5c80c6e61e5f802fb0d9ce63b2/url - {"url":"http://localhost:3000/home"}
+COMMAND: POST /session/e0563e5c80c6e61e5f802fb0d9ce63b2/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/e0563e5c80c6e61e5f802fb0d9ce63b2/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/e0563e5c80c6e61e5f802fb0d9ce63b2/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/e0563e5c80c6e61e5f802fb0d9ce63b2/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"url":"http://localhost:3000/home"}
+COMMAND: POST /session/e0563e5c80c6e61e5f802fb0d9ce63b2/url - {"url":"http://localhost:3000/"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"url":"http://localhost:3000/"}
+COMMAND: POST /session/e0563e5c80c6e61e5f802fb0d9ce63b2/element - {"using":"css selector","value":"[data-testid=\"nav-analytics\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"nav-analytics\"]"}
+COMMAND: POST /session/e0563e5c80c6e61e5f802fb0d9ce63b2/execute/sync - {"script":"<script> [21 bytes]","args":[{"element-6066-11e4-a52e-4f735466cecf":"f.212136FFC514564F5DEE54C6B02FB0A5.d.0478A768131A8E25113F04BE41BAD236.e.29","ELEMENT":"f.212136FFC514564F5DEE54C6B02FB0A5.d.0478A768131A8E25113F04BE41BAD236.e.29"}]}
+RESULT: {"script":"<script> [21 bytes]","args":[{"element-6066-11e4-a52e-4f735466cecf":"f.212136FFC514564F5DEE54C6B02FB0A5.d.0478A768131A8E25113F04BE41BAD236.e.29","ELEMENT":"f.212136FFC514564F5DEE54C6B02FB0A5.d.0478A768131A8E25113F04BE41BAD236.e.29"}]}
+COMMAND: POST /session/e0563e5c80c6e61e5f802fb0d9ce63b2/execute/sync - {"script":"<script> [21 bytes]","args":[{"element-6066-11e4-a52e-4f735466cecf":"f.212136FFC514564F5DEE54C6B02FB0A5.d.0478A768131A8E25113F04BE41BAD236.e.29","ELEMENT":"f.212136FFC514564F5DEE54C6B02FB0A5.d.0478A768131A8E25113F04BE41BAD236.e.29"}]}
+RESULT: {"script":"<script> [21 bytes]","args":[{"element-6066-11e4-a52e-4f735466cecf":"f.212136FFC514564F5DEE54C6B02FB0A5.d.0478A768131A8E25113F04BE41BAD236.e.29","ELEMENT":"f.212136FFC514564F5DEE54C6B02FB0A5.d.0478A768131A8E25113F04BE41BAD236.e.29"}]}
+COMMAND: POST /session/e0563e5c80c6e61e5f802fb0d9ce63b2/element/f.212136FFC514564F5DEE54C6B02FB0A5.d.0478A768131A8E25113F04BE41BAD236.e.29/click - {}
+RESULT: {}
+COMMAND: POST /session/e0563e5c80c6e61e5f802fb0d9ce63b2/element - {"using":"css selector","value":"[data-testid=\"username-input\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"username-input\"]"}
+COMMAND: POST /session/e0563e5c80c6e61e5f802fb0d9ce63b2/element/f.212136FFC514564F5DEE54C6B02FB0A5.d.0478A768131A8E25113F04BE41BAD236.e.38/clear - {}
+RESULT: {}
+COMMAND: POST /session/e0563e5c80c6e61e5f802fb0d9ce63b2/element/f.212136FFC514564F5DEE54C6B02FB0A5.d.0478A768131A8E25113F04BE41BAD236.e.38/value - {"text":"2wMNn7JhjJf"}
+COMMAND: POST /session/e0563e5c80c6e61e5f802fb0d9ce63b2/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/e0563e5c80c6e61e5f802fb0d9ce63b2/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/e0563e5c80c6e61e5f802fb0d9ce63b2/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/e0563e5c80c6e61e5f802fb0d9ce63b2/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"text":"2wMNn7JhjJf"}
+COMMAND: POST /session/e0563e5c80c6e61e5f802fb0d9ce63b2/element - {"using":"css selector","value":"[data-testid=\"password-input\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"password-input\"]"}
+COMMAND: POST /session/e0563e5c80c6e61e5f802fb0d9ce63b2/element/f.212136FFC514564F5DEE54C6B02FB0A5.d.0478A768131A8E25113F04BE41BAD236.e.40/clear - {}
+RESULT: {}
+COMMAND: POST /session/e0563e5c80c6e61e5f802fb0d9ce63b2/element/f.212136FFC514564F5DEE54C6B02FB0A5.d.0478A768131A8E25113F04BE41BAD236.e.40/value - {"text":"p"}
+RESULT: {"text":"p"}
+COMMAND: POST /session/e0563e5c80c6e61e5f802fb0d9ce63b2/element - {"using":"css selector","value":"[data-testid=\"login-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"login-button\"]"}
+COMMAND: POST /session/e0563e5c80c6e61e5f802fb0d9ce63b2/element/f.212136FFC514564F5DEE54C6B02FB0A5.d.0478A768131A8E25113F04BE41BAD236.e.43/click - {}
+RESULT: {}
+COMMAND: POST /session/e0563e5c80c6e61e5f802fb0d9ce63b2/element - {"using":"css selector","value":"[data-testid=\"login-error\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"login-error\"]"}
+COMMAND: GET /session/e0563e5c80c6e61e5f802fb0d9ce63b2/element/f.212136FFC514564F5DEE54C6B02FB0A5.d.0478A768131A8E25113F04BE41BAD236.e.45/text - {}
+RESULT: {}
+COMMAND: GET /session/e0563e5c80c6e61e5f802fb0d9ce63b2/screenshot - {}
+RESULT: {}
+COMMAND: POST /session/e0563e5c80c6e61e5f802fb0d9ce63b2/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/e0563e5c80c6e61e5f802fb0d9ce63b2/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: DELETE /session/e0563e5c80c6e61e5f802fb0d9ce63b2 - {"deleteSessionOpts":{"shutdownDriver":false}}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"deleteSessionOpts":{"shutdownDriver":false}}
+COMMAND: POST /session/e0563e5c80c6e61e5f802fb0d9ce63b2/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/e0563e5c80c6e61e5f802fb0d9ce63b2/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/e0563e5c80c6e61e5f802fb0d9ce63b2/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/e0563e5c80c6e61e5f802fb0d9ce63b2/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/e0563e5c80c6e61e5f802fb0d9ce63b2/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/e0563e5c80c6e61e5f802fb0d9ce63b2/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/e0563e5c80c6e61e5f802fb0d9ce63b2/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/e0563e5c80c6e61e5f802fb0d9ce63b2/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/e0563e5c80c6e61e5f802fb0d9ce63b2/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+]]></system-out>
+    </testcase>
+    <testcase classname="chrome.130_0_6723_59.windows.Negative_Login_Tests_-_Boundary_and_Invalid_Inputs" name="should show error for username with 10 characters and password with 9 characters and reset button should not be visible" time="2.284">
+      <system-out><![CDATA[
+COMMAND: POST /session/c86f8617a84f6ae79d46472f7f6c2197/url - {"url":"http://localhost:3000/home"}
+COMMAND: POST /session/c86f8617a84f6ae79d46472f7f6c2197/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/c86f8617a84f6ae79d46472f7f6c2197/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/c86f8617a84f6ae79d46472f7f6c2197/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/c86f8617a84f6ae79d46472f7f6c2197/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/c86f8617a84f6ae79d46472f7f6c2197/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"url":"http://localhost:3000/home"}
+COMMAND: POST /session/c86f8617a84f6ae79d46472f7f6c2197/url - {"url":"http://localhost:3000/"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"url":"http://localhost:3000/"}
+COMMAND: POST /session/c86f8617a84f6ae79d46472f7f6c2197/element - {"using":"css selector","value":"[data-testid=\"nav-analytics\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"nav-analytics\"]"}
+COMMAND: POST /session/c86f8617a84f6ae79d46472f7f6c2197/execute/sync - {"script":"<script> [21 bytes]","args":[{"element-6066-11e4-a52e-4f735466cecf":"f.EE070143CF0B691BB1E832C5602885DE.d.C8A6AE8A31A3D3BAB46A8CC3EC1F6345.e.29","ELEMENT":"f.EE070143CF0B691BB1E832C5602885DE.d.C8A6AE8A31A3D3BAB46A8CC3EC1F6345.e.29"}]}
+RESULT: {"script":"<script> [21 bytes]","args":[{"element-6066-11e4-a52e-4f735466cecf":"f.EE070143CF0B691BB1E832C5602885DE.d.C8A6AE8A31A3D3BAB46A8CC3EC1F6345.e.29","ELEMENT":"f.EE070143CF0B691BB1E832C5602885DE.d.C8A6AE8A31A3D3BAB46A8CC3EC1F6345.e.29"}]}
+COMMAND: POST /session/c86f8617a84f6ae79d46472f7f6c2197/execute/sync - {"script":"<script> [21 bytes]","args":[{"element-6066-11e4-a52e-4f735466cecf":"f.EE070143CF0B691BB1E832C5602885DE.d.C8A6AE8A31A3D3BAB46A8CC3EC1F6345.e.29","ELEMENT":"f.EE070143CF0B691BB1E832C5602885DE.d.C8A6AE8A31A3D3BAB46A8CC3EC1F6345.e.29"}]}
+RESULT: {"script":"<script> [21 bytes]","args":[{"element-6066-11e4-a52e-4f735466cecf":"f.EE070143CF0B691BB1E832C5602885DE.d.C8A6AE8A31A3D3BAB46A8CC3EC1F6345.e.29","ELEMENT":"f.EE070143CF0B691BB1E832C5602885DE.d.C8A6AE8A31A3D3BAB46A8CC3EC1F6345.e.29"}]}
+COMMAND: POST /session/c86f8617a84f6ae79d46472f7f6c2197/element/f.EE070143CF0B691BB1E832C5602885DE.d.C8A6AE8A31A3D3BAB46A8CC3EC1F6345.e.29/click - {}
+RESULT: {}
+COMMAND: POST /session/c86f8617a84f6ae79d46472f7f6c2197/element - {"using":"css selector","value":"[data-testid=\"username-input\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"username-input\"]"}
+COMMAND: POST /session/c86f8617a84f6ae79d46472f7f6c2197/element/f.EE070143CF0B691BB1E832C5602885DE.d.C8A6AE8A31A3D3BAB46A8CC3EC1F6345.e.38/clear - {}
+RESULT: {}
+COMMAND: POST /session/c86f8617a84f6ae79d46472f7f6c2197/element/f.EE070143CF0B691BB1E832C5602885DE.d.C8A6AE8A31A3D3BAB46A8CC3EC1F6345.e.38/value - {"text":"nwirlLnxTE"}
+COMMAND: POST /session/c86f8617a84f6ae79d46472f7f6c2197/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/c86f8617a84f6ae79d46472f7f6c2197/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/c86f8617a84f6ae79d46472f7f6c2197/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/c86f8617a84f6ae79d46472f7f6c2197/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/c86f8617a84f6ae79d46472f7f6c2197/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"text":"nwirlLnxTE"}
+COMMAND: POST /session/c86f8617a84f6ae79d46472f7f6c2197/element - {"using":"css selector","value":"[data-testid=\"password-input\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"password-input\"]"}
+COMMAND: POST /session/c86f8617a84f6ae79d46472f7f6c2197/element/f.EE070143CF0B691BB1E832C5602885DE.d.C8A6AE8A31A3D3BAB46A8CC3EC1F6345.e.40/clear - {}
+RESULT: {}
+COMMAND: POST /session/c86f8617a84f6ae79d46472f7f6c2197/element/f.EE070143CF0B691BB1E832C5602885DE.d.C8A6AE8A31A3D3BAB46A8CC3EC1F6345.e.40/value - {"text":"ajOP7easp"}
+RESULT: {"text":"ajOP7easp"}
+COMMAND: POST /session/c86f8617a84f6ae79d46472f7f6c2197/element - {"using":"css selector","value":"[data-testid=\"login-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"login-button\"]"}
+COMMAND: POST /session/c86f8617a84f6ae79d46472f7f6c2197/element/f.EE070143CF0B691BB1E832C5602885DE.d.C8A6AE8A31A3D3BAB46A8CC3EC1F6345.e.43/click - {}
+RESULT: {}
+COMMAND: POST /session/c86f8617a84f6ae79d46472f7f6c2197/element - {"using":"css selector","value":"[data-testid=\"login-error\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"login-error\"]"}
+COMMAND: GET /session/c86f8617a84f6ae79d46472f7f6c2197/element/f.EE070143CF0B691BB1E832C5602885DE.d.C8A6AE8A31A3D3BAB46A8CC3EC1F6345.e.45/text - {}
+RESULT: {}
+COMMAND: GET /session/c86f8617a84f6ae79d46472f7f6c2197/screenshot - {}
+RESULT: {}
+COMMAND: POST /session/c86f8617a84f6ae79d46472f7f6c2197/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/c86f8617a84f6ae79d46472f7f6c2197/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: DELETE /session/c86f8617a84f6ae79d46472f7f6c2197 - {"deleteSessionOpts":{"shutdownDriver":false}}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/c86f8617a84f6ae79d46472f7f6c2197/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/c86f8617a84f6ae79d46472f7f6c2197/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/c86f8617a84f6ae79d46472f7f6c2197/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/c86f8617a84f6ae79d46472f7f6c2197/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/c86f8617a84f6ae79d46472f7f6c2197/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"deleteSessionOpts":{"shutdownDriver":false}}
+COMMAND: POST /session/c86f8617a84f6ae79d46472f7f6c2197/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/c86f8617a84f6ae79d46472f7f6c2197/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/c86f8617a84f6ae79d46472f7f6c2197/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/c86f8617a84f6ae79d46472f7f6c2197/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/c86f8617a84f6ae79d46472f7f6c2197/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/c86f8617a84f6ae79d46472f7f6c2197/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+]]></system-out>
+    </testcase>
+    <testcase classname="chrome.130_0_6723_59.windows.Negative_Login_Tests_-_Boundary_and_Invalid_Inputs" name="should show error for username with 21 characters and password with 11 characters and reset button should not be visible" time="2.377">
+      <system-out><![CDATA[
+COMMAND: POST /session/18ea2fefbb5dd50c99b855301ab3ded4/url - {"url":"http://localhost:3000/home"}
+COMMAND: POST /session/18ea2fefbb5dd50c99b855301ab3ded4/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/18ea2fefbb5dd50c99b855301ab3ded4/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/18ea2fefbb5dd50c99b855301ab3ded4/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/18ea2fefbb5dd50c99b855301ab3ded4/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/18ea2fefbb5dd50c99b855301ab3ded4/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/18ea2fefbb5dd50c99b855301ab3ded4/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"url":"http://localhost:3000/home"}
+COMMAND: POST /session/18ea2fefbb5dd50c99b855301ab3ded4/url - {"url":"http://localhost:3000/"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"url":"http://localhost:3000/"}
+COMMAND: POST /session/18ea2fefbb5dd50c99b855301ab3ded4/element - {"using":"css selector","value":"[data-testid=\"nav-analytics\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"nav-analytics\"]"}
+COMMAND: POST /session/18ea2fefbb5dd50c99b855301ab3ded4/execute/sync - {"script":"<script> [21 bytes]","args":[{"element-6066-11e4-a52e-4f735466cecf":"f.4B117EFD7EC944038CE9226073090138.d.7232CD4F08CB43F8DD2F5620857D4E68.e.29","ELEMENT":"f.4B117EFD7EC944038CE9226073090138.d.7232CD4F08CB43F8DD2F5620857D4E68.e.29"}]}
+RESULT: {"script":"<script> [21 bytes]","args":[{"element-6066-11e4-a52e-4f735466cecf":"f.4B117EFD7EC944038CE9226073090138.d.7232CD4F08CB43F8DD2F5620857D4E68.e.29","ELEMENT":"f.4B117EFD7EC944038CE9226073090138.d.7232CD4F08CB43F8DD2F5620857D4E68.e.29"}]}
+COMMAND: POST /session/18ea2fefbb5dd50c99b855301ab3ded4/execute/sync - {"script":"<script> [21 bytes]","args":[{"element-6066-11e4-a52e-4f735466cecf":"f.4B117EFD7EC944038CE9226073090138.d.7232CD4F08CB43F8DD2F5620857D4E68.e.29","ELEMENT":"f.4B117EFD7EC944038CE9226073090138.d.7232CD4F08CB43F8DD2F5620857D4E68.e.29"}]}
+RESULT: {"script":"<script> [21 bytes]","args":[{"element-6066-11e4-a52e-4f735466cecf":"f.4B117EFD7EC944038CE9226073090138.d.7232CD4F08CB43F8DD2F5620857D4E68.e.29","ELEMENT":"f.4B117EFD7EC944038CE9226073090138.d.7232CD4F08CB43F8DD2F5620857D4E68.e.29"}]}
+COMMAND: POST /session/18ea2fefbb5dd50c99b855301ab3ded4/element/f.4B117EFD7EC944038CE9226073090138.d.7232CD4F08CB43F8DD2F5620857D4E68.e.29/click - {}
+RESULT: {}
+COMMAND: POST /session/18ea2fefbb5dd50c99b855301ab3ded4/element - {"using":"css selector","value":"[data-testid=\"username-input\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"username-input\"]"}
+COMMAND: POST /session/18ea2fefbb5dd50c99b855301ab3ded4/element/f.4B117EFD7EC944038CE9226073090138.d.7232CD4F08CB43F8DD2F5620857D4E68.e.38/clear - {}
+RESULT: {}
+COMMAND: POST /session/18ea2fefbb5dd50c99b855301ab3ded4/element/f.4B117EFD7EC944038CE9226073090138.d.7232CD4F08CB43F8DD2F5620857D4E68.e.38/value - {"text":"kRKy3qUqBZ2h8C4gWlalr"}
+COMMAND: POST /session/18ea2fefbb5dd50c99b855301ab3ded4/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/18ea2fefbb5dd50c99b855301ab3ded4/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/18ea2fefbb5dd50c99b855301ab3ded4/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/18ea2fefbb5dd50c99b855301ab3ded4/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/18ea2fefbb5dd50c99b855301ab3ded4/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/18ea2fefbb5dd50c99b855301ab3ded4/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"text":"kRKy3qUqBZ2h8C4gWlalr"}
+COMMAND: POST /session/18ea2fefbb5dd50c99b855301ab3ded4/element - {"using":"css selector","value":"[data-testid=\"password-input\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"password-input\"]"}
+COMMAND: POST /session/18ea2fefbb5dd50c99b855301ab3ded4/element/f.4B117EFD7EC944038CE9226073090138.d.7232CD4F08CB43F8DD2F5620857D4E68.e.40/clear - {}
+RESULT: {}
+COMMAND: POST /session/18ea2fefbb5dd50c99b855301ab3ded4/element/f.4B117EFD7EC944038CE9226073090138.d.7232CD4F08CB43F8DD2F5620857D4E68.e.40/value - {"text":"trQIVbob73D"}
+RESULT: {"text":"trQIVbob73D"}
+COMMAND: POST /session/18ea2fefbb5dd50c99b855301ab3ded4/element - {"using":"css selector","value":"[data-testid=\"login-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"login-button\"]"}
+COMMAND: POST /session/18ea2fefbb5dd50c99b855301ab3ded4/element/f.4B117EFD7EC944038CE9226073090138.d.7232CD4F08CB43F8DD2F5620857D4E68.e.43/click - {}
+RESULT: {}
+COMMAND: POST /session/18ea2fefbb5dd50c99b855301ab3ded4/element - {"using":"css selector","value":"[data-testid=\"login-error\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"login-error\"]"}
+COMMAND: GET /session/18ea2fefbb5dd50c99b855301ab3ded4/element/f.4B117EFD7EC944038CE9226073090138.d.7232CD4F08CB43F8DD2F5620857D4E68.e.45/text - {}
+RESULT: {}
+COMMAND: GET /session/18ea2fefbb5dd50c99b855301ab3ded4/screenshot - {}
+RESULT: {}
+COMMAND: POST /session/18ea2fefbb5dd50c99b855301ab3ded4/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/18ea2fefbb5dd50c99b855301ab3ded4/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: DELETE /session/18ea2fefbb5dd50c99b855301ab3ded4 - {"deleteSessionOpts":{"shutdownDriver":false}}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/18ea2fefbb5dd50c99b855301ab3ded4/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/18ea2fefbb5dd50c99b855301ab3ded4/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/18ea2fefbb5dd50c99b855301ab3ded4/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/18ea2fefbb5dd50c99b855301ab3ded4/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/18ea2fefbb5dd50c99b855301ab3ded4/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/18ea2fefbb5dd50c99b855301ab3ded4/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"deleteSessionOpts":{"shutdownDriver":false}}
+COMMAND: POST /session/18ea2fefbb5dd50c99b855301ab3ded4/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/18ea2fefbb5dd50c99b855301ab3ded4/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/18ea2fefbb5dd50c99b855301ab3ded4/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/18ea2fefbb5dd50c99b855301ab3ded4/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/18ea2fefbb5dd50c99b855301ab3ded4/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/18ea2fefbb5dd50c99b855301ab3ded4/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/18ea2fefbb5dd50c99b855301ab3ded4/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+]]></system-out>
+    </testcase>
+  </testsuite>
+  <testsuite name="Negative Login Tests Boundary and Invalid Inputs with successful final login" timestamp="2024-10-20T21:02:23" time="3.462" tests="2" failures="0" errors="0" skipped="0">
+    <properties>
+      <property name="specId" value="0"/>
+      <property name="suiteName" value="Negative Login Tests - Boundary and Invalid Inputs with successful final login"/>
+      <property name="capabilities" value="chrome.130_0_6723_59.windows"/>
+      <property name="file" value="file:///C:/Users/User/Documents/Informatyka/qa_auto_test/webdriverio_test_project/test/specs/negativeLoginTest.js"/>
+    </properties>
+    <testcase classname="chrome.130_0_6723_59.windows.Negative_Login_Tests_-_Boundary_and_Invalid_Inputs_with_successful_final_login" name="should show error for username with 10 characters and password with 11 characters and reset button should not be visible" time="2.275">
+      <system-out><![CDATA[
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/url - {"url":"http://localhost:3000/"}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"url":"http://localhost:3000/"}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/url - {"url":"http://localhost:3000/home"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"url":"http://localhost:3000/home"}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element - {"using":"css selector","value":"[data-testid=\"nav-analytics\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"nav-analytics\"]"}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/execute/sync - {"script":"<script> [21 bytes]","args":[{"element-6066-11e4-a52e-4f735466cecf":"f.66A8F8D64710176EB38CD1E4230714DB.d.2412FFCF0D8291C7D3C9821B83891E61.e.35","ELEMENT":"f.66A8F8D64710176EB38CD1E4230714DB.d.2412FFCF0D8291C7D3C9821B83891E61.e.35"}]}
+RESULT: {"script":"<script> [21 bytes]","args":[{"element-6066-11e4-a52e-4f735466cecf":"f.66A8F8D64710176EB38CD1E4230714DB.d.2412FFCF0D8291C7D3C9821B83891E61.e.35","ELEMENT":"f.66A8F8D64710176EB38CD1E4230714DB.d.2412FFCF0D8291C7D3C9821B83891E61.e.35"}]}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/execute/sync - {"script":"<script> [21 bytes]","args":[{"element-6066-11e4-a52e-4f735466cecf":"f.66A8F8D64710176EB38CD1E4230714DB.d.2412FFCF0D8291C7D3C9821B83891E61.e.35","ELEMENT":"f.66A8F8D64710176EB38CD1E4230714DB.d.2412FFCF0D8291C7D3C9821B83891E61.e.35"}]}
+RESULT: {"script":"<script> [21 bytes]","args":[{"element-6066-11e4-a52e-4f735466cecf":"f.66A8F8D64710176EB38CD1E4230714DB.d.2412FFCF0D8291C7D3C9821B83891E61.e.35","ELEMENT":"f.66A8F8D64710176EB38CD1E4230714DB.d.2412FFCF0D8291C7D3C9821B83891E61.e.35"}]}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element/f.66A8F8D64710176EB38CD1E4230714DB.d.2412FFCF0D8291C7D3C9821B83891E61.e.35/click - {}
+RESULT: {}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element - {"using":"css selector","value":"[data-testid=\"username-input\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"username-input\"]"}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element/f.66A8F8D64710176EB38CD1E4230714DB.d.2412FFCF0D8291C7D3C9821B83891E61.e.40/clear - {}
+RESULT: {}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element/f.66A8F8D64710176EB38CD1E4230714DB.d.2412FFCF0D8291C7D3C9821B83891E61.e.40/value - {"text":"nwirlLnxTE"}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"text":"nwirlLnxTE"}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element - {"using":"css selector","value":"[data-testid=\"password-input\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"password-input\"]"}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element/f.66A8F8D64710176EB38CD1E4230714DB.d.2412FFCF0D8291C7D3C9821B83891E61.e.42/clear - {}
+RESULT: {}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element/f.66A8F8D64710176EB38CD1E4230714DB.d.2412FFCF0D8291C7D3C9821B83891E61.e.42/value - {"text":"ajOP7easp"}
+RESULT: {"text":"ajOP7easp"}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element - {"using":"css selector","value":"[data-testid=\"login-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"login-button\"]"}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element/f.66A8F8D64710176EB38CD1E4230714DB.d.2412FFCF0D8291C7D3C9821B83891E61.e.45/click - {}
+RESULT: {}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element - {"using":"css selector","value":"[data-testid=\"login-error\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"login-error\"]"}
+COMMAND: GET /session/950f39f98f130c0f330c847a22b2047d/element/f.66A8F8D64710176EB38CD1E4230714DB.d.2412FFCF0D8291C7D3C9821B83891E61.e.47/text - {}
+RESULT: {}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: GET /session/950f39f98f130c0f330c847a22b2047d/screenshot - {}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {}
+]]></system-out>
+    </testcase>
+    <testcase classname="chrome.130_0_6723_59.windows.Negative_Login_Tests_-_Boundary_and_Invalid_Inputs_with_successful_final_login" name="should login successfully after invalid attempts and check reset button" time="1.184">
+      <system-out><![CDATA[
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/url - {"url":"http://localhost:3000/"}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"url":"http://localhost:3000/"}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element - {"using":"css selector","value":"[data-testid=\"nav-analytics\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"nav-analytics\"]"}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/execute/sync - {"script":"<script> [21 bytes]","args":[{"element-6066-11e4-a52e-4f735466cecf":"f.66A8F8D64710176EB38CD1E4230714DB.d.9E86F15BB6BB80484F37E7DE84343E06.e.58","ELEMENT":"f.66A8F8D64710176EB38CD1E4230714DB.d.9E86F15BB6BB80484F37E7DE84343E06.e.58"}]}
+RESULT: {"script":"<script> [21 bytes]","args":[{"element-6066-11e4-a52e-4f735466cecf":"f.66A8F8D64710176EB38CD1E4230714DB.d.9E86F15BB6BB80484F37E7DE84343E06.e.58","ELEMENT":"f.66A8F8D64710176EB38CD1E4230714DB.d.9E86F15BB6BB80484F37E7DE84343E06.e.58"}]}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/execute/sync - {"script":"<script> [21 bytes]","args":[{"element-6066-11e4-a52e-4f735466cecf":"f.66A8F8D64710176EB38CD1E4230714DB.d.9E86F15BB6BB80484F37E7DE84343E06.e.58","ELEMENT":"f.66A8F8D64710176EB38CD1E4230714DB.d.9E86F15BB6BB80484F37E7DE84343E06.e.58"}]}
+RESULT: {"script":"<script> [21 bytes]","args":[{"element-6066-11e4-a52e-4f735466cecf":"f.66A8F8D64710176EB38CD1E4230714DB.d.9E86F15BB6BB80484F37E7DE84343E06.e.58","ELEMENT":"f.66A8F8D64710176EB38CD1E4230714DB.d.9E86F15BB6BB80484F37E7DE84343E06.e.58"}]}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element/f.66A8F8D64710176EB38CD1E4230714DB.d.9E86F15BB6BB80484F37E7DE84343E06.e.58/click - {}
+RESULT: {}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element - {"using":"css selector","value":"[data-testid=\"username-input\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"username-input\"]"}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element/f.66A8F8D64710176EB38CD1E4230714DB.d.9E86F15BB6BB80484F37E7DE84343E06.e.62/clear - {}
+RESULT: {}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element/f.66A8F8D64710176EB38CD1E4230714DB.d.9E86F15BB6BB80484F37E7DE84343E06.e.62/value - {"text":"nwirlLnxTE"}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"text":"nwirlLnxTE"}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element - {"using":"css selector","value":"[data-testid=\"password-input\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"password-input\"]"}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element/f.66A8F8D64710176EB38CD1E4230714DB.d.9E86F15BB6BB80484F37E7DE84343E06.e.65/clear - {}
+RESULT: {}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element/f.66A8F8D64710176EB38CD1E4230714DB.d.9E86F15BB6BB80484F37E7DE84343E06.e.65/value - {"text":"euZwj5HJbn"}
+RESULT: {"text":"euZwj5HJbn"}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element - {"using":"css selector","value":"[data-testid=\"login-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"login-button\"]"}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element/f.66A8F8D64710176EB38CD1E4230714DB.d.9E86F15BB6BB80484F37E7DE84343E06.e.67/click - {}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: GET /session/950f39f98f130c0f330c847a22b2047d/url - {}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/execute/sync - {"script":"<script> [21 bytes]","args":[{"element-6066-11e4-a52e-4f735466cecf":"f.66A8F8D64710176EB38CD1E4230714DB.d.9E86F15BB6BB80484F37E7DE84343E06.e.94","ELEMENT":"f.66A8F8D64710176EB38CD1E4230714DB.d.9E86F15BB6BB80484F37E7DE84343E06.e.94"}]}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/execute/sync - {"script":"<script> [21 bytes]","args":[{"element-6066-11e4-a52e-4f735466cecf":"f.66A8F8D64710176EB38CD1E4230714DB.d.9E86F15BB6BB80484F37E7DE84343E06.e.94","ELEMENT":"f.66A8F8D64710176EB38CD1E4230714DB.d.9E86F15BB6BB80484F37E7DE84343E06.e.94"}]}
+RESULT: {}
+COMMAND: GET /session/950f39f98f130c0f330c847a22b2047d/screenshot - {}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/execute/sync - {"script":"<script> [21 bytes]","args":[{"element-6066-11e4-a52e-4f735466cecf":"f.66A8F8D64710176EB38CD1E4230714DB.d.9E86F15BB6BB80484F37E7DE84343E06.e.94","ELEMENT":"f.66A8F8D64710176EB38CD1E4230714DB.d.9E86F15BB6BB80484F37E7DE84343E06.e.94"}]}
+RESULT: {"script":"<script> [21 bytes]","args":[{"element-6066-11e4-a52e-4f735466cecf":"f.66A8F8D64710176EB38CD1E4230714DB.d.9E86F15BB6BB80484F37E7DE84343E06.e.94","ELEMENT":"f.66A8F8D64710176EB38CD1E4230714DB.d.9E86F15BB6BB80484F37E7DE84343E06.e.94"}]}
+RESULT: {"script":"<script> [21 bytes]","args":[{"element-6066-11e4-a52e-4f735466cecf":"f.66A8F8D64710176EB38CD1E4230714DB.d.9E86F15BB6BB80484F37E7DE84343E06.e.94","ELEMENT":"f.66A8F8D64710176EB38CD1E4230714DB.d.9E86F15BB6BB80484F37E7DE84343E06.e.94"}]}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {}
+RESULT: {"script":"<script> [21 bytes]","args":[{"element-6066-11e4-a52e-4f735466cecf":"f.66A8F8D64710176EB38CD1E4230714DB.d.9E86F15BB6BB80484F37E7DE84343E06.e.94","ELEMENT":"f.66A8F8D64710176EB38CD1E4230714DB.d.9E86F15BB6BB80484F37E7DE84343E06.e.94"}]}
+RESULT: {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/execute/sync - {"script":"<script> [21 bytes]","args":[{"element-6066-11e4-a52e-4f735466cecf":"f.66A8F8D64710176EB38CD1E4230714DB.d.9E86F15BB6BB80484F37E7DE84343E06.e.94","ELEMENT":"f.66A8F8D64710176EB38CD1E4230714DB.d.9E86F15BB6BB80484F37E7DE84343E06.e.94"}]}
+COMMAND: DELETE /session/950f39f98f130c0f330c847a22b2047d - {}
+RESULT: {"script":"<script> [21 bytes]","args":[{"element-6066-11e4-a52e-4f735466cecf":"f.66A8F8D64710176EB38CD1E4230714DB.d.9E86F15BB6BB80484F37E7DE84343E06.e.94","ELEMENT":"f.66A8F8D64710176EB38CD1E4230714DB.d.9E86F15BB6BB80484F37E7DE84343E06.e.94"}]}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+COMMAND: POST /session/950f39f98f130c0f330c847a22b2047d/element - {"using":"css selector","value":"[data-testid=\"reset-button\"]"}
+RESULT: {}
+]]></system-out>
+    </testcase>
+  </testsuite>
+</testsuites>
