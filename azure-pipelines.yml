@@ -27,13 +27,10 @@ steps:
 
 # Step to run WebdriverIO tests
 - script: |
-    ls
     cd ./webdriverio_test_project
     ls
     npm install  
     npx wdio run wdio.conf.js 
-    ls ./junit-results 
-    ls
   displayName: 'Run WebdriverIO Tests'
 
 - task: PublishTestResults@2
