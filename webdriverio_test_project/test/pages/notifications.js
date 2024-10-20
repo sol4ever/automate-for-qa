@@ -12,7 +12,7 @@ class Notifications extends Page {
         await waitForElementDisplayed(await this.notificationContainer);
 
         let toastValue = await this.notificationContainer.getText();
-        console.log(toastValue + " <-- This is the displayed toast message");
+        // console.log(toastValue + " <-- This is the displayed toast message");// Debug
 
         await expect(this.notificationContainer).toHaveTextContaining(toastMessage, {
             ignoreCase: true,

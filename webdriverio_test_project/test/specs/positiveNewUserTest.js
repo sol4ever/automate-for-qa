@@ -1,13 +1,13 @@
-import NewUser from '../pages/newUser';
-import testDataUser from '../resources/userInputs';
-import UsersLanding from '../pages/usersLanding';
-import LoginModal from '../pages/loginModal';
-import { loginInputs } from '../resources/loginInputs';
-import NavTabs from '../pages/navTabs';
-import Home from '../pages/home';
-import Notifications from '../pages/notifications';
-import urls from '../resources/urls'
-import UserList from '../pages/userList';
+import NewUser from '../pages/newUser.js';
+import testDataUser from '../resources/userInputs.js';
+import UsersLanding from '../pages/usersLanding.js';
+import LoginModal from '../pages/loginModal.js';
+import { loginInputs } from '../resources/loginInputs.js';
+import NavTabs from '../pages/navTabs.js';
+import Home from '../pages/home.js';
+import Notifications from '../pages/notifications.js';
+import urls from '../resources/urls.js'
+import UserList from '../pages/userList.js';
 
 
 describe('NewUser Form Positive Tests', () => {

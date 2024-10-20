@@ -1,6 +1,6 @@
-import Page from './page';
-import { getDayBeforeDate } from '../utilities/helpers.timeGenerators';
-import { waitToBeClickableAndClick } from '../utilities/helpers.waits';
+import Page from './page.js';
+import { getDayBeforeDate } from '../utilities/helpers.timeGenerators.js';
+import { waitToBeClickableAndClick } from '../utilities/helpers.waits.js';
 
 class NewUser extends Page {
     get inputUserName() {

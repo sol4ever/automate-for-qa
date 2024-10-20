@@ -1,14 +1,18 @@
-import LoginPage from '../pages/loginModal';
-import NavTabs from '../pages/navTabs';
-import { loginInputs } from '../resources/loginInputs';
-import expectedValue from '../resources/expected'
+import LoginPage from '../pages/loginModal.js';
+import NavTabs from '../pages/navTabs.js';
+import { loginInputs } from '../resources/loginInputs.js';
+import expectedValue from '../resources/expected.js'
 
 describe('Negative Login Tests - Boundary and Invalid Inputs', () => {
 
-    beforeEach(async () => {
-        await LoginPage.open('/home');
-    });
+    // beforeEach(async () => {
+    //     await LoginPage.open('/home');
+    // });
 
+    beforeEach(async () => {
+        await LoginPage.open('/home');  // Navigates to http://localhost:3000/home
+    });
+     
     afterEach(async () => {
         expect(await NavTabs.resetButton).toBeDisplayed({ reverse: true})
         await browser.reloadSession();

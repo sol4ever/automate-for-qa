@@ -1,4 +1,4 @@
-import { waitForElementToBeDisplayed } from '../utilities/helpers.waits'
+import { waitForElementToBeDisplayed } from '../utilities/helpers.waits.js'
 
 class UserList {
 

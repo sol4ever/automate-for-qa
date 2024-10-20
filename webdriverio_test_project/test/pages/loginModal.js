@@ -1,5 +1,5 @@
-import Page from './page';
-import { waitForUrlToContain } from '../utilities/helpers.waits';
+import Page from './page.js';
+import { waitForUrlToContain } from '../utilities/helpers.waits.js';
 
 class LoginModal extends Page{
 

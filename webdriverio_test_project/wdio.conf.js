@@ -1,11 +1,15 @@
-import { currentTime, currentDate } from './test/utilities/helpers.timeGenerators';
+import { currentTime, currentDate } from './test/utilities/helpers.timeGenerators.js';
 import path from 'path';
 import fs from 'fs'
-import environments from "./environments";
-
+import environments from "./environments.js";
+import dotenv from 'dotenv';
+import { fileURLToPath } from 'url';
 
 let appBaseURL;
 let screenshotsDir;
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 if (process.env.USE_LOCAL) { appBaseURL = environments.loc, screenshotsDir = 'Screenshots_local' }
 else if (process.env.USE_DEV) { appBaseURL = environments.dev, screenshotsDir = 'Screenshots_dev' }

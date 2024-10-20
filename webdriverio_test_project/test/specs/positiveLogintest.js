@@ -1,6 +1,6 @@
-import LoginModal from '../pages/loginModal';
-import NavTabs from '../pages/navTabs';
-import { loginInputs } from '../resources/loginInputs';
+import LoginModal from '../pages/loginModal.js';
+import NavTabs from '../pages/navTabs.js';
+import { loginInputs } from '../resources/loginInputs.js';
 
 describe('Positive Login and Navigation Functionality', () => {
 
