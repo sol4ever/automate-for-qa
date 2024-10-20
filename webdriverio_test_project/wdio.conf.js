@@ -138,7 +138,8 @@ export const config = {
             },
         ],
         ['junit', {
-            outputDir: './junit-results',
+            // outputDir: './junit-results/',
+            outputDir: './',
             suiteNameFormat: /[^a-zA-Z0-9@]+/,
             outputFileFormat: function (options) {
                 return `results-${options.cid}.xml`
@@ -151,6 +152,7 @@ export const config = {
             onPrepare: function (config, capabilities) {
                 const fs = require('fs');
                 const path = './junit-results';
+                // const path = './junit-results';
                 if (!fs.existsSync(path)) {
                     fs.mkdirSync(path, { recursive: true });
                 }
