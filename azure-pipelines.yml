@@ -7,18 +7,50 @@ pool:
   vmImage: 'windows-latest'
 
 steps:
+# Step 1: Install Node.js
 - task: NodeTool@0
   inputs:
     versionSpec: '20.x'  # Adjust the Node.js version if necessary
   displayName: 'Install Node.js'
 
+# Step 2: Install dependencies for frontend
 - script: |
     npm install
-    npx wdio run wdio.conf.js
-  displayName: 'Install dependencies and run WebdriverIO tests'
+  workingDirectory: $(System.DefaultWorkingDirectory)  # Assuming frontend is in the root directory
+  displayName: 'Install frontend dependencies'
 
+# Step 3: Install dependencies for backend
+- script: |
+    cd app-management  # Navigate to backend folder
+    npm install
+  displayName: 'Install backend dependencies'
+
+# Step 4: Build frontend
+- script: |
+    npm run build  # Assuming a build script exists in frontend package.json
+  displayName: 'Build frontend'
+
+# Step 5: Start backend server (in the background)
+- script: |
+    cd app-management  # Navigate to backend folder
+    npm start &  # Start the backend in the background
+    sleep 10  # Adjust sleep time if needed to wait for the app to be fully ready
+  displayName: 'Start backend'
+
+# Step 6: Run WebdriverIO tests
+- script: |
+    npx wdio run wdio.conf.js
+  displayName: 'Run WebdriverIO tests'
+
+# Step 7: Publish test results
 - task: PublishTestResults@2
   inputs:
     testResultsFormat: 'JUnit'
     testResultsFiles: 'webdriverio_test_project/junit-results/*.xml'  # Update to match your actual path
-    failTaskOnFailedTests: true  # Optionally fail the pipeline on test failure
+    failTaskOnFailedTests: true  # Fail the pipeline if tests fail
+
+# Step 8: Stop backend (optional)
+- script: |
+    kill $(lsof -t -i:3000)  # Replace with proper command for stopping backend on Windows if needed
+  displayName: 'Stop backend'
+  condition: succeededOrFailed()  # Ensure it runs regardless of success or failure of tests
