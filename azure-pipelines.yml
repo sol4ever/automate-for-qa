@@ -1,7 +1,7 @@
 trigger:
   branches:
     include:
-      - tests_enhacements  # branch here
+      - tests_enhacements  #branch
 
 pool:
   vmImage: 'windows-latest'
@@ -9,27 +9,27 @@ pool:
 steps:
 - task: NodeTool@0
   inputs:
-    versionSpec: '20.x'  # Node.js version
+    versionSpec: '20.x' 
   displayName: 'Install Node.js'
 
 # Step to install frontend dependencies and build the frontend
 - script: |
     npm install
-    npm run build  # This builds the frontend
+    npm run build  
   displayName: 'Build Frontend'
 
 # Step to install backend dependencies and run the backend
 - script: |
-    cd ./app-management  # Change to your backend directory
+    cd ./app-management 
     npm install
-    npm start  # Starts the backend server
+    npm start  
   displayName: 'Start Backend'
 
 # Step to run WebdriverIO tests
 - script: |
-    cd ./webdriverio_test_project  # Navigate to the test project folder
-    npm install  # Ensure dependencies for WebdriverIO are installed
-    npx wdio run wdio.conf.js  # Run WebdriverIO tests
+    cd ./webdriverio_test_project  
+    npm install  
+    npx wdio run wdio.conf.js  
   displayName: 'Run WebdriverIO Tests'
 
 - task: PublishTestResults@2
