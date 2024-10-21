@@ -30,11 +30,12 @@ steps:
     npm start  
   displayName: 'Start Backend'
 
-# Step to run WebdriverIO tests with debug logs
 - script: |
+    echo "Running WebdriverIO Tests..."
     cd ./webdriverio_test_project
     npm install
     npx wdio run wdio.conf.js --logLevel debug
+    npm run test:local
     ls
   displayName: 'Run WebdriverIO Tests'
 

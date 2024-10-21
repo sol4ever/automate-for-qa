@@ -218,12 +218,21 @@ export const config = {
     },
 
 
+    // beforeTest: async function () {
+    //     if (!browser.sessionId) {
+    //         throw new Error("No valid session. Session ID is missing.");
+    //     }
+    //     await browser.url(appBaseURL);
+    // },
     beforeTest: async function () {
+        console.log("Launching the browser...");
         if (!browser.sessionId) {
             throw new Error("No valid session. Session ID is missing.");
         }
         await browser.url(appBaseURL);
     },
+
+
 
     beforeEach: (async function () {
         console.log(`Starting test: ${this.currentTest.title}`);
