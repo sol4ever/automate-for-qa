@@ -17,11 +17,6 @@ steps:
     choco install googlechrome --no-progress --yes
   displayName: 'Install Chrome Browser'
 
-# Step to verify Chrome installation
-- script: |
-    "C:\Program Files\Google\Chrome\Application\chrome.exe" --version
-  displayName: 'Verify Chrome Installation'
-
 # Step to install frontend dependencies and build the frontend
 - script: |
     npm install
