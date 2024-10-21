@@ -12,6 +12,11 @@ steps:
     versionSpec: '20.x' 
   displayName: 'Install Node.js'
 
+# Step to install Chrome browser
+- script: |
+    powershell -Command "Start-Process 'powershell' -ArgumentList '-NoProfile -ExecutionPolicy Bypass -Command Install-Module GoogleChrome; Install-GoogleChrome -Channel stable' -Verb runAs"
+  displayName: 'Install Chrome Browser'
+
 # Step to install frontend dependencies and build the frontend
 - script: |
     npm install
