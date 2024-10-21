@@ -141,9 +141,10 @@ export const config = {
             // outputDir: './junit-results/',
             outputDir: './junit-results',
             suiteNameFormat: /[^a-zA-Z0-9@]+/,
-            outputFileFormat: function (options) {
-                return `results-${options.cid}.xml`
-            },
+            outputFileFormat: 'results.xml',
+            // outputFileFormat: function (options) {
+            //     return `results-${options.cid}.xml`
+            // },
             errorOptions: {
                 error: 'message',
                 failure: 'message',
