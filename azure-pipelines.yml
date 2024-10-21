@@ -33,9 +33,9 @@ steps:
 # Step to run WebdriverIO tests with debug logs
 - script: |
     cd ./webdriverio_test_project
-    ls
     npm install
     npx wdio run wdio.conf.js --logLevel debug
+    ls
   displayName: 'Run WebdriverIO Tests'
 
 
