@@ -41,7 +41,7 @@ steps:
 
 # Step to list contents of junit-results directory
 - script: |
-    cd ./webdriverio_test_project/junit-results
+    cd ./webdriverio_test_project
     ls
   displayName: 'Verify Test Results Directory'
 
