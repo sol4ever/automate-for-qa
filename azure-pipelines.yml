@@ -35,8 +35,8 @@ steps:
     cd ./webdriverio_test_project
     npm install
     npx wdio run wdio.conf.js --logLevel debug
-    npm run test:local
-    wdio run wdio.conf.js
+    npm run test:local --logLevel debug
+    wdio run wdio.conf.js --logLevel debug
     ls
   displayName: 'Run WebdriverIO Tests'
 
