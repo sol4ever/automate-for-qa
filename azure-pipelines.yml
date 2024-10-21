@@ -19,7 +19,7 @@ steps:
 
 # Step to verify Chrome installation
 - script: |
-    google-chrome --version
+    "C:\Program Files\Google\Chrome\Application\chrome.exe" --version
   displayName: 'Verify Chrome Installation'
 
 # Step to install frontend dependencies and build the frontend
