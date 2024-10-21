@@ -17,6 +17,11 @@ steps:
     powershell -Command "Start-Process 'powershell' -ArgumentList '-NoProfile -ExecutionPolicy Bypass -Command Install-Module GoogleChrome; Install-GoogleChrome -Channel stable' -Verb runAs"
   displayName: 'Install Chrome Browser'
 
+# Step to verify Chrome installation
+- script: |
+    google-chrome --version
+  displayName: 'Verify Chrome Installation'
+
 # Step to install frontend dependencies and build the frontend
 - script: |
     npm install
@@ -30,17 +35,23 @@ steps:
     npm start  
   displayName: 'Start Backend'
 
-# Step to run WebdriverIO tests
+# Step to run WebdriverIO tests with debug logs
 - script: |
     cd ./webdriverio_test_project
-    ls
     npm install  
-    npm run test:local
-    ls
+    npx wdio run wdio.conf.js --logLevel debug
   displayName: 'Run WebdriverIO Tests'
+
+
+# Step to list contents of junit-results directory
+- script: |
+    cd ./webdriverio_test_project/junit-results
+    ls
+  displayName: 'Verify Test Results Directory'
+
 
 - task: PublishTestResults@2
   inputs:
     testResultsFormat: 'JUnit'
-    testResultsFiles: '**/*.xml'
+    testResultsFiles: 'webdriverio_test_project/junit-results/*.xml'
     failTaskOnFailedTests: true
