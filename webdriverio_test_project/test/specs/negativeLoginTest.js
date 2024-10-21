@@ -11,11 +11,13 @@ describe('Negative Login Tests - Boundary and Invalid Inputs', () => {
 
     beforeEach(async () => {
         await LoginPage.open('/home');  // Navigates to http://localhost:3000/home
+        console.log('Test started');
     });
      
     afterEach(async () => {
         expect(await NavTabs.resetButton).toBeDisplayed({ reverse: true})
         await browser.reloadSession();
+        console.log('Test started');
     });
 
     it('should show error for empty username and password, and reset button should not be visible', async () => {

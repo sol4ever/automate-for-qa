@@ -49,5 +49,5 @@ steps:
 - task: PublishTestResults@2
   inputs:
     testResultsFormat: 'JUnit'
-    testResultsFiles: '**/*.xml'
+    testResultsFiles: 'webdriverio_test_project/junit-results/*.xml'
     failTaskOnFailedTests: true

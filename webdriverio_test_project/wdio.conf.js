@@ -137,14 +137,19 @@ export const config = {
                 },
             },
         ],
+        // ['junit', {
+        //     // outputDir: './junit-results/',
+        //     outputDir: './junit-results',
+        //     suiteNameFormat: /[^a-zA-Z0-9@]+/,
+        //     outputFileFormat: function (options) {
+        //         return `results-${options.cid}.xml`
+        //     },
         ['junit', {
-            // outputDir: './junit-results/',
-            outputDir: './junit-results',
+            outputDir: path.resolve(__dirname, './webdriverio_test_project/junit-results'),
             suiteNameFormat: /[^a-zA-Z0-9@]+/,
-            outputFileFormat: 'results.xml',
-            // outputFileFormat: function (options) {
-            //     return `results-${options.cid}.xml`
-            // },
+            outputFileFormat: function (options) {
+                return `results-${options.cid}.xml`
+            },
             errorOptions: {
                 error: 'message',
                 failure: 'message',
