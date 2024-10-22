@@ -34,8 +34,7 @@ steps:
     cd ./webdriverio_test_project
     npm install
     chromedriver --version
-    chrome --version
-    npm run test:local --logLevel debug
+    npm test:local
   displayName: 'Run WebdriverIO Tests'
 
 # Step to list contents of junit-results directory

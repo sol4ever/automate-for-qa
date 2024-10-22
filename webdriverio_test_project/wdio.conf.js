@@ -88,7 +88,7 @@ export const config = {
         maxInstances: 1,
         browserName: 'chrome',
         'goog:chromeOptions': {
-            args: ["--start-maximized", "--force-device-scale-factor=0.8", "--disable-gpu"]
+            args: ["--start-maximized", "--force-device-scale-factor=0.8", "--disable-gpu",'--headless']
         },
         acceptInsecureCerts: true
     }],
@@ -164,7 +164,17 @@ export const config = {
         //         }
         //     }
         // }]
-        ['junit']
+        ['junit', {
+            outputDir: 'junit-results',
+            suiteNameFormat: /[^a-zA-Z0-9@]+/,
+            outputFileFormat: function (options) { // optional
+                return `results-${options.cid}.xml`
+            },
+            errorOptions: {
+                error: 'message',
+                failure: 'message',
+                stacktrace: 'stack'
+            }}]
     ],
     mochaOpts: {
         ui: 'bdd',
