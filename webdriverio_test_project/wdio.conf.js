@@ -144,26 +144,27 @@ export const config = {
         //     outputFileFormat: function (options) {
         //         return `results-${options.cid}.xml`
         //     },
-        ['junit', {
-            outputDir: path.resolve(__dirname, './webdriverio_test_project/junit-results'),
-            suiteNameFormat: /[^a-zA-Z0-9@]+/,
-            outputFileFormat: function (options) {
-                return `results-${options.cid}.xml`
-            },
-            errorOptions: {
-                error: 'message',
-                failure: 'message',
-                stacktrace: 'stack'
-            },
-            onPrepare: function (config, capabilities) {
-                const fs = require('fs');
-                const path = './junit-results';
-                // const path = './junit-results';
-                if (!fs.existsSync(path)) {
-                    fs.mkdirSync(path, { recursive: true });
-                }
-            }
-        }]
+        // ['junit', {
+        //     outputDir: path.resolve(__dirname, './webdriverio_test_project/junit-results'),
+        //     suiteNameFormat: /[^a-zA-Z0-9@]+/,
+        //     outputFileFormat: function (options) {
+        //         return `results-${options.cid}.xml`
+        //     },
+        //     errorOptions: {
+        //         error: 'message',
+        //         failure: 'message',
+        //         stacktrace: 'stack'
+        //     },
+        //     onPrepare: function (config, capabilities) {
+        //         const fs = require('fs');
+        //         const path = './junit-results';
+        //         // const path = './junit-results';
+        //         if (!fs.existsSync(path)) {
+        //             fs.mkdirSync(path, { recursive: true });
+        //         }
+        //     }
+        // }]
+        ['junit']
     ],
     mochaOpts: {
         ui: 'bdd',
