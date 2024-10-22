@@ -15,7 +15,6 @@ steps:
 # Step to install Chrome using Chocolatey (for Windows)
 - script: |
     choco install googlechrome --no-progress --yes
-    choco list --local-only googlechrome
   displayName: 'Install Chrome Browser'
 
 # Step to install frontend dependencies and build the frontend
