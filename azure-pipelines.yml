@@ -34,12 +34,9 @@ steps:
     echo "Running WebdriverIO Tests..."
     cd ./webdriverio_test_project
     npm install
-    npx wdio run wdio.conf.js --logLevel debug
     npm run test:local --logLevel debug
-    wdio run wdio.conf.js --logLevel debug
     ls
   displayName: 'Run WebdriverIO Tests'
-
 
 # Step to list contents of junit-results directory
 - script: |
@@ -51,5 +48,5 @@ steps:
 - task: PublishTestResults@2
   inputs:
     testResultsFormat: 'JUnit'
-    testResultsFiles: 'webdriverio_test_project/junit-results/*.xml'
+    testResultsFiles: '**/*.xml'
     failTaskOnFailedTests: true

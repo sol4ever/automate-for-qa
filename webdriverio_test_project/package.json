@@ -15,19 +15,18 @@
     "dotenv": "^16.4.5",
     "glob": "^11.0.0",
     "lru-cache": "^11.0.1",
+    "wdio": "^6.0.1",
     "wdio-chromedriver-service": "^8.1.1",
     "wdio-wait-for": "^3.0.11",
     "webdriverio": "^8.40.6",
     "ws": "^8.18.0"
   },
   "scripts": {
-    "test:local": "npx wdio run wdio.conf.js",
+    "test:local": "set USE_LOCAL=1 && wdio run ./wdio.conf.js",
     "test:dev": "set USE_DEV=1 && wdio run wdio.conf.js",
     "test:prd": "set USE_PROD=1 && wdio run wdio.conf.js",
     "debug:dev": "set DEBUG=1 && set USE_DEV=1 && wdio run wdio.conf.js --suite e2e",
     "test:new": "set USE_LOCAL=1 && wdio run wdio.conf.js --suite new",
     "test:dev:spec": "set USE_DEV=1 && wdio run wdio.conf.js --spec test/specs/e2e/nameOfTheTestSuite.js"
-  },
-  "dependencies": {
   }
 }
