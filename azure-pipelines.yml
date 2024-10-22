@@ -31,7 +31,6 @@ steps:
   displayName: 'Start Backend'
 
 - script: |
-    echo "Running WebdriverIO Tests..."
     cd ./webdriverio_test_project
     npm install
     npm run test:local --logLevel debug
