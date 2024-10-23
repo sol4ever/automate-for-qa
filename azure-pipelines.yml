@@ -27,7 +27,7 @@ steps:
 
 # Step to check if Chrome is running
 - script: |
-    tasklist /fi "imagename eq chrome.exe"  # This checks if Chrome is running
+    tasklist /fi "imagename eq chrome.exe"
   displayName: 'Check Chrome Process'
 
 # Ensure junit-results Directory Exists
