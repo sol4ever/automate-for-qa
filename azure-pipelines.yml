@@ -1,10 +1,10 @@
 trigger:
   branches:
     include:
-      - tests_enhacements  # Your branch
+      - tests_enhacements
 
 pool:
-  vmImage: 'windows-latest'  # Windows has pre-configured Chrome and ChromeDriver
+  vmImage: 'ubuntu-latest'  # Switching to a Linux-based agent
 
 steps:
 - task: NodeTool@0
@@ -12,53 +12,40 @@ steps:
     versionSpec: '20.x' 
   displayName: 'Install Node.js'
 
-# Step to install frontend dependencies and build the frontend
+# Install frontend dependencies and build the frontend
 - script: |
     npm install
     npm run build  
   displayName: 'Build Frontend'
 
-# Step to install backend dependencies and run the backend
+# Install backend dependencies and start the backend
 - script: |
     cd ./app-management 
     npm install
-    npm start  
+    npm start &
   displayName: 'Start Backend'
 
-# Step to check if Chrome is running
-- script: |
-    tasklist /fi "imagename eq chrome.exe"
-  displayName: 'Check Chrome Process'
-
-# Ensure junit-results Directory Exists (Windows compatible)
-- script: |
-    if not exist .\webdriverio_test_project\junit-results mkdir .\webdriverio_test_project\junit-results
-  displayName: 'Ensure junit-results Directory Exists'
-
-# Print Working Directory (before tests)
-- script: |
-    pwd
-  displayName: 'Print Working Directory1'
-
+# Run WebdriverIO tests
 - script: |
     echo "Running WebdriverIO tests..."
     cd ./webdriverio_test_project
     npm install
     npm run test:local
-    echo "WebdriverIO tests completed."
+    exitCode=$?
+    echo "Test exit code: $exitCode"
+    if [ $exitCode -ne 0 ]; then
+      echo "Tests failed."
+      exit 1
+    fi
   displayName: 'Run WebdriverIO Tests'
 
-# Print Working Directory (after tests)
-- script: |
-    pwd
-  displayName: 'Print Working Directory2'
-
-# Verify junit-results Directory Contents
+# Check for junit-results directory
 - script: |
     cd ./webdriverio_test_project
     ls -al junit-results
-  displayName: 'Verify Test Results Directory'
+  displayName: 'Check Test Results Directory'
 
+# Publish test results
 - task: PublishTestResults@2
   inputs:
     testResultsFormat: 'JUnit'
