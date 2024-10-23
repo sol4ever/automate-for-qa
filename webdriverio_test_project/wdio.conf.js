@@ -8,6 +8,7 @@ import { fileURLToPath } from 'url';
 let appBaseURL;
 let screenshotsDir;
 
+const outputDir = path.join(__dirname, 'webdriverio_test_project', 'junit-results');
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -113,8 +114,8 @@ export const config = {
 
     // Default request retries count
     connectionRetryCount: 3,
-    // services: ['chromedriver'],
-    services: [],
+    services: ['chromedriver'],
+    // services: [],
     framework: 'mocha',
 
 
@@ -178,9 +179,13 @@ export const config = {
         //         stacktrace: 'stack'
         //     }}]
         ['junit', {
-            outputDir: './webdriverio_test_project/junit-results',
+            outputDir: outputDir,  // Use absolute path to avoid relative path issues
             outputFileFormat: (options) => `results-${options.cid}.xml`,
-            errorOptions: { error: 'message', failure: 'message', stacktrace: 'stack' },
+            errorOptions: {
+                error: 'message',
+                failure: 'message',
+                stacktrace: 'stack'
+            }
         }]
     ],
     mochaOpts: {
