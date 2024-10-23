@@ -30,9 +30,9 @@ steps:
     tasklist /fi "imagename eq chrome.exe"
   displayName: 'Check Chrome Process'
 
-# Ensure junit-results Directory Exists
+# Ensure junit-results Directory Exists (Windows compatible)
 - script: |
-    mkdir -p ./webdriverio_test_project/junit-results
+    if not exist .\webdriverio_test_project\junit-results mkdir .\webdriverio_test_project\junit-results
   displayName: 'Ensure junit-results Directory Exists'
 
 # Print Working Directory (before tests)
