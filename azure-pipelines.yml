@@ -25,15 +25,19 @@ steps:
     npm start  
   displayName: 'Start Backend'
 
+# Step to check if Chrome is running
 - script: |
-  tasklist /fi "imagename eq chrome.exe"  # This checks if Chrome is running
+    tasklist /fi "imagename eq chrome.exe"  # This checks if Chrome is running
   displayName: 'Check Chrome Process'
 
+# Ensure junit-results Directory Exists
 - script: |
     mkdir -p ./webdriverio_test_project/junit-results
   displayName: 'Ensure junit-results Directory Exists'
 
-- script: pwd
+# Print Working Directory (before tests)
+- script: |
+    pwd
   displayName: 'Print Working Directory1'
 
 # Step to install WebdriverIO dependencies and run tests
@@ -43,14 +47,15 @@ steps:
     npm run test:local
   displayName: 'Run WebdriverIO Tests'
 
-- script: pwd
+# Print Working Directory (after tests)
+- script: |
+    pwd
   displayName: 'Print Working Directory2'
 
-# Step to list contents of junit-results directory
+# Verify junit-results Directory Contents
 - script: |
     cd ./webdriverio_test_project
-    mkdir -p junit-results
-    ls
+    ls -al junit-results
   displayName: 'Verify Test Results Directory'
 
 - task: PublishTestResults@2
