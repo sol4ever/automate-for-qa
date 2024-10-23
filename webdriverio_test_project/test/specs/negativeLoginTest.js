@@ -15,6 +15,10 @@ describe('Negative Login Tests - Boundary and Invalid Inputs', () => {
         console.log('Test finished');
     });
 
+    it('should fail this test', () => {
+        expect(1).toEqual(2);  // This will fail
+    });
+
     it('should show error for empty username and password, and reset button should not be visible', async () => {
         await NavTabs.goToAnalytics();  
         await LoginPage.login(loginInputs.usernameEmpty, loginInputs.passwordEmpty);

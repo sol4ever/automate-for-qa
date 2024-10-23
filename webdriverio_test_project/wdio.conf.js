@@ -12,6 +12,7 @@ let screenshotsDir;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const outputDir = path.join(__dirname, 'webdriverio_test_project', 'junit-results');
+console.log('JUnit output directory:', outputDir);
 
 if (process.env.USE_LOCAL) { appBaseURL = environments.loc, screenshotsDir = 'Screenshots_local' }
 else if (process.env.USE_DEV) { appBaseURL = environments.dev, screenshotsDir = 'Screenshots_dev' }
@@ -102,7 +103,7 @@ export const config = {
     // ===================
 
     // Level of logging verbosity: trace | debug | info | warn | error | silent
-    logLevel: 'error',
+    logLevel: 'info',
     bail: 0,
     baseUrl: appBaseURL,
 
@@ -180,8 +181,8 @@ export const config = {
         //         stacktrace: 'stack'
         //     }}]
         ['junit', {
-            outputDir: outputDir,  // Use absolute path to avoid relative path issues
-            outputFileFormat: (options) => `results-${options.cid}.xml`,
+            outputDir: './webdriverio_test_project/junit-results',
+            outputFileFormat: (options) => `results-${options.cid}.xml`,  // Each worker's result
             errorOptions: {
                 error: 'message',
                 failure: 'message',
