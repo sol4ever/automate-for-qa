@@ -40,7 +40,7 @@ steps:
     pwd
   displayName: 'Print Working Directory1'
 
- script: |
+  script: |
     echo "Running WebdriverIO tests..."
     cd ./webdriverio_test_project
     npm install
