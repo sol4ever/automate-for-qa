@@ -8,9 +8,10 @@ import { fileURLToPath } from 'url';
 let appBaseURL;
 let screenshotsDir;
 
-const outputDir = path.join(__dirname, 'webdriverio_test_project', 'junit-results');
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const outputDir = path.join(__dirname, 'webdriverio_test_project', 'junit-results');
 
 if (process.env.USE_LOCAL) { appBaseURL = environments.loc, screenshotsDir = 'Screenshots_local' }
 else if (process.env.USE_DEV) { appBaseURL = environments.dev, screenshotsDir = 'Screenshots_dev' }
