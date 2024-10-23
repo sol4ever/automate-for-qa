@@ -35,7 +35,7 @@ steps:
 # Step to list contents of junit-results directory
 - script: |
     cd ./webdriverio_test_project
-    ls -al junit-results
+    ls
   displayName: 'Verify Test Results Directory'
 
 - task: PublishTestResults@2
