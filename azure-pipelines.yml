@@ -40,11 +40,12 @@ steps:
     pwd
   displayName: 'Print Working Directory1'
 
-# Step to install WebdriverIO dependencies and run tests
-- script: |
+ script: |
+    echo "Running WebdriverIO tests..."
     cd ./webdriverio_test_project
     npm install
     npm run test:local
+    echo "WebdriverIO tests completed."
   displayName: 'Run WebdriverIO Tests'
 
 # Print Working Directory (after tests)

@@ -250,14 +250,18 @@ export const config = {
     //     await browser.url(appBaseURL);
     // },
 
-    beforeTest: async function () {
-        console.log("Launching Chrome browser...");
-        if (!browser.sessionId) {
-            throw new Error("No valid session. Browser did not launch.");
-        }
-        console.log("Browser session ID: ", browser.sessionId); // Logs if Chrome is successfully launched
-        await browser.url(appBaseURL);
+    beforeTest: function (test) {
+        console.log(`Starting test: ${test.title}`);
     },
+    afterTest: function (test, context, { error, result, duration, passed }) {
+        if (passed) {
+            console.log(`Test passed: ${test.title}`);
+        } else {
+            console.log(`Test failed: ${test.title}`);
+            console.log(`Error: ${error}`);
+        }
+    }
+    
 
 
     // beforeEach: (async function () {
