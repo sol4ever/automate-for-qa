@@ -88,7 +88,8 @@ export const config = {
         maxInstances: 1,
         browserName: 'chrome',
         'goog:chromeOptions': {
-            args: ["--start-maximized", "--force-device-scale-factor=0.8", "--disable-gpu",'--headless']
+            // args: ["--start-maximized", "--force-device-scale-factor=0.8", "--disable-gpu",'--headless']
+            args: ['--headless', '--disable-gpu', '--no-sandbox', '--disable-dev-shm-usage', '--window-size=1920,1080']
         },
         acceptInsecureCerts: true
     }],
@@ -112,7 +113,8 @@ export const config = {
 
     // Default request retries count
     connectionRetryCount: 3,
-    services: ['chromedriver'],
+    // services: ['chromedriver'],
+    services: [],
     framework: 'mocha',
 
 
@@ -164,17 +166,22 @@ export const config = {
         //         }
         //     }
         // }]
+        // ['junit', {
+        //     outputDir: 'junit-results',
+        //     suiteNameFormat: /[^a-zA-Z0-9@]+/,
+        //     outputFileFormat: function (options) { // optional
+        //         return `results-${options.cid}.xml`
+        //     },
+        //     errorOptions: {
+        //         error: 'message',
+        //         failure: 'message',
+        //         stacktrace: 'stack'
+        //     }}]
         ['junit', {
             outputDir: 'junit-results',
-            suiteNameFormat: /[^a-zA-Z0-9@]+/,
-            outputFileFormat: function (options) { // optional
-                return `results-${options.cid}.xml`
-            },
-            errorOptions: {
-                error: 'message',
-                failure: 'message',
-                stacktrace: 'stack'
-            }}]
+            outputFileFormat: (options) => `results-${options.cid}.xml`,
+            errorOptions: { error: 'message', failure: 'message', stacktrace: 'stack' },
+        }]
     ],
     mochaOpts: {
         ui: 'bdd',
@@ -235,27 +242,27 @@ export const config = {
     //     }
     //     await browser.url(appBaseURL);
     // },
-    beforeTest: async function () {
-        console.log("Launching the browser...");
-        if (!browser.sessionId) {
-            throw new Error("No valid session. Session ID is missing.");
-        }
-        await browser.url(appBaseURL);
-    },
+    // beforeTest: async function () {
+    //     console.log("Launching the browser...");
+    //     if (!browser.sessionId) {
+    //         throw new Error("No valid session. Session ID is missing.");
+    //     }
+    //     await browser.url(appBaseURL);
+    // },
 
 
 
-    beforeEach: (async function () {
-        console.log(`Starting test: ${this.currentTest.title}`);
-    }),
+    // beforeEach: (async function () {
+    //     console.log(`Starting test: ${this.currentTest.title}`);
+    // }),
 
-    afterEach: (async function () {
-        if (this.currentTest.state === 'failed') {
-            console.log(`[FAIL] ${this.currentTest.title}`);
-        } else {
-            console.log(`[PASS] ${this.currentTest.title}`);
-        }
-    }),
+    // afterEach: (async function () {
+    //     if (this.currentTest.state === 'failed') {
+    //         console.log(`[FAIL] ${this.currentTest.title}`);
+    //     } else {
+    //         console.log(`[PASS] ${this.currentTest.title}`);
+    //     }
+    // }),
 
 
     // afterTest: async function () {

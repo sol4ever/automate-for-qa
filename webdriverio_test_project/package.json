@@ -1,30 +1,27 @@
 {
-  "name": "webdriverio_test_project",
-  "private": "true",
-  "type": "module",
+  "name": "webdriverio-test",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "npm run build",
+    "start": "npm start",
+    "test:local": "wdio run ./wdio.conf.js",
+    "test:ci": "wdio run ./wdio.conf.js"
+  },
   "devDependencies": {
     "@babel/core": "^7.25.8",
     "@babel/preset-env": "^7.25.8",
     "@babel/register": "^7.25.7",
-    "@wdio/cli": "^9.2.1",
+    "@wdio/cli": "^8.40.6",
     "@wdio/junit-reporter": "^9.1.3",
-    "@wdio/local-runner": "^9.2.1",
-    "@wdio/mocha-framework": "^9.1.3",
-    "@wdio/spec-reporter": "^9.1.3",
-    "@wdio/visual-service": "^6.2.1",
+    "@wdio/local-runner": "^8.40.6",
+    "@wdio/mocha-framework": "^8.40.6",
+    "@wdio/spec-reporter": "^8.40.6",
     "chromedriver": "^130.0.0",
     "dotenv": "^16.4.5",
-    "mocha-junit-reporter": "^2.2.1",
-    "wdio-chromedriver-service": "^8.1.1",
+    "glob": "^11.0.0",
+    "lru-cache": "^11.0.1",
     "wdio-wait-for": "^3.0.11",
-    "webdriverio": "^8.40.6"
-  },
-  "scripts": {
-    "test:local": "set USE_LOCAL=1 && wdio run ./wdio.conf.js",
-    "test:dev": "set USE_DEV=1 && wdio run wdio.conf.js",
-    "test:prd": "set USE_PROD=1 && wdio run wdio.conf.js",
-    "debug:dev": "set DEBUG=1 && set USE_DEV=1 && wdio run wdio.conf.js --suite e2e",
-    "test:new": "set USE_LOCAL=1 && wdio run wdio.conf.js --suite new",
-    "test:dev:spec": "set USE_DEV=1 && wdio run wdio.conf.js --spec test/specs/e2e/nameOfTheTestSuite.js"
+    "webdriverio": "^8.40.6",
+    "ws": "^8.18.0"
   }
 }
