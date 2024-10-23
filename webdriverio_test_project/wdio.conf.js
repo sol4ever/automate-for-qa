@@ -178,7 +178,7 @@ export const config = {
         //         stacktrace: 'stack'
         //     }}]
         ['junit', {
-            outputDir: 'junit-results',
+            outputDir: './webdriverio_test_project/junit-results',
             outputFileFormat: (options) => `results-${options.cid}.xml`,
             errorOptions: { error: 'message', failure: 'message', stacktrace: 'stack' },
         }]
@@ -250,6 +250,14 @@ export const config = {
     //     await browser.url(appBaseURL);
     // },
 
+    beforeTest: async function () {
+        console.log("Launching Chrome browser...");
+        if (!browser.sessionId) {
+            throw new Error("No valid session. Browser did not launch.");
+        }
+        console.log("Browser session ID: ", browser.sessionId); // Logs if Chrome is successfully launched
+        await browser.url(appBaseURL);
+    },
 
 
     // beforeEach: (async function () {
