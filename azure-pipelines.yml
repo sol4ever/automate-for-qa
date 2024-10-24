@@ -12,25 +12,25 @@ steps:
     versionSpec: '20.x'
   displayName: 'Install Node.js'
 
-# Install frontend dependencies and build the frontend
+# Install frontend dependencies and start the frontend in development mode
 - script: |
     npm install
-    npm run build
-  displayName: 'Build Frontend'
+    npm start &
+  displayName: 'Start Frontend'
 
-# Install backend dependencies and start the backend
+# Install backend dependencies and start the backend in development mode
 - script: |
     cd ./app-management
     npm install
     npm start &
   displayName: 'Start Backend'
 
-# Ensure junit-results Directory Exists
+# Wait for both frontend and backend to start (optional, can adjust timeout)
 - script: |
-    mkdir -p ./webdriverio_test_project/junit-results
-  displayName: 'Ensure junit-results Directory Exists'
+    sleep 10
+  displayName: 'Wait for Servers to Start'
 
-# Run WebdriverIO tests and check results
+# Run WebdriverIO tests after both servers are up
 - script: |
     echo "Running WebdriverIO tests..."
     cd ./webdriverio_test_project
@@ -42,7 +42,6 @@ steps:
       echo "Tests failed."
       exit 1
     fi
-    ls -al ./webdriverio_test_project/junit-results
   displayName: 'Run WebdriverIO Tests'
 
 # Check for junit-results directory

@@ -11,7 +11,7 @@ let screenshotsDir;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const outputDir = path.join(__dirname, 'webdriverio_test_project', 'junit-results');
+const outputDir = path.join(__dirname, 'junit-results');
 console.log('JUnit output directory:', outputDir);
 
 if (process.env.USE_LOCAL) { appBaseURL = environments.loc, screenshotsDir = 'Screenshots_local' }
@@ -181,7 +181,7 @@ export const config = {
         //         stacktrace: 'stack'
         //     }}]
         ['junit', {
-            outputDir: './webdriverio_test_project/junit-results',
+            outputDir: outputDir,
             outputFileFormat: (options) => `results-${options.cid}.xml`,  // Each worker's result
             errorOptions: {
                 error: 'message',
