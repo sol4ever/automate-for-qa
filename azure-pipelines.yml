@@ -15,14 +15,14 @@ steps:
 # Install frontend dependencies and build the frontend
 - script: |
     npm install
-    npm run build
+    npm run start
   displayName: 'Build Frontend'
 
 # Install backend dependencies and start the backend
 - script: |
     cd ./app-management
     npm install
-    npm start &
+    npm run start
   displayName: 'Start Backend'
 
 # Ensure junit-results Directory Exists
@@ -30,7 +30,7 @@ steps:
     mkdir -p ./webdriverio_test_project/junit-results
   displayName: 'Ensure junit-results Directory Exists'
 
-# Run WebdriverIO tests
+# Run WebdriverIO tests and check results
 - script: |
     echo "Running WebdriverIO tests..."
     cd ./webdriverio_test_project
@@ -42,6 +42,7 @@ steps:
       echo "Tests failed."
       exit 1
     fi
+    ls -al ./webdriverio_test_project/junit-results  # Check if results are generated
   displayName: 'Run WebdriverIO Tests'
 
 # Check for junit-results directory
@@ -54,5 +55,5 @@ steps:
 - task: PublishTestResults@2
   inputs:
     testResultsFormat: 'JUnit'
-    testResultsFiles: '**/*.xml'
+    testResultsFiles: './webdriverio_test_project/junit-results/*.xml'
     failTaskOnFailedTests: true
