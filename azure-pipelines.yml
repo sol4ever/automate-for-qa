@@ -42,7 +42,7 @@ steps:
       echo "Tests failed."
       exit 1
     fi
-    ls -al ./webdriverio_test_project/junit-results  # Check if results are generated
+    ls -al ./webdriverio_test_project/junit-results
   displayName: 'Run WebdriverIO Tests'
 
 # Check for junit-results directory
