@@ -103,9 +103,10 @@ export const config = {
     // ===================
 
     // Level of logging verbosity: trace | debug | info | warn | error | silent
-    logLevel: 'info',
+    logLevel: 'debug',
     bail: 0,
-    baseUrl: appBaseURL,
+    // baseUrl: appBaseURL,
+    baseUrl: 'http://localhost:3000',
 
     // Default timeout for all waitFor* commands.
     waitforTimeout: 30000,

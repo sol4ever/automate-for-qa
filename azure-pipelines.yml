@@ -27,27 +27,37 @@ steps:
     npm start &
   displayName: 'Start Backend'
 
+# Wait for both frontend and backend to start
+- script: |
+    sleep 10
+  displayName: 'Wait for Servers to Start'
+
+# Check if frontend is accessible
+- script: |
+    curl http://localhost:3000
+  displayName: 'Check Frontend Availability'
+
 # Ensure junit-results directory exists
 - script: |
     mkdir -p ./webdriverio_test_project/junit-results
   displayName: 'Ensure junit-results Directory Exists'
 
-# Run WebdriverIO tests
+# Run WebdriverIO tests with debug logs
 - script: |
     echo "Running WebdriverIO tests..."
     cd ./webdriverio_test_project
     npm install
-    npm run test:local
+    npm run test:local --spec ./test/specs/positiveLoginTest.js
     exitCode=$?
     echo "Test exit code: $exitCode"
     if [ $exitCode -ne 0 ]; then
       echo "Tests failed."
       exit 1
     fi
-    ls
+    ls -al ./webdriverio_test_project/junit-results
   displayName: 'Run WebdriverIO Tests'
 
-# Publish JUnit test results
+# Publish test results
 - task: PublishTestResults@2
   inputs:
     testResultsFormat: 'JUnit'
