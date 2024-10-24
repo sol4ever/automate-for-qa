@@ -54,7 +54,7 @@ steps:
       echo "Tests failed."
       exit 1
     fi
-    ls -al ./webdriverio_test_project
+    ls
   displayName: 'Run WebdriverIO Tests'
 
 # Publish test results
