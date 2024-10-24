@@ -47,7 +47,7 @@ steps:
     echo "Running WebdriverIO tests..."
     cd ./webdriverio_test_project
     npm install
-    npx wdio run wdio.conf.js --logLevel debug
+    npx run wdio
     exitCode=$?
     echo "Test exit code: $exitCode"
     if [ $exitCode -ne 0 ]; then
