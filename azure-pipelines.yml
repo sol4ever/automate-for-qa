@@ -15,14 +15,14 @@ steps:
 # Install frontend dependencies and build the frontend
 - script: |
     npm install
-    npm run start
+    npm run start:local
   displayName: 'Build Frontend'
 
 # Install backend dependencies and start the backend
 - script: |
     cd ./app-management
     npm install
-    npm run start
+    npm run start:local
   displayName: 'Start Backend'
 
 # Ensure junit-results Directory Exists
