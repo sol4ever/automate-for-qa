@@ -47,7 +47,7 @@ steps:
     echo "Running WebdriverIO tests..."
     cd ./webdriverio_test_project
     npm install
-    npm run test:local --spec ./test/specs/positiveLoginTest.js
+    npx wdio run wdio.conf.js --logLevel debug
     exitCode=$?
     echo "Test exit code: $exitCode"
     if [ $exitCode -ne 0 ]; then
