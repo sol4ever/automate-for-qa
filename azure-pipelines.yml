@@ -4,7 +4,7 @@ trigger:
       - tests_enhacements
 
 pool:
-  vmImage: 'ubuntu-latest'  # Using Linux-based agent
+  vmImage: 'ubuntu-latest'
 
 steps:
 - task: NodeTool@0
@@ -15,14 +15,14 @@ steps:
 # Install frontend dependencies and build the frontend
 - script: |
     npm install
-    npm run start:local
+    npm run build
   displayName: 'Build Frontend'
 
 # Install backend dependencies and start the backend
 - script: |
     cd ./app-management
     npm install
-    npm run start:local
+    npm start &
   displayName: 'Start Backend'
 
 # Ensure junit-results Directory Exists
