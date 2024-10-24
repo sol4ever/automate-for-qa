@@ -44,7 +44,7 @@ steps:
       echo "Tests failed."
       exit 1
     fi
-    ls -al ./webdriverio_test_project/junit-results
+    ls
   displayName: 'Run WebdriverIO Tests'
 
 # Publish JUnit test results
