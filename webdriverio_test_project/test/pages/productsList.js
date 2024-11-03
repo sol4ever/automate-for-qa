@@ -65,7 +65,7 @@ class ProductsList {
         await waitForElementToBeDisplayed(
             createdProduct,
             5000,
-            `Expected user ${newProductName} to appear in the filtered list, but it was not found.`
+            `Expected product ${newProductName} to appear in the filtered list, but it was not found.`
         );
 
         await expect(createdProduct).toBeDisplayed()

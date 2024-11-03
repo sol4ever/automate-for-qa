@@ -75,7 +75,7 @@ export const config = {
             'test/specs/positiveNewProductTest_base.js',
         ],
         new: [
-            'test/specs/positiveNewProductTest_base.js',
+            'test/specs/positiveLoginTest.js',
         ]
     },
     exclude: [
@@ -103,7 +103,7 @@ export const config = {
     // ===================
 
     // Level of logging verbosity: trace | debug | info | warn | error | silent
-    logLevel: 'info',
+    logLevel: 'error',
     bail: 0,
     baseUrl: appBaseURL,
 
@@ -127,9 +127,7 @@ export const config = {
     // specFileRetriesDelay: 0,
     // Whether or not retried spec files should be retried immediately or deferred to the end of the queue
     // specFileRetriesDeferred: false,
-    // Test reporter for stdout.
-    // The only one supported by default is 'dot'
-    // see also: https://webdriver.io/docs/dot-reporter
+    
     reporters: [
         ['spec',
             {
@@ -145,7 +143,7 @@ export const config = {
         ['junit', {
             outputDir: 'junit-results',
             suiteNameFormat: /[^a-zA-Z0-9@]+/,
-            outputFileFormat: function (options) { // optional
+            outputFileFormat: function (options) { 
                 return `results-${options.cid}.xml`
             },
             errorOptions: {
@@ -217,7 +215,7 @@ export const config = {
             throw new Error("No valid session. Session ID is missing.");
         }
         await browser.url(appBaseURL);
-        console.log(`Starting test: ${test.title}`);
+        // console.log(`Starting test: ${test.title}`); //Debug
     },
 
 

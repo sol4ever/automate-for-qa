@@ -12,7 +12,6 @@ class ProductsLanding extends Page {
             deleted: '[data-testid="nav-deleted"]',
             new: '[data-testid="nav-new"]',
         }[tab];
-        console.log(tabSelector, " selector")
         await $(tabSelector).click();
     }
 }

@@ -7,16 +7,11 @@ describe('Negative Login Tests - Boundary and Invalid Inputs', () => {
 
     beforeEach(async () => {
         await LoginPage.open();
-        console.log('Test started');
     });
      
     afterEach(async () => {
         expect(await NavTabs.resetButton).toBeDisplayed({ reverse: true})
-        console.log('Test finished');
-    });
-
-    it('should fail this test', () => {
-        expect(1).toEqual(2);  // This will fail
+        await browser.execute(() => sessionStorage.clear());
     });
 
     it('should show error for empty username and password, and reset button should not be visible', async () => {
@@ -43,7 +38,7 @@ describe('Negative Login Tests - Boundary and Invalid Inputs', () => {
         await expect(LoginPage.loginError).toHaveText(expectedValue.loginValidationError);
     });
 
-    it('should show error for username with 21 characters and password with 1 character, and reset button should not be visible', async () => {
+    it('should show error for username with 11 characters and password with 1 character, and reset button should not be visible', async () => {
         await NavTabs.goToAnalytics();  
         await LoginPage.login(loginInputs.username11Char, loginInputs.password1Char);
         await expect(LoginPage.loginError).toHaveText(expectedValue.loginValidationError);
@@ -64,7 +59,7 @@ describe('Negative Login Tests - Boundary and Invalid Inputs', () => {
 
 describe('Negative Login Tests - Boundary and Invalid Inputs with successful final login', () => {
 
-    it('should show error for username with 10 characters and password with 11 characters, and reset button should not be visible', async () => {
+    it('should show error for username with 10 characters and password with 9 characters, and reset button should not be visible', async () => {
         await LoginPage.open();
         await NavTabs.goToAnalytics();  
         await LoginPage.login(loginInputs.validUsername, loginInputs.password9Char);
@@ -75,7 +70,7 @@ describe('Negative Login Tests - Boundary and Invalid Inputs with successful fin
     it('should login successfully after invalid attempts and check reset button', async () => {
         await NavTabs.goToAnalytics();  
         await LoginPage.login(loginInputs.validUsername, loginInputs.validPassword);
-        // expect(await NavTabs.resetButton).toBeDisplayed();
+        expect(await NavTabs.resetButton).toBeDisplayed()
         await expect(browser).toHaveUrl(expect.stringContaining('/analytics'));
     });
 });
