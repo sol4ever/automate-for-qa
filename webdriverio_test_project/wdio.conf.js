@@ -8,11 +8,8 @@ import { fileURLToPath } from 'url';
 let appBaseURL;
 let screenshotsDir;
 
-
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const outputDir = path.join(__dirname, 'junit-results');
-console.log('JUnit output directory:', outputDir);
 
 if (process.env.USE_LOCAL) { appBaseURL = environments.loc, screenshotsDir = 'Screenshots_local' }
 else if (process.env.USE_DEV) { appBaseURL = environments.dev, screenshotsDir = 'Screenshots_dev' }
@@ -72,10 +69,13 @@ export const config = {
         e2e: [
             'test/specs/negativeLoginTest.js',
             'test/specs/positiveLoginTest.js',
-            'test/specs/positiveNewUserTest.js',
+            'test/specs/positiveNewUserTest_base.js',
+            'test/spec/positiveNewUserTest_MaximumValues',
+            'test/spec/positiveNewUserTest_MinimumValues',
+            'test/specs/positiveNewProductTest_base.js',
         ],
         new: [
-            'test/specs/positiveNewUserTest.js',
+            'test/specs/positiveNewProductTest_base.js',
         ]
     },
     exclude: [
@@ -91,8 +91,8 @@ export const config = {
         maxInstances: 1,
         browserName: 'chrome',
         'goog:chromeOptions': {
-            // args: ["--start-maximized", "--force-device-scale-factor=0.8", "--disable-gpu",'--headless']
-            args: ['--headless', '--disable-gpu', '--no-sandbox', '--disable-dev-shm-usage', '--window-size=1920,1080']
+            args: ["--start-maximized", "--force-device-scale-factor=0.8", "--disable-gpu"]
+            // args: ['--headless', '--disable-gpu', '--no-sandbox', '--disable-dev-shm-usage', '--window-size=1920,1080']
         },
         acceptInsecureCerts: true
     }],
@@ -103,10 +103,9 @@ export const config = {
     // ===================
 
     // Level of logging verbosity: trace | debug | info | warn | error | silent
-    logLevel: 'debug',
+    logLevel: 'info',
     bail: 0,
-    // baseUrl: appBaseURL,
-    baseUrl: 'http://localhost:3000',
+    baseUrl: appBaseURL,
 
     // Default timeout for all waitFor* commands.
     waitforTimeout: 30000,
@@ -143,53 +142,19 @@ export const config = {
                 },
             },
         ],
-        // ['junit', {
-        //     // outputDir: './junit-results/',
-        //     outputDir: './junit-results',
-        //     suiteNameFormat: /[^a-zA-Z0-9@]+/,
-        //     outputFileFormat: function (options) {
-        //         return `results-${options.cid}.xml`
-        //     },
-        // ['junit', {
-        //     outputDir: path.resolve(__dirname, './webdriverio_test_project/junit-results'),
-        //     suiteNameFormat: /[^a-zA-Z0-9@]+/,
-        //     outputFileFormat: function (options) {
-        //         return `results-${options.cid}.xml`
-        //     },
-        //     errorOptions: {
-        //         error: 'message',
-        //         failure: 'message',
-        //         stacktrace: 'stack'
-        //     },
-        //     onPrepare: function (config, capabilities) {
-        //         const fs = require('fs');
-        //         const path = './junit-results';
-        //         // const path = './junit-results';
-        //         if (!fs.existsSync(path)) {
-        //             fs.mkdirSync(path, { recursive: true });
-        //         }
-        //     }
-        // }]
-        // ['junit', {
-        //     outputDir: 'junit-results',
-        //     suiteNameFormat: /[^a-zA-Z0-9@]+/,
-        //     outputFileFormat: function (options) { // optional
-        //         return `results-${options.cid}.xml`
-        //     },
-        //     errorOptions: {
-        //         error: 'message',
-        //         failure: 'message',
-        //         stacktrace: 'stack'
-        //     }}]
         ['junit', {
-            outputDir: outputDir,
-            outputFileFormat: (options) => `results-${options.cid}.xml`,  // Each worker's result
+            outputDir: 'junit-results',
+            suiteNameFormat: /[^a-zA-Z0-9@]+/,
+            outputFileFormat: function (options) { // optional
+                return `results-${options.cid}.xml`
+            },
             errorOptions: {
                 error: 'message',
                 failure: 'message',
                 stacktrace: 'stack'
             }
         }]
+
     ],
     mochaOpts: {
         ui: 'bdd',
@@ -223,6 +188,8 @@ export const config = {
 
         if (error) {
             const failedFilePath = path.join(failedScreenshotDir, fileName);
+            console.log(`Test failed: ${test.title}`);
+                    console.log(`Error: ${error}`);
             try {
                 await browser.saveScreenshot(failedFilePath);
             } catch (e) {
@@ -232,6 +199,7 @@ export const config = {
 
         if (passed) {
             const successFilePath = path.join(successScreenshotDir, fileName);
+            console.log(`Test passed: ${test.title}`);
             try {
                 await browser.saveScreenshot(successFilePath);
             } catch (e) {
@@ -244,45 +212,14 @@ export const config = {
     },
 
 
-    // beforeTest: async function () {
-    //     if (!browser.sessionId) {
-    //         throw new Error("No valid session. Session ID is missing.");
-    //     }
-    //     await browser.url(appBaseURL);
-    // },
-    // beforeTest: async function () {
-    //     console.log("Launching the browser...");
-    //     if (!browser.sessionId) {
-    //         throw new Error("No valid session. Session ID is missing.");
-    //     }
-    //     await browser.url(appBaseURL);
-    // },
-
-    beforeTest: function (test) {
+    beforeTest: async function (test) {
+        if (!browser.sessionId) {
+            throw new Error("No valid session. Session ID is missing.");
+        }
+        await browser.url(appBaseURL);
         console.log(`Starting test: ${test.title}`);
     },
-    afterTest: function (test, context, { error, result, duration, passed }) {
-        if (passed) {
-            console.log(`Test passed: ${test.title}`);
-        } else {
-            console.log(`Test failed: ${test.title}`);
-            console.log(`Error: ${error}`);
-        }
-    }
-    
 
-
-    // beforeEach: (async function () {
-    //     console.log(`Starting test: ${this.currentTest.title}`);
-    // }),
-
-    // afterEach: (async function () {
-    //     if (this.currentTest.state === 'failed') {
-    //         console.log(`[FAIL] ${this.currentTest.title}`);
-    //     } else {
-    //         console.log(`[PASS] ${this.currentTest.title}`);
-    //     }
-    // }),
 
 
     // afterTest: async function () {

@@ -242,7 +242,7 @@ const NewProduct = () => {
                 displayEmpty
                 className="newProductInput"
                 onBlur={handleBlur}
-                data-testid="brand-select"
+                data-testid="select-brand"
               >
                 <MenuItem value="" disabled hidden data-testid="brand-select-placeholder">
                   Wybierz producenta

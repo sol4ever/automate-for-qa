@@ -1,17 +1,9 @@
 let product = {
     smartphone: {
-        productName: "Huwawei P30 lite",
-        category: "Mobile Phones",
-        subcategory: "Smartphones",
-        brand: "Huawei",
-        operatingSystem: "Androind"
+        productName: "Huwawei P30 lite"
     },
     accessory: {
-        productName: "Samsung buds",
-        category: "Mobile Phone Accessories",
-        subcategory: "Earphones and Headphones",
-        brand: "Samsung",
-        applicableForModel: "A 40"
+        productName: "Samsung buds"
     }
 }
 
