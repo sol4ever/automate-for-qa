@@ -10,6 +10,7 @@ import users from '../src/dummyUsers.js'
 import rateLimit from 'express-rate-limit'
 import helmet from 'helmet';
 import { sanitizeAndValidateProduct, sanitizeAndValidateUser } from './validationBackend.js';
+import { v4 as uuidv4 } from 'uuid';
 
 const app = express();
 const initialProducts = [...products];
@@ -88,31 +89,65 @@ const upload = multer({
 }).single('image');
 
 //-------------------- Authentication Middleware -------------------
+// const authenticateToken = (req, res, next) => {
+//   const authHeader = req.headers['authorization'];
+//   const token = authHeader && authHeader.split(' ')[1];
+
+//   if (!token) {
+//     return res.status(401).json({ error: 'Unauthorized access' });
+//   }
+
+//   if (!userSessions[token]) {
+//     userSessions[token] = {
+//       products: [...initialProducts],
+//       users: [...initialUsers]
+//     };
+//   }
+//   req.sessionData = userSessions[token];
+//   next();
+// };
+
 const authenticateToken = (req, res, next) => {
   const authHeader = req.headers['authorization'];
   const token = authHeader && authHeader.split(' ')[1];
 
-  if (!token) {
+  if (!token || !userSessions[token]) {
     return res.status(401).json({ error: 'Unauthorized access' });
   }
 
-  if (!userSessions[token]) {
-    userSessions[token] = {
-      products: [...initialProducts],
-      users: [...initialUsers]
-    };
-  }
   req.sessionData = userSessions[token];
   next();
 };
 
+
+
+// // Authentication endpoint for login
+// app.post('/login', (req, res) => {
+//   const { username, password } = req.body;
+
+//   if (username.length >= 10 && username.length <= 20 && password.length >= 10 && password.length <= 20) {
+//     const token = Buffer.from(`${username}:${password}`).toString('base64');
+//     res.json({ token });
+//   } else {
+//     res.status(400).json({ error: 'Nazwa użytkownika: min. 10, max. 20 znaków. Hasło: min. 10 max. 20 znaków.' });
+//   }
+// });
 
 // Authentication endpoint for login
 app.post('/login', (req, res) => {
   const { username, password } = req.body;
 
   if (username.length >= 10 && username.length <= 20 && password.length >= 10 && password.length <= 20) {
-    const token = Buffer.from(`${username}:${password}`).toString('base64');
+    // Generate a unique token for each login session
+    const token = uuidv4();
+    console.log(token, ' This is token')
+
+    // Initialize a clean session environment for this token
+    userSessions[token] = {
+      products: [...initialProducts],
+      users: [...initialUsers]
+    };
+
     res.json({ token });
   } else {
     res.status(400).json({ error: 'Nazwa użytkownika: min. 10, max. 20 znaków. Hasło: min. 10 max. 20 znaków.' });
