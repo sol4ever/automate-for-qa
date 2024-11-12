@@ -342,7 +342,7 @@ app.use((err, req, res, next) => {
 });
 
 app.get('/', (req, res) => {
-  res.send('Welcome to the Automate for QA API');
+  res.send('Welcome to the Automate 4 QA API');
 });
 
 app.get('*', (req, res) => {
