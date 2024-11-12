@@ -70,8 +70,8 @@ export const config = {
             'test/specs/negativeLoginTest.js',
             'test/specs/positiveLoginTest.js',
             'test/specs/positiveNewUserTest_base.js',
-            'test/spec/positiveNewUserTest_MaximumValues',
-            'test/spec/positiveNewUserTest_MinimumValues',
+            'test/specs/positiveNewUserTest_MaximumValues.js',
+            'test/specs/positiveNewUserTest_MinimumValues.js',
             'test/specs/positiveNewProductTest_base.js',
         ],
         new: [

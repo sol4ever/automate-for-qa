@@ -9,6 +9,8 @@ import axios from 'axios';
 import ResetConfirmationModal from '../../components/resetConfirmationModal/ResetConfirmationModal';
 import Notification from '../../components/notification/Notification';
 import LoginModal from '../../components/loginModal/LoginModal';
+import TestConfirmationModal from '../../components/testConfirmationModal/TestConfirmationModal'
+
 
 function LinkTab(props) {
   return (
@@ -31,10 +33,11 @@ export default function NavTabs() {
   const { setProducts } = useContext(ProductContext);
 
   const [openResetModal, setOpenResetModal] = useState(false);
+  const [openTestModal, setOpenTestModal] = useState(false);
   const token = sessionStorage.getItem('authToken');
   const [alert, setAlert] = useState(null);
-  const [openLoginModal, setOpenLoginModal] = useState(false); 
-  const [pendingRoute, setPendingRoute] = useState(''); 
+  const [openLoginModal, setOpenLoginModal] = useState(false);
+  const [pendingRoute, setPendingRoute] = useState('');
 
   const tabToPath = {
     0: '/home',
@@ -60,7 +63,7 @@ export default function NavTabs() {
     const selectedPath = tabToPath[newValue];
     //----------------- If user is not logged in and clicks on a restricted route, show login modal
     if (!token && (selectedPath === '/analytics' || selectedPath.includes('/users-landing') || selectedPath.includes('/products-landing'))) {
-      setPendingRoute(selectedPath); 
+      setPendingRoute(selectedPath);
       setOpenLoginModal(true);
     } else {
       setValue(newValue);
@@ -71,14 +74,14 @@ export default function NavTabs() {
   const handleLoginSuccess = () => {
     setOpenLoginModal(false);
     if (pendingRoute) {
-      navigate(pendingRoute);  
-      setPendingRoute('');     
+      navigate(pendingRoute);
+      setPendingRoute('');
     }
   };
 
   const handleCloseLoginModal = () => {
     setOpenLoginModal(false);
-    navigate('/home'); 
+    navigate('/home');
   };
 
   useEffect(() => {
@@ -134,6 +137,32 @@ export default function NavTabs() {
     setOpenResetModal(false);
   };
 
+  const openTestConfirmation = () => {
+    setOpenTestModal(true); // Opens Test Confirmation Modal
+  };
+
+  const closeTestModal = () => {
+    setOpenTestModal(false);
+  };
+
+  const handleTest = () => {
+    axios.post(`${process.env.REACT_APP_API_URL}/run-tests`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+      .then(() => {
+        setAlert({ severity: 'success', message: 'Testy zostały uruchomione.' });
+        closeTestModal();
+      })
+      .catch((error) => {
+        console.log(process.env.REACT_APP_API_URL);
+        setAlert({ severity: 'error', message: 'Wystąpił problem podczas uruchamiania testów.' });
+        closeTestModal();
+      });
+  };
+  
+
   useEffect(() => {
     if (alert) {
       const timer = setTimeout(() => {
@@ -180,15 +209,25 @@ export default function NavTabs() {
       </Tabs>
       <div className="right-side-container">
         {token && (
-          <button className="reset-button" onClick={openResetConfirmation} data-testid="reset-button">
-            Reset
-          </button>
+          <>
+            <button className="test-button" onClick={openTestConfirmation} data-testid="test-button">
+              Test
+            </button>
+            <button className="reset-button" onClick={openResetConfirmation} data-testid="reset-button">
+              Reset
+            </button>
+          </>
         )}
       </div>
       <ResetConfirmationModal
         open={openResetModal}
         onClose={closeResetModal}
         onConfirm={handleReset}
+      />
+      <TestConfirmationModal
+        open={openTestModal}
+        onClose={closeTestModal}
+        onConfirm={handleTest}
       />
       <Notification alert={alert} />
       <LoginModal
