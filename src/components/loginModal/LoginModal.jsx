@@ -11,7 +11,7 @@ const LoginModal = ({ open, onClose, onLoginSuccess }) => {
 
     const validateInputs = () => {
         if (username.length < 10 || username.length > 20 || password.length < 10 || password.length > 20) {
-          setError('Nazwa użytkownika musi mieć min. 10, max. 20 znaków. Hasło musi mieć min. 10 max. 20 znaków.');
+          setError('Nazwa użytkownika musi mieć min. 10, max. 20 znaków. Hasło musi mieć min. 10, max. 20 znaków.');
           return false;
         }
         return true;
@@ -49,7 +49,7 @@ const LoginModal = ({ open, onClose, onLoginSuccess }) => {
                 </Typography>
                 <TextField
                     fullWidth
-                    label="Nazwa użytkownika (10-20 znaków)"
+                    label="Nazwa użytkownika (10-20 dowolnych znaków)"
                     variant="outlined"
                     margin="normal"
                     value={username}
@@ -74,7 +74,7 @@ const LoginModal = ({ open, onClose, onLoginSuccess }) => {
                 />
                 <TextField
                     fullWidth
-                    label="Hasło (10-20 znaków)"
+                    label="Hasło (10-20 dowolnych znaków)"
                     type="password"
                     variant="outlined"
                     margin="normal"
