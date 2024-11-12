@@ -10,12 +10,15 @@ import users from '../src/dummyUsers.js'
 import rateLimit from 'express-rate-limit'
 import helmet from 'helmet';
 import { sanitizeAndValidateProduct, sanitizeAndValidateUser } from './validationBackend.js';
-import { v4 as uuidv4 } from 'uuid';
+import jwt from 'jsonwebtoken';
 
 const app = express();
 const initialProducts = [...products];
 const initialUsers = [...users];
 const userSessions = {};
+
+dotenv.config({ path: process.env.NODE_ENV === 'production' ? '.env.production' : '.env.local' });
+
 
 //-------------------- CORS Configuration ---------------------
 const allowedOrigins = [process.env.FRONTEND_APP_URL];
@@ -66,6 +69,7 @@ app.use(express.static(path.join(__dirname, 'build')));
 //-------------------Multer setup for file upload (images)
 const MAX_FILE_SIZE_BYTES = 2 * 1024 * 1024;
 const ALLOWED_FORMATS = ['image/jpeg', 'image/png', 'image/webp', 'image/jpg'];
+
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     const isUserImage = req.body.imageType === 'user';
@@ -76,6 +80,7 @@ const storage = multer.diskStorage({
     cb(null, Date.now() + path.extname(file.originalname));
   }
 });
+
 const upload = multer({
   storage,
   limits: { fileSize: MAX_FILE_SIZE_BYTES },
@@ -89,24 +94,40 @@ const upload = multer({
 }).single('image');
 
 //-------------------- Authentication Middleware -------------------
-// const authenticateToken = (req, res, next) => {
-//   const authHeader = req.headers['authorization'];
-//   const token = authHeader && authHeader.split(' ')[1];
 
-//   if (!token) {
-//     return res.status(401).json({ error: 'Unauthorized access' });
-//   }
+const JWT_SECRET = process.env.JWT_SECRET;
+const SESSION_EXPIRY_MS = 60 * 60 * 1000; // 1 hour
 
-//   if (!userSessions[token]) {
-//     userSessions[token] = {
-//       products: [...initialProducts],
-//       users: [...initialUsers]
-//     };
-//   }
-//   req.sessionData = userSessions[token];
-//   next();
-// };
 
+// Authentication endpoint for login
+app.post('/login', (req, res) => {
+  const { username, password } = req.body;
+
+  if (username.length >= 10 && username.length <= 20 && password.length >= 10 && password.length <= 20) {
+   
+    const token = jwt.sign(
+      {
+        username,
+        createdAt: Date.now()
+      },
+      JWT_SECRET,
+      { expiresIn: '1h' } 
+    );
+
+    // Initialize clean session data for this token
+    userSessions[token] = {
+      products: [...initialProducts],
+      users: [...initialUsers],
+      createdAt: Date.now() // Timestamp for managing session expiry
+    };
+
+    res.json({ token });
+  } else {
+    res.status(400).json({ error: 'Nazwa użytkownika: min. 10, max. 20 znaków. Hasło: min. 10, max. 20 znaków.' });
+  }
+});
+
+// Middleware to authenticate token and check for session expiry
 const authenticateToken = (req, res, next) => {
   const authHeader = req.headers['authorization'];
   const token = authHeader && authHeader.split(' ')[1];
@@ -115,44 +136,29 @@ const authenticateToken = (req, res, next) => {
     return res.status(401).json({ error: 'Unauthorized access' });
   }
 
-  req.sessionData = userSessions[token];
-  next();
+  // Verify JWT token
+  jwt.verify(token, JWT_SECRET, (err, user) => {
+    if (err) {
+      delete userSessions[token]; // Remove invalid or expired session
+      return res.status(401).json({ error: 'Session expired or invalid token' });
+    }
+
+    // Attach session data to request if valid
+    req.sessionData = userSessions[token];
+    next();
+  });
 };
 
-
-
-// // Authentication endpoint for login
-// app.post('/login', (req, res) => {
-//   const { username, password } = req.body;
-
-//   if (username.length >= 10 && username.length <= 20 && password.length >= 10 && password.length <= 20) {
-//     const token = Buffer.from(`${username}:${password}`).toString('base64');
-//     res.json({ token });
-//   } else {
-//     res.status(400).json({ error: 'Nazwa użytkownika: min. 10, max. 20 znaków. Hasło: min. 10 max. 20 znaków.' });
-//   }
-// });
-
-// Authentication endpoint for login
-app.post('/login', (req, res) => {
-  const { username, password } = req.body;
-
-  if (username.length >= 10 && username.length <= 20 && password.length >= 10 && password.length <= 20) {
-    // Generate a unique token for each login session
-    const token = uuidv4();
-    console.log(token, ' This is token')
-
-    // Initialize a clean session environment for this token
-    userSessions[token] = {
-      products: [...initialProducts],
-      users: [...initialUsers]
-    };
-
-    res.json({ token });
-  } else {
-    res.status(400).json({ error: 'Nazwa użytkownika: min. 10, max. 20 znaków. Hasło: min. 10 max. 20 znaków.' });
+// Periodic cleanup of expired sessions
+setInterval(() => {
+  const now = Date.now();
+  for (const token in userSessions) {
+    if (now - userSessions[token].createdAt > SESSION_EXPIRY_MS) {
+      delete userSessions[token];
+    }
   }
-});
+}, 15 * 60 * 1000); // Run every 15 minutes
+
 
 //------------------- Product endpoints
 app.get('/products', authenticateToken, (req, res) => {
@@ -229,7 +235,9 @@ app.post('/products', authenticateToken, (req, res) => {
       throw new Error('Product data is incomplete');
     }
     req.sessionData.products.push(newProduct);
-    console.log('New product added to session:', newProduct);
+
+    //---------------DEBUGG
+    // console.log('New product added to session:', newProduct);
 
     res.status(201).json(newProduct);
   } catch (err) {

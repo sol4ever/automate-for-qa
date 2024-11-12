@@ -55,17 +55,17 @@ export default function ProductList() {
 
   const handleDelete = () => {
     const productIdAsString = selectedProductId.toString();
-    console.log('Deleting product with ID:', productIdAsString);
+    // console.log('Deleting product with ID:', productIdAsString);
 
     const payload = { status: 'deleted' };
-    console.log('Payload:', payload);
+    // console.log('Payload:', payload);
 
     axios.put(`${process.env.REACT_APP_API_URL}/products/${productIdAsString}`, payload, {
       headers: {
         Authorization: `Bearer ${token}`
       }
     }).then(response => {
-      console.log('Product deleted successfully:', response.data);
+      // console.log('Product deleted successfully:', response.data);
       setProducts(products.map(product => product.id === productIdAsString ? { ...product, status: 'deleted' } : product));
       setAlert({ severity: 'success', message: 'Produkt został usunięty!' });
       setModalOpen(false);

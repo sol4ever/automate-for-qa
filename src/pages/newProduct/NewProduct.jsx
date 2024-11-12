@@ -168,7 +168,7 @@ const NewProduct = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Product data being sent:', productData);
+    // console.log('Product data being sent:', productData);
 
     const { valid, formErrors } = validateProductForm(productData);
     setErrors(formErrors);

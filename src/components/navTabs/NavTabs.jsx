@@ -93,14 +93,14 @@ export default function NavTabs() {
   };
 
   const handleReset = () => {
-    console.log('Resetting users and products...');
+    // console.log('Resetting users and products...');
 
     axios.post(`${process.env.REACT_APP_API_URL}/reset`, {}, {
       headers: {
         Authorization: `Bearer ${token}`
       }
     }).then(response => {
-      console.log('Reset successful:', response.data);
+      // console.log('Reset successful:', response.data);
       axios.get(`${process.env.REACT_APP_API_URL}/users`, {
         headers: {
           Authorization: `Bearer ${token}`
