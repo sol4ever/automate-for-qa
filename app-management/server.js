@@ -20,7 +20,6 @@ const userSessions = {};
 
 dotenv.config({ path: process.env.NODE_ENV === 'production' ? '.env.production' : '.env.local' });
 
-
 //-------------------- CORS Configuration ---------------------
 const allowedOrigins = [process.env.FRONTEND_APP_URL];
 
@@ -322,89 +321,23 @@ app.post('/reset', authenticateToken, (req, res) => {
 
 
 //--------------------- Test endpoint
-// app.post('/run-tests', (req, res) => {
-//   const { environment } = req.body;
-//   let command = '';
+app.post('/run-tests', authenticateToken, (req, res) => {
+  const environment = process.env.NODE_ENV || 'production'; // Default env 'production'
+  
+  if (environment !== 'local') {
+    return res.status(403).json({ message: 'Tests can only be run in the local environment.' });
+  }
 
-//   switch (environment) {
-//       case 'local':
-//           command = 'npm run test:local';
-//           break;
-//       case 'dev':
-//           command = 'npm run test:dev';
-//           break;
-//       case 'prd':
-//           command = 'npm run test:prd';
-//           break;
-//       default:
-//           return res.status(400).json({ message: 'Invalid environment' });
-//   }
-
-//   // exec(command, { cwd: 'webdriverio_test_project' }, (error, stdout, stderr) => {
-//   //     if (error) {
-//   //         // console.error(`Error executing tests: ${stderr}`);
-//   //         console.error(`Error executing tests: ${stderr || error.message}`);
-//   //         return res.status(500).json({ message: 'Error running tests' });
-//   //     }
-//   //     console.log(`Test results: ${stdout}`);
-//   //     res.status(200).json({ message: 'Tests started successfully' });
-//   // });
-
-//   exec(command, { cwd: 'webdriverio_test_project', shell: true }, (error, stdout, stderr) => {
-//     if (error) {
-//         console.error(`Error executing tests: ${stderr || error.message}`);
-//         return res.status(500).json({ message: 'Error running tests', details: stderr || error.message });
-//     }
-//     console.log(`Test results: ${stdout}`);
-//     res.status(200).json({ message: 'Tests started successfully' });
-// });
-
-// });
-
-
-// app.post('/run-tests', (req, res) => {
-//     const { environment } = req.body;
-//     let command;
-
-//     switch (environment) {
-//         case 'local':
-//             command = 'npx cross-env USE_LOCAL=1 wdio run wdio.conf.js --suite e2e';
-//             break;
-//         case 'dev':
-//             command = 'npx cross-env USE_DEV=1 wdio run wdio.conf.js --suite e2e';
-//             break;
-//         case 'prd':
-//             command = 'npx cross-env USE_PROD=1 wdio run wdio.conf.js --suite e2e';
-//             break;
-//         default:
-//             return res.status(400).json({ message: 'Invalid environment' });
-//     }
-
-//     exec(command, { cwd: 'webdriverio_test_project', shell: true }, (error, stdout, stderr) => {
-//         if (error) {
-//             console.error(`Error executing tests: ${stderr || error.message}`);
-//             return res.status(500).json({ message: 'Error running tests', details: stderr || error.message });
-//         }
-//         console.log(`Test results: ${stdout}`);
-//         res.status(200).json({ message: 'Tests started successfully' });
-//     });
-// });
-
-
-app.post('/run-tests', (req, res) => {
- 
-  let command = `npx cross-env USE_LOCAL=1 wdio run wdio.conf.js --suite e2e`;
-  console.log(command)
+  const command = `npx cross-env USE_LOCAL=1 wdio run wdio.conf.js --suite e2e`;
   exec(command, { cwd: path.resolve(__dirname, '../webdriverio_test_project'), shell: true }, (error, stdout, stderr) => {
-      if (error) {
-          console.error(`Error executing tests: ${stderr || error.message}`);
-          return res.status(500).json({ message: 'Error running tests', details: stderr || error.message });
-      }
-      console.log(`Test results: ${stdout}`);
-      res.status(200).json({ message: 'Tests started successfully' });
+    if (error) {
+      console.error(`Error executing tests: ${stderr || error.message}`);
+      return res.status(500).json({ message: 'Error running tests', details: stderr || error.message });
+    }
+    console.log(`Test results: ${stdout}`);
+    res.status(200).json({ message: 'Tests started successfully' });
   });
 });
-
 
 
 //---------------------- Image upload endpoint

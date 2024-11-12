@@ -145,12 +145,18 @@ export default function NavTabs() {
     setOpenTestModal(false);
   };
 
+  const isLocalhost = window.location.hostname === 'localhost';
+
   const handleTest = () => {
-    axios.post(`${process.env.REACT_APP_API_URL}/run-tests`, {
-      headers: {
-        Authorization: `Bearer ${token}`
+    axios.post(
+      `${process.env.REACT_APP_API_URL}/run-tests`,
+      {}, 
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
       }
-    })
+    )
       .then(() => {
         setAlert({ severity: 'success', message: 'Testy zostały uruchomione.' });
         closeTestModal();
@@ -210,9 +216,11 @@ export default function NavTabs() {
       <div className="right-side-container">
         {token && (
           <>
-            <button className="test-button" onClick={openTestConfirmation} data-testid="test-button">
-              Test
-            </button>
+            {isLocalhost && (
+              <button className="test-button" onClick={openTestConfirmation} data-testid="test-button">
+                Test
+              </button>
+            )}
             <button className="reset-button" onClick={openResetConfirmation} data-testid="reset-button">
               Reset
             </button>
