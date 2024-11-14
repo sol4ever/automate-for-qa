@@ -320,8 +320,7 @@ app.post('/reset', authenticateToken, (req, res) => {
 });
 
 
-//--------------------- Test endpoint
-
+//--------------------- Test endpoints
 let isTestRunning = false;
 let testProcess = null;
 
@@ -367,7 +366,6 @@ app.post('/upload', (req, res) => {
   });
 });
 
-// Add this above or below your other routes in server.js
 app.get('/images/list', authenticateToken, (req, res) => {
   const type = req.query.type;
   const imagesDir = type === 'users' ? IMAGES_DIR_USERS : IMAGES_DIR_PRODUCTS;
