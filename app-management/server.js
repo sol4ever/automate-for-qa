@@ -321,22 +321,33 @@ app.post('/reset', authenticateToken, (req, res) => {
 
 
 //--------------------- Test endpoint
+
+let isTestRunning = false;
+let testProcess = null;
+
 app.post('/run-tests', authenticateToken, (req, res) => {
-  const environment = process.env.NODE_ENV || 'production'; // Default env 'production'
+  const environment = process.env.NODE_ENV || 'production';
   
   if (environment !== 'local') {
     return res.status(403).json({ message: 'Tests can only be run in the local environment.' });
   }
 
   const command = `npx cross-env USE_LOCAL=1 wdio run wdio.conf.js --suite e2e`;
-  exec(command, { cwd: path.resolve(__dirname, '../webdriverio_test_project'), shell: true }, (error, stdout, stderr) => {
+  isTestRunning = true; // Set running flag
+  testProcess = exec(command, { cwd: path.resolve(__dirname, '../webdriverio_test_project'), shell: true }, (error, stdout, stderr) => {
+    isTestRunning = false; // Reset running flag when tests complete
     if (error) {
       console.error(`Error executing tests: ${stderr || error.message}`);
       return res.status(500).json({ message: 'Error running tests', details: stderr || error.message });
     }
     console.log(`Test results: ${stdout}`);
-    res.status(200).json({ message: 'Tests started successfully' });
   });
+  
+  res.status(200).json({ message: 'Tests started successfully' });
+});
+
+app.get('/check-tests', authenticateToken, (req, res) => {
+  res.status(200).json({ isTestRunning });
 });
 
 

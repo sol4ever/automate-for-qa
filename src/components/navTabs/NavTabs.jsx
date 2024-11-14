@@ -38,6 +38,8 @@ export default function NavTabs() {
   const [alert, setAlert] = useState(null);
   const [openLoginModal, setOpenLoginModal] = useState(false);
   const [pendingRoute, setPendingRoute] = useState('');
+  const [testInProgress, setTestInProgress] = useState(false);
+
 
   const tabToPath = {
     0: '/home',
@@ -138,7 +140,7 @@ export default function NavTabs() {
   };
 
   const openTestConfirmation = () => {
-    setOpenTestModal(true); // Opens Test Confirmation Modal
+    setOpenTestModal(true); 
   };
 
   const closeTestModal = () => {
@@ -147,30 +149,49 @@ export default function NavTabs() {
 
   const isLocalhost = window.location.hostname === 'localhost';
 
+
   const handleTest = () => {
-    axios.post(
-      `${process.env.REACT_APP_API_URL}/run-tests`,
-      {}, 
-      {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
+    setTestInProgress(true);
+    setAlert({ severity: 'success', message: 'Testy zostały uruchomione.' });
+    setTimeout(() => {
+      setAlert({ severity: 'info', message: "Testy wykonują się. Nie wyłączaj localhost'a", persistent: true });
+    }, 3000);
+
+    axios.post(`${process.env.REACT_APP_API_URL}/run-tests`, {}, {
+      headers: {
+        Authorization: `Bearer ${token}`
       }
-    )
-      .then(() => {
-        setAlert({ severity: 'success', message: 'Testy zostały uruchomione.' });
-        closeTestModal();
-      })
-      .catch((error) => {
-        console.log(process.env.REACT_APP_API_URL);
-        setAlert({ severity: 'error', message: 'Wystąpił problem podczas uruchamiania testów.' });
-        closeTestModal();
-      });
+    }).then(() => {
+      closeTestModal();
+    }).catch(error => {
+      console.error("Error running tests:", error);
+      setAlert({ severity: 'error', message: 'Wystąpił problem podczas uruchamiania testów.' });
+      setTestInProgress(false);
+    });
   };
-  
 
   useEffect(() => {
-    if (alert) {
+    let intervalId;
+    if (testInProgress) {
+      intervalId = setInterval(() => {
+        axios.get(`${process.env.REACT_APP_API_URL}/check-tests`, {
+          headers: { Authorization: `Bearer ${token}` }
+        }).then(response => {
+          if (!response.data.isTestRunning) {
+            setTestInProgress(false);
+            setAlert({ severity: 'success', message: 'Testy zostały zakończone.', persistent: false });
+          }
+        }).catch(error => {
+          console.error("Error checking test status:", error);
+        });
+      }, 5000);
+    }
+
+    return () => clearInterval(intervalId);
+  }, [testInProgress]);
+
+  useEffect(() => {
+    if (alert && !alert.persistent) {
       const timer = setTimeout(() => {
         setAlert(null);
       }, 5000);
@@ -217,7 +238,12 @@ export default function NavTabs() {
         {token && (
           <>
             {isLocalhost && (
-              <button className="test-button" onClick={openTestConfirmation} data-testid="test-button">
+              <button
+                className={`test-button ${testInProgress ? 'test-button-disabled' : ''}`}
+                onClick={openTestConfirmation}
+                disabled={testInProgress}
+                data-testid="test-button"
+              >
                 Test
               </button>
             )}

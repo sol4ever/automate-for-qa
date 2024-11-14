@@ -10,11 +10,11 @@ const Notification = ({ alert }) => {
       sx={{
         width: 'fit-content',
         position: 'fixed',
-        top: '50px',  
+        top: '50px',
         left: '50%',
         transform: 'translateX(-50%)',
         zIndex: 9999,
-        overflow: 'visible',  
+        overflow: 'visible',
       }}
       spacing={2}
     >
@@ -24,8 +24,11 @@ const Notification = ({ alert }) => {
           fontSize: '1rem',
           padding: '10px 20px',
           borderRadius: '8px',
-          backgroundColor: alert.severity === 'success' ? '#185905' : '#F22F1D',
-          color: alert.severity === 'success' ? '#FFFFFF' : '#FFFFFF',
+          backgroundColor:
+            alert.severity === 'success' ? '#185905' :
+              alert.severity === 'info' ? '#F2811D' :
+                '#F22F1D',
+          color: '#FFFFFF',
         }}
       >
         {alert.message}

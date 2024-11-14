@@ -88,10 +88,17 @@ html {
   transition: background-color 0.3s;
 }
 
-.test-button:hover {
+.test-button:hover:not(.test-button-disabled) {
   background-color: #BF4C0A;
 }
 
 .spacer {
   width: calc(10px + 2rem); 
+}
+
+.test-button-disabled {
+  background-color: #EEE0D7;
+  color: #F2811D;
+  border: 1px solid #F2811D;
+  cursor: default;
 }
