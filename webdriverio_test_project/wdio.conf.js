@@ -75,7 +75,7 @@ export const config = {
             'test/specs/positiveNewProductTest_base.js',
         ],
         new: [
-            'test/specs/positiveLoginTest.js',
+            'test/specs/positiveNewUserTest_base.js',
         ]
     },
     exclude: [
@@ -214,7 +214,6 @@ export const config = {
         if (!browser.sessionId) {
             throw new Error("No valid session. Session ID is missing.");
         }
-        await browser.url(appBaseURL);
         // console.log(`Starting test: ${test.title}`); //Debug
     },
 

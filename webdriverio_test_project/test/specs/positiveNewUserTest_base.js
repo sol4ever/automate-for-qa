@@ -12,12 +12,17 @@ import UserList from '../pages/userList.js';
 
 describe('NewUser Form Positive Tests', () => {
 
-    it('should fill the form with positive values and submit successfully', async () => {
+    before(async () => {
         await Home.open();
-        const newUserName = testDataUser.userName.positive[1];
-
         await NavTabs.goToUsers();
         await LoginModal.login(loginInputs.validUsername, loginInputs.validPassword);
+    });
+
+
+    it('should fill the form with positive values and submit successfully', async () => {
+      
+        const newUserName = testDataUser.userName.positive[1];
+
         await UsersLanding.clickNavNew();
 
         await (await NewUser.inputUserName).setValue(newUserName); // 'JaneDoe AutoMate'

@@ -1,5 +1,5 @@
 import Page from './page.js';
-import { waitForElementDisplayed, waitToBeClickableAndClick } from '../utilities/helpers.waits.js';
+import { waitForElementDisplayed } from '../utilities/helpers.waits.js';
 
 class Home extends Page {
 
