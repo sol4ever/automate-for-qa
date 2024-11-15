@@ -1,8 +1,13 @@
 import LoginModal from '../pages/loginModal.js';
 import NavTabs from '../pages/navTabs.js';
 import { loginInputs } from '../resources/loginInputs.js';
+import Home from '../pages/Home.js'
 
 describe('Positive Login and Navigation Functionality', () => {
+
+    beforeEach(async () =>{
+        await Home.open();
+    })
 
     afterEach(async () => {
         expect(await NavTabs.resetButton).toBeDisplayed();

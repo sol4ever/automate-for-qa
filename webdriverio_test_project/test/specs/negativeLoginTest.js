@@ -11,7 +11,7 @@ describe('Negative Login Tests - Boundary and Invalid Inputs', () => {
      
     afterEach(async () => {
         expect(await NavTabs.resetButton).toBeDisplayed({ reverse: true})
-        await browser.execute(() => sessionStorage.clear());
+        // await browser.execute(() => sessionStorage.clear());
     });
 
     it('should show error for empty username and password, and reset button should not be visible', async () => {
@@ -59,16 +59,22 @@ describe('Negative Login Tests - Boundary and Invalid Inputs', () => {
 
 describe('Negative Login Tests - Boundary and Invalid Inputs with successful final login', () => {
 
-    it('should show error for username with 10 characters and password with 9 characters, and reset button should not be visible', async () => {
+    beforeEach(async () => {
         await LoginPage.open();
         await NavTabs.goToAnalytics();  
+    });
+     
+
+    it('should show error for username with 10 characters and password with 9 characters, and reset button should not be visible', async () => {
+        // await LoginPage.open();
+        // await NavTabs.goToAnalytics();  
         await LoginPage.login(loginInputs.validUsername, loginInputs.password9Char);
         await expect(LoginPage.loginError).toHaveText(expectedValue.loginValidationError);
         expect(await NavTabs.resetButton).toBeDisplayed({ reverse: true})
     });
 
     it('should login successfully after invalid attempts and check reset button', async () => {
-        await NavTabs.goToAnalytics();  
+        // await NavTabs.goToAnalytics();  
         await LoginPage.login(loginInputs.validUsername, loginInputs.validPassword);
         expect(await NavTabs.resetButton).toBeDisplayed()
         await expect(browser).toHaveUrl(expect.stringContaining('/analytics'));
