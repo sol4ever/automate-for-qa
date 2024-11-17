@@ -11,12 +11,12 @@ import ProductsList from '../pages/productsList.js';
 
 describe('NewProduct Form Tests', () => {
 
-    beforeEach(async () => {
-        // await Home.open();
-        await LoginModal.open();
-        await NavTabs.goToProducts();
-        await LoginModal.login(loginInputs.validUsername, loginInputs.validPassword);
-    });
+    // beforeEach(async () => {
+    //     // await Home.open();
+    //     await LoginModal.open();
+    //     await NavTabs.goToProducts();
+    //     await LoginModal.login(loginInputs.validUsername, loginInputs.validPassword);
+    // });
 
     afterEach(async () => {
         await browser.execute(() => sessionStorage.clear());
@@ -25,6 +25,9 @@ describe('NewProduct Form Tests', () => {
 
 
     it('should submit a smartphone product successfully', async () => {
+        await LoginModal.open();
+        await NavTabs.goToProducts();
+        await LoginModal.login(loginInputs.validUsername, loginInputs.validPassword);
         const productName = `${currentDateAndTime()} Smartfon`;
 
         await NavTabs.goToProducts();
@@ -42,6 +45,10 @@ describe('NewProduct Form Tests', () => {
     });
 
     it('should submit a feature phone product successfully', async () => {
+        await LoginModal.open();
+        await NavTabs.goToProducts();
+        await LoginModal.login(loginInputs.validUsername, loginInputs.validPassword);
+
         const productName = `${currentDateAndTime()} Feature Phone`;
 
         await NavTabs.goToProducts();
