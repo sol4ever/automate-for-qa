@@ -6,6 +6,7 @@
 /success_Screenshots_local
 /success_Screenshots_dev
 /success_Screenshots_prod
+/error_screenshots
 
 /.env
 
