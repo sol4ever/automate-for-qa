@@ -12,6 +12,11 @@ steps:
     versionSpec: '20.x'
   displayName: 'Install Node.js'
 
+- script: |
+    sudo apt-get update
+    sudo apt-get install -y google-chrome-stable
+  displayName: 'Install Google Chrome'
+
 # Install frontend dependencies, build, and serve in production mode
 - script: |
     npm install
@@ -48,14 +53,7 @@ steps:
     cd ./webdriverio_test_project
     npm install
     npm install chromedriver --latest
-    npx cross-env USE_LOCAL=1 wdio run wdio.conf.js --suite e2e
-    exitCode=$?
-    echo "Test exit code: $exitCode"
-    if [ $exitCode -ne 0 ]; then
-      echo "Tests failed."
-      exit 1
-    fi
-    ls
+    npx cross-env DEBUG=1 USE_LOCAL=1 wdio run wdio.conf.js --suite e2e
   displayName: 'Run WebdriverIO Tests'
 
 # Publish test results
