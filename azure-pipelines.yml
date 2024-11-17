@@ -112,5 +112,5 @@ steps:
 - task: PublishTestResults@2
   inputs:
     testResultsFormat: 'JUnit'
-    testResultsFiles: './webdriverio_test_project/**/*.xml'
+    testResultsFiles: '*.xml'
     condition: always()
