@@ -8,7 +8,6 @@ import Home from '../pages/home.js';
 import NavTabs from '../pages/navTabs';
 import { loginInputs } from '../resources/loginInputs';
 import ProductsList from '../pages/productsList.js';
-import LoginModal from '../pages/loginModal.js';
 
 describe('NewProduct Form Tests', () => {
 

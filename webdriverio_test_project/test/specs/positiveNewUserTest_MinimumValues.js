@@ -8,7 +8,6 @@ import Home from '../pages/home.js';
 import Notifications from '../pages/notifications.js';
 import urls from '../resources/urls.js'
 import UserList from '../pages/userList.js';
-import LoginModal from '../pages/loginModal.js';
 
 describe('NewUser Form Positive Tests - Minimum Values', () => {
 
