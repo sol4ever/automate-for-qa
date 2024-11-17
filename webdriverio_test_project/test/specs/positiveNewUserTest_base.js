@@ -12,8 +12,9 @@ import UserList from '../pages/userList.js';
 
 describe('NewUser Form Positive Tests', () => {
 
-    before(async () => {
-        await Home.open();
+    beforeEach(async () => {
+        // await Home.open();
+        await LoginPage.open();
         await NavTabs.goToUsers();
         await LoginModal.login(loginInputs.validUsername, loginInputs.validPassword);
     });

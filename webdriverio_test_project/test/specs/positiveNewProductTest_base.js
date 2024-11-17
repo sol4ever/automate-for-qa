@@ -11,8 +11,9 @@ import ProductsList from '../pages/productsList.js';
 
 describe('NewProduct Form Tests', () => {
 
-    before(async () => {
-        await Home.open();
+    beforeEach(async () => {
+        // await Home.open();
+        await LoginPage.open();
         await NavTabs.goToProducts();
         await LoginModal.login(loginInputs.validUsername, loginInputs.validPassword);
     });

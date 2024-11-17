@@ -6,7 +6,8 @@ import Home from '../pages/home.js';
 describe('Positive Login and Navigation Functionality', () => {
 
     beforeEach(async () =>{
-        await Home.open();
+        // await Home.open();
+        await LoginPage.open();
     })
 
     afterEach(async () => {

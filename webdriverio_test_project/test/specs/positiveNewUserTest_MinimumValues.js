@@ -12,7 +12,7 @@ import UserList from '../pages/userList.js';
 describe('NewUser Form Positive Tests - Minimum Values', () => {
 
     it('should fill the form with minimum positive values and submit successfully', async () => {
-        await Home.open();
+        await LoginPage.open();
 
         const newUserName = testDataUser.userName.positive[2]; // 'aaa' (minimum length)
 
