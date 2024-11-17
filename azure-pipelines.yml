@@ -83,6 +83,10 @@ steps:
     mkdir -p ./webdriverio_test_project/error_screenshots
   displayName: "Create Error Screenshots Directory"
 
+- script: |
+    echo "Listing all spec files explicitly:"
+    find ./webdriverio_test_project/test/specs/ -type f
+  displayName: "List All Spec Files (Explicit)"
 
 # Run WebdriverIO tests with debug logs
 - script: |
