@@ -115,6 +115,6 @@ steps:
 - task: PublishTestResults@2
   inputs:
     testResultsFormat: 'JUnit'
-    testResultsFiles: '**/results.xml'
+    testResultsFiles: '**/results-*.xml'
   condition: always()
   displayName: "Publish Test Results"
