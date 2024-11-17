@@ -100,32 +100,86 @@ const SESSION_EXPIRY_MS = 60 * 60 * 1000; // 1 hour
 
 
 // Authentication endpoint for login
+// app.post('/login', (req, res) => {
+//   const { username, password } = req.body;
+
+//   if (username.length >= 10 && username.length <= 20 && password.length >= 10 && password.length <= 20) {
+   
+//     const token = jwt.sign(
+//       {
+//         username,
+//         createdAt: Date.now()
+//       },
+//       JWT_SECRET,
+//       { expiresIn: '1h' } 
+//     );
+
+//     // Initialize clean session data for this token
+//     userSessions[token] = {
+//       products: [...initialProducts],
+//       users: [...initialUsers],
+//       createdAt: Date.now() // Timestamp for managing session expiry
+//     };
+
+//     res.json({ token });
+//   } else {
+//     res.status(400).json({ error: 'Nazwa użytkownika: min. 10, max. 20 znaków. Hasło: min. 10, max. 20 znaków.' });
+//   }
+// });
+
 app.post('/login', (req, res) => {
   const { username, password } = req.body;
 
+  // Use test credentials in CI pipeline
+  if (process.env.CI === 'true') {
+    const testUsername = process.env.TEST_USERNAME;
+    const testPassword = process.env.TEST_PASSWORD;
+
+    console.log(testUsername, ' This is testUsername')
+    console.log(testPassword, ' This is testPassword')
+
+    if (username === testUsername && password === testPassword) {
+      const token = jwt.sign(
+        { username, createdAt: Date.now() },
+        JWT_SECRET,
+        { expiresIn: '1h' }
+      );
+
+      // Initialize session for CI tests
+      userSessions[token] = {
+        products: [...initialProducts],
+        users: [...initialUsers],
+        createdAt: Date.now(),
+      };
+
+      return res.json({ token });
+    } else {
+      return res.status(401).json({ error: 'Invalid test credentials' });
+    }
+  }
+
+  // Regular authentication logic for local and production
   if (username.length >= 10 && username.length <= 20 && password.length >= 10 && password.length <= 20) {
-   
     const token = jwt.sign(
-      {
-        username,
-        createdAt: Date.now()
-      },
+      { username, createdAt: Date.now() },
       JWT_SECRET,
-      { expiresIn: '1h' } 
+      { expiresIn: '1h' }
     );
 
-    // Initialize clean session data for this token
     userSessions[token] = {
       products: [...initialProducts],
       users: [...initialUsers],
-      createdAt: Date.now() // Timestamp for managing session expiry
+      createdAt: Date.now(),
     };
 
-    res.json({ token });
+    return res.json({ token });
   } else {
-    res.status(400).json({ error: 'Nazwa użytkownika: min. 10, max. 20 znaków. Hasło: min. 10, max. 20 znaków.' });
+    return res.status(400).json({
+      error: 'Nazwa użytkownika: min. 10, max. 20 znaków. Hasło: min. 10, max. 20 znaków.',
+    });
   }
 });
+
 
 // Middleware to authenticate token and check for session expiry
 const authenticateToken = (req, res, next) => {

@@ -6,12 +6,19 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
+variables:
+  TEST_USERNAME: 'testuser' # Replace with your test username
+  TEST_PASSWORD: 'testpassword' # Replace with your test password
+  CI: 'true' # Indicate that this is a CI environment
+
 steps:
+# Install Node.js
 - task: NodeTool@0
   inputs:
     versionSpec: '20.x'
   displayName: 'Install Node.js'
 
+# Install Google Chrome
 - script: |
     sudo apt-get update
     sudo apt-get install -y google-chrome-stable
@@ -29,18 +36,19 @@ steps:
 - script: |
     cd ./app-management
     npm install
+    export NODE_ENV=local
     npm start &
   displayName: 'Start Backend'
 
-# Wait for both frontend and backend to start
+# Wait for backend to start
 - script: |
-    sleep 10
-  displayName: 'Wait for Servers to Start'
-
-# Check if frontend is accessible
-- script: |
-    curl http://localhost:3000
-  displayName: 'Check Frontend Availability'
+    echo "Waiting for backend to start..."
+    for i in {1..30}; do
+      curl --silent http://localhost:5000 && break
+      echo "Backend not ready yet, retrying..."
+      sleep 2
+    done
+  displayName: 'Wait for Backend to Start'
 
 # Ensure junit-results directory exists
 - script: |
@@ -53,7 +61,7 @@ steps:
     cd ./webdriverio_test_project
     npm install
     npm install chromedriver --latest
-    npx cross-env DEBUG=1 USE_LOCAL=1 wdio run wdio.conf.js --suite e2e
+    npx cross-env DEBUG=1 USE_LOCAL=1 TEST_USERNAME=$(TEST_USERNAME) TEST_PASSWORD=$(TEST_PASSWORD) wdio run wdio.conf.js --suite e2e
   displayName: 'Run WebdriverIO Tests'
 
 # Publish test results
