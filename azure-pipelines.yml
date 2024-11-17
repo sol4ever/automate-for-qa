@@ -58,7 +58,7 @@ steps:
 # check if dir exists 
 - script: |
     echo "Checking file paths:"
-    find ./webdriverio_test_project/pages -name "navTabs.js"
+    find ./webdriverio_test_project/test/pages -name "navTabs.js"
   displayName: "Debug File Paths"
 
 - script: |
