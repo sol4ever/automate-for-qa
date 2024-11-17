@@ -73,6 +73,11 @@ steps:
     find ./webdriverio_test_project/test/specs/
   displayName: "List Spec Files"
 
+- script: |
+    mkdir -p ./webdriverio_test_project/error_screenshots
+  displayName: "Create Error Screenshots Directory"
+
+
 # Run WebdriverIO tests with debug logs
 - script: |
     echo "Running WebdriverIO tests..."
@@ -88,3 +93,4 @@ steps:
   inputs:
     testResultsFormat: 'JUnit'
     testResultsFiles: './webdriverio_test_project/junit-results/*.xml'
+    condition: always()
