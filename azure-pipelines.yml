@@ -55,6 +55,12 @@ steps:
     mkdir -p ./webdriverio_test_project/junit-results
   displayName: 'Ensure junit-results Directory Exists'
 
+# Ensure screenshots directories exist
+- script: |
+    mkdir -p ./webdriverio_test_project/error_screenshots_local
+    mkdir -p ./webdriverio_test_project/success_screenshots_local
+  displayName: "Ensure Screenshots Directories"
+
 - script: |
     echo "Listing test results directory:"
     ls -la ./webdriverio_test_project/junit-results
@@ -122,3 +128,20 @@ steps:
     testResultsFiles: '**/results-*.xml'
   condition: always()
   displayName: "Publish Test Results"
+
+# Publish failed screenshots as an artifact
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: './webdriverio_test_project/error_screenshots_local'
+    ArtifactName: 'FailedScreenshots'
+    publishLocation: 'Container'
+  condition: always()
+
+# Publish successful screenshots as an artifact
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: './webdriverio_test_project/success_screenshots_local'
+    ArtifactName: 'SuccessfulScreenshots'
+    publishLocation: 'Container'
+  condition: always()
+
