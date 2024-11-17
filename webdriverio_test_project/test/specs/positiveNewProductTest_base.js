@@ -29,13 +29,13 @@ describe('NewProduct Form Tests', () => {
     it('should login', async () => {
         await LoginModal.open();
         await NavTabs.goToProducts();
-        console.log(await browser.getUrl(),'3')
+        console.log(await browser.getUrl(),'1')
         await LoginModal.login(loginInputs.validUsername, loginInputs.validPassword)
       
 
         await NavTabs.goToProducts();
         await browser.pause(5000)
-        console.log(await browser.getUrl(),'4')
+        console.log(await browser.getUrl(),'2')
         // await ProductsLanding.navigateToTab('new');
         // await browser.pause(5000)
     });
@@ -49,7 +49,9 @@ describe('NewProduct Form Tests', () => {
 
         // await NavTabs.goToProducts();
         // console.log(await browser.getUrl(),'4')
+        await browser.pause(5000)
         await ProductsLanding.navigateToTab('new');
+        console.log(await browser.getUrl(),'3')
         await browser.pause(5000)
     });
 
@@ -62,7 +64,7 @@ describe('NewProduct Form Tests', () => {
         // await LoginModal.login(loginInputs.validUsername, loginInputs.validPassword)
       
         const productName = `${currentDateAndTime()} Smartfon`;
-
+        await browser.pause(5000)
         // await NavTabs.goToProducts();
         console.log(await browser.getUrl(),'4')
         // await ProductsLanding.navigateToTab('new');

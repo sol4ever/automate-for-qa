@@ -74,15 +74,6 @@ steps:
   displayName: "Check File Paths"
 
 - script: |
-    echo "Listing all spec files:"
-    find ./webdriverio_test_project/test/specs/
-  displayName: "List Spec Files"
-
-- script: |
-    mkdir -p ./webdriverio_test_project/error_screenshots
-  displayName: "Create Error Screenshots Directory"
-
-- script: |
     echo "Listing all spec files explicitly:"
     find ./webdriverio_test_project/test/specs/ -type f
   displayName: "List All Spec Files (Explicit)"
