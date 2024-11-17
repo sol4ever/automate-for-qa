@@ -98,15 +98,18 @@ steps:
     echo "Listing test results directory:"
     ls -la ./webdriverio_test_project/junit-results
   displayName: "Debug Test Results Directory"
+  condition: always()
 
 - script: |
     echo "Testing file paths:"
     ls -la ./webdriverio_test_project/
   displayName: "Check File Paths"
+  condition: always()
 
 - script: |
     sleep 5
   displayName: "Wait Before Publishing Results"
+  condition: always()
 
 # Publish test results
 - task: PublishTestResults@2
