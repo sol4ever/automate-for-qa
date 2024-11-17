@@ -26,20 +26,35 @@ describe('NewProduct Form Tests', () => {
     //     await browser.execute(() => sessionStorage.clear());
     // });
 
-
-
     it('should submit a smartphone product successfully', async () => {
         await LoginModal.open();
         await NavTabs.goToProducts();
         console.log(await browser.getUrl(),'3')
         await LoginModal.login(loginInputs.validUsername, loginInputs.validPassword)
       
-        const productName = `${currentDateAndTime()} Smartfon`;
 
         await NavTabs.goToProducts();
         console.log(await browser.getUrl(),'4')
         await ProductsLanding.navigateToTab('new');
+        await browser.pause(5000)
+    });
+
+
+
+    it('should submit a smartphone product successfully', async () => {
+        // await LoginModal.open();
+        // await NavTabs.goToProducts();
+        // console.log(await browser.getUrl(),'3')
+        // await LoginModal.login(loginInputs.validUsername, loginInputs.validPassword)
+      
+        const productName = `${currentDateAndTime()} Smartfon`;
+
+        // await NavTabs.goToProducts();
+        console.log(await browser.getUrl(),'4')
+        // await ProductsLanding.navigateToTab('new');
+        await browser.pause(5000)
         console.log(await browser.getUrl(),'5')
+        await browser.pause(5000)
 
         await NewProduct.fillBasicInfo({
             name: productName,
