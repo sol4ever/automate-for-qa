@@ -55,6 +55,12 @@ steps:
     mkdir -p ./webdriverio_test_project/junit-results
   displayName: 'Ensure junit-results Directory Exists'
 
+- script: |
+    echo "Listing test results directory:"
+    ls -la ./webdriverio_test_project/junit-results
+  displayName: "Debug Test Results Directory"
+
+
 # check if dir exists 
 - script: |
     echo "Checking file paths:"
@@ -87,6 +93,16 @@ steps:
     ls
     npx cross-env DEBUG=1 USE_LOCAL=1 TEST_USERNAME=$(TEST_USERNAME) TEST_PASSWORD=$(TEST_PASSWORD) wdio run wdio.conf.js --suite e2e
   displayName: 'Run WebdriverIO Tests'
+
+- script: |
+    echo "Listing test results directory:"
+    ls -la ./webdriverio_test_project/junit-results
+  displayName: "Debug Test Results Directory"
+
+- script: |
+    echo "Testing file paths:"
+    ls -la ./webdriverio_test_project/
+  displayName: "Check File Paths"
 
 # Publish test results
 - task: PublishTestResults@2
