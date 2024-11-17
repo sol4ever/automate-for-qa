@@ -8,13 +8,13 @@ import Home from '../pages/home.js';
 import NavTabs from '../pages/navTabs';
 import { loginInputs } from '../resources/loginInputs';
 import ProductsList from '../pages/productsList.js';
-import LoginPage from '../pages/loginModal.js';
+import LoginModal from '../pages/loginModal.js';
 
 describe('NewProduct Form Tests', () => {
 
     beforeEach(async () => {
         // await Home.open();
-        await LoginPage.open();
+        await LoginModal.open();
         await NavTabs.goToProducts();
         await LoginModal.login(loginInputs.validUsername, loginInputs.validPassword);
     });

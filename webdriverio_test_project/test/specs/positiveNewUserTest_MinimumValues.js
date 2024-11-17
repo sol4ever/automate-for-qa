@@ -8,12 +8,12 @@ import Home from '../pages/home.js';
 import Notifications from '../pages/notifications.js';
 import urls from '../resources/urls.js'
 import UserList from '../pages/userList.js';
-import LoginPage from '../pages/loginModal.js';
+import LoginModal from '../pages/loginModal.js';
 
 describe('NewUser Form Positive Tests - Minimum Values', () => {
 
     it('should fill the form with minimum positive values and submit successfully', async () => {
-        await LoginPage.open();
+        await LoginModal.open();
 
         const newUserName = testDataUser.userName.positive[2]; // 'aaa' (minimum length)
 

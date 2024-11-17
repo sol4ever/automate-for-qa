@@ -8,14 +8,14 @@ import Home from '../pages/home.js';
 import Notifications from '../pages/notifications.js';
 import urls from '../resources/urls.js'
 import UserList from '../pages/userList.js';
-import LoginPage from '../pages/loginModal.js';
+import LoginModal from '../pages/loginModal.js';
 
 
 describe('NewUser Form Positive Tests', () => {
 
     beforeEach(async () => {
         // await Home.open();
-        await LoginPage.open();
+        await LoginModal.open();
         await NavTabs.goToUsers();
         await LoginModal.login(loginInputs.validUsername, loginInputs.validPassword);
     });

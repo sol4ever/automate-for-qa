@@ -2,13 +2,13 @@ import LoginModal from '../pages/loginModal.js';
 import NavTabs from '../pages/navTabs.js';
 import { loginInputs } from '../resources/loginInputs.js';
 import Home from '../pages/home.js';
-import LoginPage from '../pages/loginModal.js';
+import LoginModal from '../pages/loginModal.js';
 
 describe('Positive Login and Navigation Functionality', () => {
 
     beforeEach(async () =>{
         // await Home.open();
-        await LoginPage.open();
+        await LoginModal.open();
     })
 
     afterEach(async () => {
