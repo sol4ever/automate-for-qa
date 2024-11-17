@@ -77,6 +77,7 @@ export const config = {
         ],
         new: [
             'test/specs/positiveNewUserTest_API.js',
+
         ]
     },
     exclude: [
