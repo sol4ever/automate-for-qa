@@ -7,8 +7,8 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  TEST_USERNAME: 'testuser' # Replace with your test username
-  TEST_PASSWORD: 'testpassword' # Replace with your test password
+  TEST_USERNAME: 'kasiakasia' # Replace with your test username
+  TEST_PASSWORD: 'kasiakasia' # Replace with your test password
   CI: 'true' # Indicate that this is a CI environment
 
 steps:
@@ -56,7 +56,6 @@ steps:
   displayName: 'Ensure junit-results Directory Exists'
 
 # check if dir exists 
-
 - script: |
     echo "Checking file paths:"
     find ./webdriverio_test_project/pages -name "navTabs.js"
@@ -64,17 +63,15 @@ steps:
 
 - script: |
     echo "Testing file paths:"
-    ls -la ./webdriverio_test_project/pages/
-    ls -la ./webdriverio_test_project/utilities/
+    ls -la ./webdriverio_test_project/test/pages/
+    ls -la ./webdriverio_test_project/test/utilities/
+    ls -la ./webdriverio_test_project/test/specs/
   displayName: "Check File Paths"
 
 - script: |
     echo "Listing all spec files:"
     find ./webdriverio_test_project/test/specs/
   displayName: "List Spec Files"
-
-
-
 
 # Run WebdriverIO tests with debug logs
 - script: |
