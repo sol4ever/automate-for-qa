@@ -104,6 +104,10 @@ steps:
     ls -la ./webdriverio_test_project/
   displayName: "Check File Paths"
 
+- script: |
+    sleep 5
+  displayName: "Wait Before Publishing Results"
+
 # Publish test results
 - task: PublishTestResults@2
   inputs:
