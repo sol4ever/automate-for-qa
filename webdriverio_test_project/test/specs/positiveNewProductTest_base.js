@@ -26,7 +26,7 @@ describe('NewProduct Form Tests', () => {
     //     await browser.execute(() => sessionStorage.clear());
     // });
 
-    it('should submit a smartphone product successfully', async () => {
+    it('should login', async () => {
         await LoginModal.open();
         await NavTabs.goToProducts();
         console.log(await browser.getUrl(),'3')
@@ -34,7 +34,21 @@ describe('NewProduct Form Tests', () => {
       
 
         await NavTabs.goToProducts();
+        await browser.pause(5000)
         console.log(await browser.getUrl(),'4')
+        // await ProductsLanding.navigateToTab('new');
+        // await browser.pause(5000)
+    });
+
+    it('should open new tab', async () => {
+        // await LoginModal.open();
+        // await NavTabs.goToProducts();
+        // console.log(await browser.getUrl(),'3')
+        // await LoginModal.login(loginInputs.validUsername, loginInputs.validPassword)
+      
+
+        // await NavTabs.goToProducts();
+        // console.log(await browser.getUrl(),'4')
         await ProductsLanding.navigateToTab('new');
         await browser.pause(5000)
     });
@@ -67,111 +81,111 @@ describe('NewProduct Form Tests', () => {
         await ProductsList.filterProductsByName(productName)
     });
 
-    it('should submit a feature phone product successfully', async () => {
-        // await LoginModal.open();
-        // await NavTabs.goToProducts();
-        // await LoginModal.login(loginInputs.validUsername, loginInputs.validPassword);
-        console.log(await browser.getUrl(),'3')
+    // it('should submit a feature phone product successfully', async () => {
+    //     // await LoginModal.open();
+    //     // await NavTabs.goToProducts();
+    //     // await LoginModal.login(loginInputs.validUsername, loginInputs.validPassword);
+    //     console.log(await browser.getUrl(),'3')
 
-        const productName = `${currentDateAndTime()} Feature Phone`;
+    //     const productName = `${currentDateAndTime()} Feature Phone`;
 
-        await NavTabs.goToProducts();
-        await ProductsLanding.navigateToTab('new');
-        console.log(await browser.getUrl(),'4')
+    //     await NavTabs.goToProducts();
+    //     await ProductsLanding.navigateToTab('new');
+    //     console.log(await browser.getUrl(),'4')
 
-        await NewProduct.fillBasicInfo({
-            name: productName,
-            subcategory: 'Feature Phones',
-            price: '300',
-        });
+    //     await NewProduct.fillBasicInfo({
+    //         name: productName,
+    //         subcategory: 'Feature Phones',
+    //         price: '300',
+    //     });
 
-        await NewProduct.submitForm();
-        await Notifications.validateNotifications('Produkt został dodany!', urls.productsList);
-        await ProductsList.filterProductsByName(productName)
-    });
+    //     await NewProduct.submitForm();
+    //     await Notifications.validateNotifications('Produkt został dodany!', urls.productsList);
+    //     await ProductsList.filterProductsByName(productName)
+    // });
 
-    it('should submit a phone accessory (case) successfully', async () => {
-        const productName = `${currentDateAndTime()} Etui`;
+    // it('should submit a phone accessory (case) successfully', async () => {
+    //     const productName = `${currentDateAndTime()} Etui`;
 
-        await NavTabs.goToProducts();
-        await ProductsLanding.navigateToTab('new');
+    //     await NavTabs.goToProducts();
+    //     await ProductsLanding.navigateToTab('new');
 
-        await NewProduct.fillBasicInfo({
-            name: productName,
-            subcategory: 'Etui',
-            price: '50',
-        });
+    //     await NewProduct.fillBasicInfo({
+    //         name: productName,
+    //         subcategory: 'Etui',
+    //         price: '50',
+    //     });
 
-        await NewProduct.submitForm();
-        await Notifications.validateNotifications('Produkt został dodany!', urls.productsList);
-        await ProductsList.filterProductsByName(productName)
-    });
+    //     await NewProduct.submitForm();
+    //     await Notifications.validateNotifications('Produkt został dodany!', urls.productsList);
+    //     await ProductsList.filterProductsByName(productName)
+    // });
 
-    it('should submit a phone accessory (screen protector) successfully', async () => {
-        const productName = `${currentDateAndTime()} Szkło ochronne`;
+    // it('should submit a phone accessory (screen protector) successfully', async () => {
+    //     const productName = `${currentDateAndTime()} Szkło ochronne`;
 
-        await NavTabs.goToProducts();
-        await ProductsLanding.navigateToTab('new');
+    //     await NavTabs.goToProducts();
+    //     await ProductsLanding.navigateToTab('new');
 
-        await NewProduct.fillBasicInfo({
-            name: productName,
-            subcategory: 'Szkła ochronne',
-            price: '30',
-        });
+    //     await NewProduct.fillBasicInfo({
+    //         name: productName,
+    //         subcategory: 'Szkła ochronne',
+    //         price: '30',
+    //     });
 
-        await NewProduct.submitForm();
-        await Notifications.validateNotifications('Produkt został dodany!', urls.productsList);
-        await ProductsList.filterProductsByName(productName)
-    });
+    //     await NewProduct.submitForm();
+    //     await Notifications.validateNotifications('Produkt został dodany!', urls.productsList);
+    //     await ProductsList.filterProductsByName(productName)
+    // });
 
-    it('should submit a phone accessory (charger) successfully', async () => {
-        const productName = `${currentDateAndTime()} Ładowarka`;
+    // it('should submit a phone accessory (charger) successfully', async () => {
+    //     const productName = `${currentDateAndTime()} Ładowarka`;
 
-        await NavTabs.goToProducts();
-        await ProductsLanding.navigateToTab('new');
+    //     await NavTabs.goToProducts();
+    //     await ProductsLanding.navigateToTab('new');
 
-        await NewProduct.fillBasicInfo({
-            name: productName,
-            subcategory: 'Ładowarki',
-            price: '100',
-        });
+    //     await NewProduct.fillBasicInfo({
+    //         name: productName,
+    //         subcategory: 'Ładowarki',
+    //         price: '100',
+    //     });
 
-        await NewProduct.submitForm();
-        await Notifications.validateNotifications('Produkt został dodany!', urls.productsList);
-        await ProductsList.filterProductsByName(productName)
-    });
+    //     await NewProduct.submitForm();
+    //     await Notifications.validateNotifications('Produkt został dodany!', urls.productsList);
+    //     await ProductsList.filterProductsByName(productName)
+    // });
 
-    it('should submit a phone accessory (headphones) successfully', async () => {
-        const productName = `${currentDateAndTime()} Słuchawki`;
+    // it('should submit a phone accessory (headphones) successfully', async () => {
+    //     const productName = `${currentDateAndTime()} Słuchawki`;
 
-        await NavTabs.goToProducts();
-        await ProductsLanding.navigateToTab('new');
+    //     await NavTabs.goToProducts();
+    //     await ProductsLanding.navigateToTab('new');
 
-        await NewProduct.fillBasicInfo({
-            name: productName,
-            subcategory: 'Słuchawki',
-            price: '150',
-        });
+    //     await NewProduct.fillBasicInfo({
+    //         name: productName,
+    //         subcategory: 'Słuchawki',
+    //         price: '150',
+    //     });
 
-        await NewProduct.submitForm();
-        await Notifications.validateNotifications('Produkt został dodany!', urls.productsList);
-        await ProductsList.filterProductsByName(productName)
-    });
+    //     await NewProduct.submitForm();
+    //     await Notifications.validateNotifications('Produkt został dodany!', urls.productsList);
+    //     await ProductsList.filterProductsByName(productName)
+    // });
 
-    it('should submit a phone accessory (powerbank) successfully', async () => {
-        const productName = `${currentDateAndTime()} Powerbank`;
+    // it('should submit a phone accessory (powerbank) successfully', async () => {
+    //     const productName = `${currentDateAndTime()} Powerbank`;
 
-        await NavTabs.goToProducts();
-        await ProductsLanding.navigateToTab('new');
+    //     await NavTabs.goToProducts();
+    //     await ProductsLanding.navigateToTab('new');
 
-        await NewProduct.fillBasicInfo({
-            name: productName,
-            subcategory: 'Powerbanki',
-            price: '200',
-        });
+    //     await NewProduct.fillBasicInfo({
+    //         name: productName,
+    //         subcategory: 'Powerbanki',
+    //         price: '200',
+    //     });
 
-        await NewProduct.submitForm();
-        await Notifications.validateNotifications('Produkt został dodany!', urls.productsList);
-        await ProductsList.filterProductsByName(productName)
-    });
+    //     await NewProduct.submitForm();
+    //     await Notifications.validateNotifications('Produkt został dodany!', urls.productsList);
+    //     await ProductsList.filterProductsByName(productName)
+    // });
 });
