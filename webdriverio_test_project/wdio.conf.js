@@ -105,7 +105,7 @@ export const config = {
     // ===================
 
     // Level of logging verbosity: trace | debug | info | warn | error | silent
-    logLevel: 'error',
+    logLevel: 'debug',
     bail: 0,
     baseUrl: appBaseURL,
 
