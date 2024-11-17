@@ -57,21 +57,14 @@ steps:
 
 # Ensure screenshots directories exist
 - script: |
-    mkdir -p ./webdriverio_test_project/error_screenshots_local
-    mkdir -p ./webdriverio_test_project/success_screenshots_local
+    mkdir -p ./webdriverio_test_project/error_Screenshots_local
+    mkdir -p ./webdriverio_test_project/success_Screenshots_local
   displayName: "Ensure Screenshots Directories"
 
 - script: |
     echo "Listing test results directory:"
     ls -la ./webdriverio_test_project/junit-results
   displayName: "Debug Test Results Directory"
-
-
-# check if dir exists 
-- script: |
-    echo "Checking file paths:"
-    find ./webdriverio_test_project/test/pages -name "navTabs.js"
-  displayName: "Debug File Paths"
 
 - script: |
     echo "Testing file paths:"
@@ -105,6 +98,13 @@ steps:
   displayName: 'Run WebdriverIO Tests'
 
 - script: |
+    echo "Testing file paths:"
+    ls -la ./webdriverio_test_project/error_Screenshots_local/
+    ls -la ./webdriverio_test_project/success_Screenshots_local/
+  displayName: "Check File Paths screenshot files"
+  condition: always()
+
+- script: |
     echo "Listing test results directory:"
     ls -la ./webdriverio_test_project/junit-results
   displayName: "Debug Test Results Directory"
@@ -132,7 +132,7 @@ steps:
 # Publish failed screenshots as an artifact
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: './webdriverio_test_project/error_screenshots_local'
+    PathtoPublish: './webdriverio_test_project/error_Screenshots_local'
     ArtifactName: 'FailedScreenshots'
     publishLocation: 'Container'
   condition: always()
@@ -140,7 +140,7 @@ steps:
 # Publish successful screenshots as an artifact
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: './webdriverio_test_project/success_screenshots_local'
+    PathtoPublish: './webdriverio_test_project/success_Screenshots_local'
     ArtifactName: 'SuccessfulScreenshots'
     publishLocation: 'Container'
   condition: always()
