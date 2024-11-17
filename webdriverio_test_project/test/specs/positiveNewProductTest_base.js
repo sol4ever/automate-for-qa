@@ -18,6 +18,11 @@ describe('NewProduct Form Tests', () => {
         await LoginModal.login(loginInputs.validUsername, loginInputs.validPassword);
     });
 
+    afterEach(async () => {
+        await browser.execute(() => sessionStorage.clear());
+    });
+
+
 
     it('should submit a smartphone product successfully', async () => {
         const productName = `${currentDateAndTime()} Smartfon`;
