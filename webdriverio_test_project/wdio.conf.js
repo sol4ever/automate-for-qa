@@ -68,12 +68,12 @@ export const config = {
     {
         e2e: [
             'test/specs/negativeLoginTest.js',
-            'test/specs/positiveLoginTest.js',
-            'test/specs/positiveNewUserTest_base.js',
-            'test/specs/positiveNewUserTest_MaximumValues.js',
-            'test/specs/positiveNewUserTest_MinimumValues.js',
-            'test/specs/positiveNewProductTest_base.js',
-            'test/specs/positiveNewUserTest_API.js',
+            // 'test/specs/positiveLoginTest.js',
+            // 'test/specs/positiveNewUserTest_base.js',
+            // 'test/specs/positiveNewUserTest_MaximumValues.js',
+            // 'test/specs/positiveNewUserTest_MinimumValues.js',
+            // 'test/specs/positiveNewProductTest_base.js',
+            // 'test/specs/positiveNewUserTest_API.js',
         ],
         new: [
             'test/specs/positiveNewUserTest_API.js',

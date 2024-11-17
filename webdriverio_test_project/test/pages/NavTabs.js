@@ -14,6 +14,9 @@ class NavTabs extends Page {
 
     async goToAnalytics() {
         await waitToBeClickableAndClick(await this.analyticsTab);
+        if (!await this.analyticsTab.isClickable()) {
+            await browser.saveScreenshot('./error_screenshots/element-not-clickable.png');
+        }
     }
 
     async goToUsers() {

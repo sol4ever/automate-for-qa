@@ -55,12 +55,34 @@ steps:
     mkdir -p ./webdriverio_test_project/junit-results
   displayName: 'Ensure junit-results Directory Exists'
 
+# check if dir exists 
+
+- script: |
+    echo "Checking file paths:"
+    find ./webdriverio_test_project/pages -name "navTabs.js"
+  displayName: "Debug File Paths"
+
+- script: |
+    echo "Testing file paths:"
+    ls -la ./webdriverio_test_project/pages/
+    ls -la ./webdriverio_test_project/utilities/
+  displayName: "Check File Paths"
+
+- script: |
+    echo "Listing all spec files:"
+    find ./webdriverio_test_project/test/specs/
+  displayName: "List Spec Files"
+
+
+
+
 # Run WebdriverIO tests with debug logs
 - script: |
     echo "Running WebdriverIO tests..."
     cd ./webdriverio_test_project
     npm install
     npm install chromedriver --latest
+    npm ls
     npx cross-env DEBUG=1 USE_LOCAL=1 TEST_USERNAME=$(TEST_USERNAME) TEST_PASSWORD=$(TEST_PASSWORD) wdio run wdio.conf.js --suite e2e
   displayName: 'Run WebdriverIO Tests'
 
