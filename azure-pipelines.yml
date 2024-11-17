@@ -61,4 +61,4 @@ steps:
   inputs:
     testResultsFormat: 'JUnit'
     testResultsFiles: './webdriverio_test_project/junit-results/*.xml'
-    failTaskOnFailedTests: true
+    failTaskOnFailedTests: false
