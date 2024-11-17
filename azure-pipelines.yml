@@ -47,6 +47,7 @@ steps:
     echo "Running WebdriverIO tests..."
     cd ./webdriverio_test_project
     npm install
+    npm install chromdriver --latest
     npx cross-env USE_LOCAL=1 wdio run wdio.conf.js --suite e2e
     exitCode=$?
     echo "Test exit code: $exitCode"
