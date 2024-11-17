@@ -18,20 +18,28 @@ describe('NewProduct Form Tests', () => {
     //     await LoginModal.login(loginInputs.validUsername, loginInputs.validPassword);
     // });
 
-    afterEach(async () => {
-        await browser.execute(() => sessionStorage.clear());
-    });
+    // beforeEach(async () => {
+    //     await browser.execute(() => sessionStorage.clear());
+    // });
+
+    // afterEach(async () => {
+    //     await browser.execute(() => sessionStorage.clear());
+    // });
 
 
 
     it('should submit a smartphone product successfully', async () => {
         await LoginModal.open();
         await NavTabs.goToProducts();
-        await LoginModal.login(loginInputs.validUsername, loginInputs.validPassword);
+        console.log(await browser.getUrl(),'3')
+        await LoginModal.login(loginInputs.validUsername, loginInputs.validPassword)
+      
         const productName = `${currentDateAndTime()} Smartfon`;
 
         await NavTabs.goToProducts();
+        console.log(await browser.getUrl(),'4')
         await ProductsLanding.navigateToTab('new');
+        console.log(await browser.getUrl(),'5')
 
         await NewProduct.fillBasicInfo({
             name: productName,
@@ -45,14 +53,16 @@ describe('NewProduct Form Tests', () => {
     });
 
     it('should submit a feature phone product successfully', async () => {
-        await LoginModal.open();
-        await NavTabs.goToProducts();
-        await LoginModal.login(loginInputs.validUsername, loginInputs.validPassword);
+        // await LoginModal.open();
+        // await NavTabs.goToProducts();
+        // await LoginModal.login(loginInputs.validUsername, loginInputs.validPassword);
+        console.log(await browser.getUrl(),'3')
 
         const productName = `${currentDateAndTime()} Feature Phone`;
 
         await NavTabs.goToProducts();
         await ProductsLanding.navigateToTab('new');
+        console.log(await browser.getUrl(),'4')
 
         await NewProduct.fillBasicInfo({
             name: productName,
