@@ -116,4 +116,5 @@ steps:
   inputs:
     testResultsFormat: 'JUnit'
     testResultsFiles: '**/results.xml'
-    condition: always()
+  condition: always()
+  displayName: "Publish Test Results"
