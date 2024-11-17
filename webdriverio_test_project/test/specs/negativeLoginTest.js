@@ -1,5 +1,5 @@
 import LoginPage from '../pages/loginModal.js';
-import NavTabs from '../pages/navTabs.js'
+import NavTabs from '../pages/zavTabs.js'
 import { loginInputs } from '../resources/loginInputs.js';
 import expectedValue from '../resources/expected.js'
 
