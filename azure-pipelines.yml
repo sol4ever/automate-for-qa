@@ -84,6 +84,7 @@ steps:
     cd ./webdriverio_test_project
     npm install
     npm install chromedriver --latest
+    ls
     npx cross-env DEBUG=1 USE_LOCAL=1 TEST_USERNAME=$(TEST_USERNAME) TEST_PASSWORD=$(TEST_PASSWORD) wdio run wdio.conf.js --suite e2e
   displayName: 'Run WebdriverIO Tests'
 
