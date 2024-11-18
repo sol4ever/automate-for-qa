@@ -93,17 +93,32 @@ export const config = {
         maxInstances: 1,
         browserName: 'chrome',
         'goog:chromeOptions': {
-        //    args: ["--start-maximized", "--force-device-scale-factor=0.8", "--disable-gpu"]
-             args: ['--headless',
-                 '--disable-gpu',
-                 '--no-sandbox', 
-                 '--disable-dev-shm-usage', 
-                 '--window-size=1920,1080',
-                 '--enable-logging',
-                 '--v=1',]
+            //    args: ["--start-maximized", "--force-device-scale-factor=0.8", "--disable-gpu"]
+            args: ['--headless',
+                '--disable-gpu',
+                '--no-sandbox',
+                '--disable-dev-shm-usage',
+                '--window-size=1920,1080',
+                '--enable-logging',
+                '--v=1',]
         },
         acceptInsecureCerts: true
-    }],
+    },
+    {
+        maxInstances: 1,
+        browserName: 'firefox',
+        'moz:firefoxOptions': {
+            args: ['--headless',
+                '--disable-gpu',
+                '--no-sandbox',
+                '--disable-dev-shm-usage',
+                '--window-size=1920,1080',
+                '--enable-logging',
+                '--v=1',]
+        },
+        acceptInsecureCerts: true,
+    },
+    ],
 
 
     // ===================
@@ -124,7 +139,8 @@ export const config = {
 
     // Default request retries count
     connectionRetryCount: 3,
-    services: ['chromedriver'],
+    // services: ['chromedriver'],
+    services: ['geckodriver'],
     // services: [],
     framework: 'mocha',
 
@@ -135,7 +151,7 @@ export const config = {
     // specFileRetriesDelay: 0,
     // Whether or not retried spec files should be retried immediately or deferred to the end of the queue
     // specFileRetriesDeferred: false,
-    
+
     reporters: [
         ['spec',
             {
@@ -151,7 +167,7 @@ export const config = {
         ['junit', {
             outputDir: 'junit-results',
             suiteNameFormat: /[^a-zA-Z0-9@]+/,
-            outputFileFormat: function (options) { 
+            outputFileFormat: function (options) {
                 return `results-${options.cid}.xml`
             },
 
@@ -196,7 +212,7 @@ export const config = {
         if (error) {
             const failedFilePath = path.join(failedScreenshotDir, fileName);
             console.log(`Test failed: ${test.title}`);
-                    console.log(`Error: ${error}`);
+            console.log(`Error: ${error}`);
             try {
                 await browser.saveScreenshot(failedFilePath);
             } catch (e) {

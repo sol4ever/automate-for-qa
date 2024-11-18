@@ -18,6 +18,11 @@ steps:
     versionSpec: '20.x'
   displayName: 'Install Node.js'
 
+# Install Google Firefox
+- script: |
+    sudo apt-get install -y firefox
+  displayName: 'Install Firefox'
+
 # Install Google Chrome
 - script: |
     sudo apt-get update
@@ -84,6 +89,10 @@ steps:
     cd ./webdriverio_test_project
     npm install
     npm install chromedriver --latest
+    sudo apt-get install -y wget
+    wget https://github.com/mozilla/geckodriver/releases/latest/download/geckodriver-v0.33.0-linux64.tar.gz
+    tar -xvzf geckodriver-v0.33.0-linux64.tar.gz
+    sudo mv geckodriver /usr/local/bin/
     ls
     npx cross-env DEBUG=1 USE_LOCAL=1 DEBUG=1 TEST_USERNAME=$(TEST_USERNAME) TEST_PASSWORD=$(TEST_PASSWORD) wdio run wdio.conf.js --suite e2e
   displayName: 'Run WebdriverIO Tests'
