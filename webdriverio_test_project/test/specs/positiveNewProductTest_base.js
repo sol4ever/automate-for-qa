@@ -108,6 +108,62 @@ describe('NewProduct Form Tests', () => {
         // Validate the result
         await Notifications.validateNotifications('Produkt został dodany!', urls.productsList);
     });
+
+    it('should submit a smartphone product successfully', async () => {
+        console.log('Initial URL:', await browser.getUrl());
+        
+        // Log browser console errors
+        const browserLogs = await browser.getLogs('browser');
+        console.log('Browser logs:', browserLogs);
+    
+        // Log network requests
+        const networkLogs = await browser.execute(() =>
+            performance.getEntriesByType('resource')
+        );
+        console.log('Network logs:', networkLogs);
+    
+        // Wait for the page to load and log DOM state
+        await browser.waitUntil(
+            async () => (await $('[data-testid="input-name"]').isDisplayed()),
+            { timeout: 30000, timeoutMsg: 'Input field not displayed' }
+        );
+    
+        const pageSource = await browser.getPageSource();
+        console.log('Page Source:', pageSource);
+    
+        const productName = `${currentDateAndTime()} Smartfon`;
+        await $('[data-testid="input-name"]').setValue(productName);
+        await $('[data-testid="submit-button"]').click();
+    
+        await Notifications.validateNotifications(
+            'Produkt został dodany!',
+            urls.productsList
+        );
+    });
+
+    
+    it('should open product list', async () => {
+        await browser.pause(5000)
+        await browser.url('http://localhost:3000/products-landing/list');
+        console.log(await browser.getUrl(),'list')
+   
+    });
+
+    it('should open product list deleted', async () => {
+        await browser.pause(5000)
+        await browser.url('http://localhost:3000/products-landing/deleted');
+        console.log(await browser.getUrl(),'list deleted')
+   
+    });
+
+    it('should open product new', async () => {
+        await browser.pause(5000)
+        await browser.url('http://localhost:3000/products-landing/new');
+        console.log(await browser.getUrl(),'new')
+   
+    });
+    
+    
     
 
     // it('should submit a feature phone product successfully', async () => {
