@@ -30,6 +30,12 @@ class NewProduct extends Page {
     }
 
     async fillBasicInfo({ name, subcategory, price }) {
+
+        await browser.waitUntil(async () => (await $(this.nameInput).isDisplayed()), {
+            timeout: 10000,
+            timeoutMsg: 'Element not displayed within 10 seconds',
+          });
+
         await this.nameInput.setValue(name);
 
         // Set category based on the subcategory type

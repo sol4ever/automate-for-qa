@@ -59,6 +59,14 @@ describe('NewProduct Form Tests', () => {
 
 
     it('should submit a smartphone product successfully', async () => {
+
+        const networkLogs = await browser.execute(() =>
+            performance.getEntriesByType('resource')
+          );
+          console.log(networkLogs, ' Network logs');
+          console.log(await browser.getPageSource());
+
+
         // await LoginModal.open();
         // await NavTabs.goToProducts();
         // console.log(await browser.getUrl(),'3')
@@ -83,6 +91,24 @@ describe('NewProduct Form Tests', () => {
         await Notifications.validateNotifications('Produkt został dodany!', urls.productsList);
         await ProductsList.filterProductsByName(productName)
     });
+
+
+    it('should submit a smartphone product successfully', async () => {
+        await browser.url('http://localhost:3000/products-landing/new');
+    
+        await browser.waitUntil(
+          async () => (await $('[data-testid="input-name"]').isDisplayed()),
+          { timeout: 10000, timeoutMsg: 'Input field not displayed' }
+        );
+    
+        const productName = `${currentDateAndTime()} Smartfon`;
+        await $('[data-testid="input-name"]').setValue(productName);
+        await $('[data-testid="submit-button"]').click();
+    
+        // Validate the result
+        await Notifications.validateNotifications('Produkt został dodany!', urls.productsList);
+    });
+    
 
     // it('should submit a feature phone product successfully', async () => {
     //     // await LoginModal.open();
