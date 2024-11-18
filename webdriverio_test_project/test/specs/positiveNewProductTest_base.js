@@ -25,9 +25,9 @@ describe('NewProduct Form Tests', () => {
 
 
     it('should submit a smartphone product successfully', async () => {
-        await LoginModal.open();
-        await NavTabs.goToProducts();
-        await LoginModal.login(loginInputs.validUsername, loginInputs.validPassword);
+        // await LoginModal.open();
+        // await NavTabs.goToProducts();
+        // await LoginModal.login(loginInputs.validUsername, loginInputs.validPassword);
         const productName = `${currentDateAndTime()} Smartfon`;
 
         await NavTabs.goToProducts();
