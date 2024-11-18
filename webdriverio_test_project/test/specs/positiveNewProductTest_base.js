@@ -51,6 +51,7 @@ describe('NewProduct Form Tests', () => {
         // console.log(await browser.getUrl(),'4')
         await browser.pause(5000)
         await ProductsLanding.navigateToTab('new');
+        await browser.refresh();
         console.log(await browser.getUrl(),'3')
         await browser.pause(5000)
     });
@@ -62,7 +63,7 @@ describe('NewProduct Form Tests', () => {
         // await NavTabs.goToProducts();
         // console.log(await browser.getUrl(),'3')
         // await LoginModal.login(loginInputs.validUsername, loginInputs.validPassword)
-      
+        await browser.refresh();
         const productName = `${currentDateAndTime()} Smartfon`;
         await browser.pause(5000)
         // await NavTabs.goToProducts();

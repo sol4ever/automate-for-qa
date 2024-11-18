@@ -93,7 +93,7 @@ export const config = {
         maxInstances: 1,
         browserName: 'chrome',
         'goog:chromeOptions': {
-           // args: ["--start-maximized", "--force-device-scale-factor=0.8", "--disable-gpu"]
+        //    args: ["--start-maximized", "--force-device-scale-factor=0.8", "--disable-gpu"]
              args: ['--headless', '--disable-gpu', '--no-sandbox', '--disable-dev-shm-usage', '--window-size=1920,1080']
         },
         acceptInsecureCerts: true
