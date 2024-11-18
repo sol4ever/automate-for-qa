@@ -29,7 +29,7 @@ steps:
     npm install
     npm run build
     npm install -g serve
-    serve -s build &
+    serve -s build &> serve.log &
   displayName: 'Build and Serve Frontend'
 
 # Install backend dependencies and start backend
