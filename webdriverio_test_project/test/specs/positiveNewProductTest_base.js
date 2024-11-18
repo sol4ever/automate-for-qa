@@ -28,10 +28,21 @@ describe('NewProduct Form Tests', () => {
         // await LoginModal.open();
         // await NavTabs.goToProducts();
         // await LoginModal.login(loginInputs.validUsername, loginInputs.validPassword);
+
+
         const productName = `${currentDateAndTime()} Smartfon`;
 
         await NavTabs.goToProducts();
         await ProductsLanding.navigateToTab('new');
+
+        const browserLogs = await browser.getLogs('browser');
+        console.log('Browser logs:', browserLogs);
+
+        const pageSource = await browser.getPageSource();
+        console.log('Page Source:', pageSource);
+
+        const networkLogs = await browser.execute(() => performance.getEntriesByType('resource'));
+        console.log('Network logs:', networkLogs);
 
         await NewProduct.fillBasicInfo({
             name: productName,
