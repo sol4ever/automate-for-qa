@@ -94,31 +94,38 @@ export const config = {
         browserName: 'chrome',
         'goog:chromeOptions': {
             //    args: ["--start-maximized", "--force-device-scale-factor=0.8", "--disable-gpu"]
-            args: ['--headless',
-                '--disable-gpu',
-                '--no-sandbox',
-                '--disable-dev-shm-usage',
-                '--window-size=1920,1080',
-                '--enable-logging',
-                '--v=1',]
+            // args: ['--headless',
+            //     '--disable-gpu',
+            //     '--no-sandbox',
+            //     '--disable-dev-shm-usage',
+            //     '--window-size=1920,1080',
+            //     '--enable-logging',
+            //     '--v=1',]
+                args: [
+                    '--disable-gpu',
+                    '--no-sandbox',
+                    '--disable-dev-shm-usage',
+                    '--window-size=1920,1080',
+                    '--enable-logging',
+                    '--v=1',]
         },
         acceptInsecureCerts: true
-    },
-    {
-        maxInstances: 1,
-        browserName: 'firefox',
-        'moz:firefoxOptions': {
-            args: ['--headless',
-                '--disable-gpu',
-                '--no-sandbox',
-                '--disable-dev-shm-usage',
-                '--window-size=1920,1080',
-                '--enable-logging',
-                '--v=1',]
-        },
-        acceptInsecureCerts: true,
-    },
-    ],
+    }],
+    // {
+    //     maxInstances: 1,
+    //     browserName: 'firefox',
+    //     'moz:firefoxOptions': {
+    //         args: ['--headless',
+    //             '--disable-gpu',
+    //             '--no-sandbox',
+    //             '--disable-dev-shm-usage',
+    //             '--window-size=1920,1080',
+    //             '--enable-logging',
+    //             '--v=1',]
+    //     },
+    //     acceptInsecureCerts: true,
+    // },
+    // ],
 
 
     // ===================
@@ -139,9 +146,9 @@ export const config = {
 
     // Default request retries count
     connectionRetryCount: 3,
-    // services: ['chromedriver'],
-    services: ['geckodriver'],
-    // services: [],
+    services: ['chromedriver'],
+    // services: ['geckodriver'],
+
     framework: 'mocha',
 
 
