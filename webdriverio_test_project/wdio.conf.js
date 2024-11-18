@@ -67,13 +67,13 @@ export const config = {
     suites:
     {
         e2e: [
-            // 'test/specs/negativeLoginTest.js',
-            // 'test/specs/positiveLoginTest.js',
-            // 'test/specs/positiveNewUserTest_base.js',
-            // 'test/specs/positiveNewUserTest_MaximumValues.js',
-            // 'test/specs/positiveNewUserTest_MinimumValues.js',
+            'test/specs/negativeLoginTest.js',
+            'test/specs/positiveLoginTest.js',
+            'test/specs/positiveNewUserTest_base.js',
+            'test/specs/positiveNewUserTest_MaximumValues.js',
+            'test/specs/positiveNewUserTest_MinimumValues.js',
             'test/specs/positiveNewProductTest_base.js',
-            // 'test/specs/positiveNewUserTest_API.js',
+            'test/specs/positiveNewUserTest_API.js',
         ],
         new: [
             'test/specs/positiveNewUserTest_API.js',
@@ -93,40 +93,24 @@ export const config = {
         maxInstances: 1,
         browserName: 'chrome',
         'goog:chromeOptions': {
-            //    args: ["--start-maximized", "--force-device-scale-factor=0.8", "--disable-gpu"]
-            args: ['--headless',
-                '--disable-gpu',
-                '--no-sandbox',
-                '--disable-dev-shm-usage',
-                '--window-size=1920,1080',
-                '--enable-logging',
-                '--v=1',]
+            args: ['--headless',"--start-maximized", "--force-device-scale-factor=0.8", "--disable-gpu"]
+            //     args: ['--headless',
+            //         '--disable-gpu',
+            //         '--no-sandbox',
+            //         '--disable-dev-shm-usage',
+            //         '--window-size=1920,1080',
+            //         '--enable-logging',
+            //         '--v=1',]
         },
         acceptInsecureCerts: true
     }],
-    // {
-    //     maxInstances: 1,
-    //     browserName: 'firefox',
-    //     'moz:firefoxOptions': {
-    //         args: ['--headless',
-    //             '--disable-gpu',
-    //             '--no-sandbox',
-    //             '--disable-dev-shm-usage',
-    //             '--window-size=1920,1080',
-    //             '--enable-logging',
-    //             '--v=1',]
-    //     },
-    //     acceptInsecureCerts: true,
-    // },
-    // ],
-
 
     // ===================
     // Test Configurations
     // ===================
 
     // Level of logging verbosity: trace | debug | info | warn | error | silent
-    logLevel: 'debug',
+    logLevel: 'error',
     bail: 0,
     baseUrl: appBaseURL,
 
@@ -140,7 +124,6 @@ export const config = {
     // Default request retries count
     connectionRetryCount: 3,
     services: ['chromedriver'],
-    // services: ['geckodriver'],
 
     framework: 'mocha',
 
