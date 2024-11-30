@@ -93,7 +93,8 @@ export const config = {
         maxInstances: 1,
         browserName: 'chrome',
         'goog:chromeOptions': {
-            args: ['--headless',"--start-maximized", "--force-device-scale-factor=0.8", "--disable-gpu"]
+            // args: ['--headless',"--start-maximized", "--force-device-scale-factor=0.8", "--disable-gpu"]
+            args: ["--start-maximized", "--force-device-scale-factor=0.8", "--disable-gpu"]
             //     args: ['--headless',
             //         '--disable-gpu',
             //         '--no-sandbox',
@@ -147,19 +148,31 @@ export const config = {
                 },
             },
         ],
+        // ['junit', {
+        //     outputDir: 'junit-results',
+        //     suiteNameFormat: /[^a-zA-Z0-9@]+/,
+        //     outputFileFormat: function (options) {
+        //         return `results-${options.cid}.xml`
+        //     },
+
+        //     errorOptions: {
+        //         error: 'message',
+        //         failure: 'message',
+        //         stacktrace: 'stack'
+        //     }
+        // }]
         ['junit', {
             outputDir: 'junit-results',
-            suiteNameFormat: /[^a-zA-Z0-9@]+/,
-            outputFileFormat: function (options) {
-                return `results-${options.cid}.xml`
+            outputFileFormat: function(options) { // optional
+                return `results-${options.cid}-${currentDate()}_${currentTime()}.xml`
             },
-
             errorOptions: {
                 error: 'message',
                 failure: 'message',
                 stacktrace: 'stack'
             }
         }]
+        
 
     ],
     mochaOpts: {

@@ -7,24 +7,14 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  TEST_USERNAME: 'kasiakasia' # Replace with your test username
-  TEST_PASSWORD: 'kasiakasia' # Replace with your test password
-  CI: 'true' # Indicate that this is a CI environment
+  CI: 'true'
 
 steps:
-# Install Node.js
 - task: NodeTool@0
   inputs:
     versionSpec: '20.x'
   displayName: 'Install Node.js'
 
-# Install Google Chrome
-- script: |
-    sudo apt-get update
-    sudo apt-get install -y google-chrome-stable
-  displayName: 'Install Google Chrome'
-
-# Install frontend dependencies, build, and serve in production mode
 - script: |
     npm install
     npm run build
@@ -32,7 +22,6 @@ steps:
     serve -s build &> serve.log &
   displayName: 'Build and Serve Frontend'
 
-# Install backend dependencies and start backend
 - script: |
     cd ./app-management
     npm install
@@ -40,7 +29,6 @@ steps:
     npm start &
   displayName: 'Start Backend'
 
-# Wait for backend to start
 - script: |
     echo "Waiting for backend to start..."
     for i in {1..30}; do
@@ -50,12 +38,10 @@ steps:
     done
   displayName: 'Wait for Backend to Start'
 
-# Ensure junit-results directory exists
 - script: |
     mkdir -p ./webdriverio_test_project/junit-results
   displayName: 'Ensure junit-results Directory Exists'
 
-# Ensure screenshots directories exist
 - script: |
     mkdir -p ./webdriverio_test_project/error_Screenshots_local
     mkdir -p ./webdriverio_test_project/success_Screenshots_local
@@ -67,44 +53,9 @@ steps:
   displayName: "Debug Test Results Directory"
 
 - script: |
-    echo "Testing file paths:"
-    ls -la ./webdriverio_test_project/test/pages/
-    ls -la ./webdriverio_test_project/test/utilities/
-    ls -la ./webdriverio_test_project/test/specs/
-  displayName: "Check File Paths"
-
-- script: |
-    echo "Listing all spec files explicitly:"
-    find ./webdriverio_test_project/test/specs/ -type f
-  displayName: "List All Spec Files (Explicit)"
-
-# Run WebdriverIO tests with debug logs
-- script: |
-    echo "Running WebdriverIO tests..."
-    cd ./webdriverio_test_project
-    npm install
-    npm install chromedriver --latest
-    ls
-    npx cross-env DEBUG=1 USE_LOCAL=1 TEST_USERNAME=$(TEST_USERNAME) TEST_PASSWORD=$(TEST_PASSWORD) wdio run wdio.conf.js --suite e2e
-  displayName: 'Run WebdriverIO Tests'
-
-- script: |
-    echo "Testing file paths:"
-    ls -la ./webdriverio_test_project/error_Screenshots_local/
-    ls -la ./webdriverio_test_project/success_Screenshots_local/
-  displayName: "Check File Paths screenshot files"
-  condition: always()
-
-- script: |
     echo "Listing test results directory:"
     ls -la ./webdriverio_test_project/junit-results
   displayName: "Debug Test Results Directory"
-  condition: always()
-
-- script: |
-    echo "Testing file paths:"
-    ls -la ./webdriverio_test_project/
-  displayName: "Check File Paths"
   condition: always()
 
 - script: |
@@ -112,7 +63,6 @@ steps:
   displayName: "Wait Before Publishing Results"
   condition: always()
 
-# Publish test results
 - task: PublishTestResults@2
   inputs:
     testResultsFormat: 'JUnit'
@@ -120,7 +70,6 @@ steps:
   condition: always()
   displayName: "Publish Test Results"
 
-# Publish failed screenshots as an artifact
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: './webdriverio_test_project/error_Screenshots_local'
@@ -128,11 +77,14 @@ steps:
     publishLocation: 'Container'
   condition: always()
 
-# Publish successful screenshots as an artifact
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: './webdriverio_test_project/success_Screenshots_local'
     ArtifactName: 'SuccessfulScreenshots'
     publishLocation: 'Container'
   condition: always()
+
+  env:
+    TEST_USERNAME: $(TEST_USERNAME)
+    TEST_PASSWORD: $(TEST_PASSWORD)
 
