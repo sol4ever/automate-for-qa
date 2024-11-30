@@ -2,7 +2,10 @@
 
 /error_Screenshots_dev
 /error_Screenshots_prod
+/error_Screenshots_local
 /success_Screenshots_dev
 /success_Screenshots_prod
-
+/success_Screenshots_local
 /.env
+
+/junit-results
