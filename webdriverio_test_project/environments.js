@@ -1,5 +1,5 @@
 export default {
     loc: 'http://localhost:3000/',
     dev: '',
-    prd: 'https://automate-for-qa.onrender.com/home'
+    prd: 'https://automate-4-qa.onrender.com/home'
 };
