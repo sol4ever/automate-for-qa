@@ -99,33 +99,7 @@ const JWT_SECRET = process.env.JWT_SECRET;
 const SESSION_EXPIRY_MS = 60 * 60 * 1000; // 1 hour
 
 
-// Authentication endpoint for login
-// app.post('/login', (req, res) => {
-//   const { username, password } = req.body;
-
-//   if (username.length >= 10 && username.length <= 20 && password.length >= 10 && password.length <= 20) {
-   
-//     const token = jwt.sign(
-//       {
-//         username,
-//         createdAt: Date.now()
-//       },
-//       JWT_SECRET,
-//       { expiresIn: '1h' } 
-//     );
-
-//     // Initialize clean session data for this token
-//     userSessions[token] = {
-//       products: [...initialProducts],
-//       users: [...initialUsers],
-//       createdAt: Date.now() // Timestamp for managing session expiry
-//     };
-
-//     res.json({ token });
-//   } else {
-//     res.status(400).json({ error: 'Nazwa użytkownika: min. 10, max. 20 znaków. Hasło: min. 10, max. 20 znaków.' });
-//   }
-// });
+//-------------------- Authentication endpoint for login
 
 app.post('/login', (req, res) => {
   const { username, password } = req.body;
