@@ -7,8 +7,6 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  TEST_USERNAME: 'kasiakasia' # Replace with your test username
-  TEST_PASSWORD: 'kasiakasia' # Replace with your test password
   CI: 'true' # Indicate that this is a CI environment
 
 steps:
@@ -135,4 +133,8 @@ steps:
     ArtifactName: 'SuccessfulScreenshots'
     publishLocation: 'Container'
   condition: always()
+
+  env:
+    TEST_USERNAME: $(TEST_USERNAME)
+    TEST_PASSWORD: $(TEST_PASSWORD)
 
