@@ -4,7 +4,6 @@ import Notifications from '../pages/notifications';
 import urls from '../resources/urls';
 import { currentDateAndTime } from '../utilities/helpers.timeGenerators';
 import LoginModal from '../pages/loginModal';
-import Home from '../pages/home.js';
 import NavTabs from '../pages/navTabs';
 import { loginInputs } from '../resources/loginInputs';
 import ProductsList from '../pages/productsList.js';

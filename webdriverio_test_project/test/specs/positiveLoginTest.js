@@ -1,7 +1,6 @@
 import LoginModal from '../pages/loginModal.js';
 import NavTabs from '../pages/navTabs.js';
 import { loginInputs } from '../resources/loginInputs.js';
-import Home from '../pages/home.js';
 
 describe('Positive Login and Navigation Functionality', () => {
 

@@ -4,7 +4,6 @@ import UsersLanding from '../pages/usersLanding.js';
 import LoginModal from '../pages/loginModal.js';
 import { loginInputs } from '../resources/loginInputs.js';
 import NavTabs from '../pages/navTabs.js';
-import Home from '../pages/home.js';
 import Notifications from '../pages/notifications.js';
 import urls from '../resources/urls.js'
 import UserList from '../pages/userList.js';
