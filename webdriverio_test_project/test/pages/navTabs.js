@@ -16,7 +16,7 @@ class NavTabs extends Page {
         await waitToBeClickableAndClick(await this.analyticsTab);
         if (!await this.analyticsTab.isClickable()) {
         //     await browser.saveScreenshot('./error_screenshots/element-not-clickable.png');
-            console.log('Not clickable')
+            // console.log('Not clickable')
         }
     }
 

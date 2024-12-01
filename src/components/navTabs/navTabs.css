@@ -2,6 +2,8 @@ body,
 html {
   margin: 0;
   padding: 0;
+  flex-direction: column;
+  display: flex;
 }
 
 .nav-tabs {
@@ -56,7 +58,9 @@ html {
 }
 
 .right-side-container {
+  display: flex;
   padding-right: 20px;
+  align-items: center;
 }
 
 .reset-button {

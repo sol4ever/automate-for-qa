@@ -89,10 +89,14 @@ li {
   margin-top: 10px;
 }
 .text-description-box{
-  width: 800px;
-  align-items: center;
-  display: inline-block;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 66.67%;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
 }
 
 .text-description{
@@ -102,4 +106,5 @@ li {
   font-feature-settings: "c2sc", "smcp";
   margin: 10px;
   display: inline-block;
+  text-align: center;
 }

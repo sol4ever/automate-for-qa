@@ -86,7 +86,7 @@ export default function Home() {
                 />
                 <h2 className="text-highlight">ANALITYCZNE</h2>
                 <div className='text-description-box'>
-                <h3 className="text-description">Umożliwia testowanie odczytu danych finansowych i HR, bez możliwości edycji bezpośrednio w sekcji. Część danych podlega zmianom wykonanym w sekcji PRACOWNICY. Sprawdź na co masz wpływ.</h3>
+                <h3 className="text-description">Umożliwia testowanie odczytu danych finansowych i HR, bez możliwości edycji bezpośrednio w sekcji.<br/>Część danych podlega zmianom wykonanym w sekcji PRACOWNICY.<br/>Sprawdź na co masz wpływ.</h3>
                 </div>
                 <button className='cta-button' data-testid='get-started-analytics' onClick={handleGetStartedClick}>
                     Automatyzuj!
@@ -105,7 +105,7 @@ export default function Home() {
                 />
                 <h2 className="text-highlight">sekcja PRACOWNICY</h2>
                 <div className='text-description-box'>
-                <h3 className="text-description">Symuluje system do zarządzania pracownikami. Możesz dodawać, edytować i usuwać dane pracowników. AutoMate rozpoczyna pracę systemu z listą domyślnych pracowników wczytaną na start.</h3>
+                <h3 className="text-description">Symuluje system do zarządzania pracownikami. Możesz dodawać, edytować i usuwać dane pracowników.<br/>AutoMate rozpoczyna pracę systemu z listą domyślnych pracowników wczytaną na start.</h3>
                 </div>
                 <button className='cta-button' data-testid='get-started-users' onClick={handleGetStartedClick}>
                     Spróbuj sam!
@@ -125,7 +125,7 @@ export default function Home() {
                 />
                 <h2 className="text-highlight">sekcja produkty</h2>
                 <div className='text-description-box'>
-                <h3 className="text-description">Symuluje zarządzanie produktami- assetami firmy, z możliwością ich dodawania, modyfikowania i usuwania. Tak jak w sekcji pracowników, startujesz z automatycznie wczytaną listą produktów, którą można zresetować.</h3>
+                <h3 className="text-description">Symuluje zarządzanie produktami- assetami firmy, z możliwością ich dodawania, modyfikowania i usuwania.<br/>Tak jak w sekcji pracowników, startujesz z automatycznie wczytaną listą produktów, którą można zresetować.</h3>
                 </div>
                 <button className='cta-button' data-testid='get-started-products' onClick={handleGetStartedClick}>
                     Spróbuj sam!
