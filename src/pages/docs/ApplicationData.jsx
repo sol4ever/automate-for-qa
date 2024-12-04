@@ -72,7 +72,7 @@ const users = [
       <CodeBlock code={productDataCode} />
 
       <h3>Przykładowe dane dla pracowników</h3>
-      <p>Analogicznie, dane dotyczące pracowników (użytkowników) również są generowane przy każdym uruchomieniu aplikacji. Poniżej znajduje się przykład kodu dla pracowników:</p>
+      <p>Analogicznie, dane dotyczące pracowników również są generowane przy każdym uruchomieniu aplikacji. Poniżej znajduje się przykład kodu dla pracowników:</p>
 
       <CodeBlock code={userDataCode} />
 

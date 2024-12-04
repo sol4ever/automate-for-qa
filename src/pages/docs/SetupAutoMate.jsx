@@ -45,7 +45,7 @@ export default function SetupAutoMate() {
 
             <p><b>Informacje o sekcjach ograniczonych:</b></p>
             <p>
-                W aplikacji AutoMate dostęp do sekcji <b>Analitics, Products</b> oraz <b>Users</b> jest ograniczony i wymaga logowania.
+                W aplikacji AutoMate dostęp do sekcji <b>Analityczne, Produkty</b> oraz <b>Pracownicy</b> jest ograniczony i wymaga logowania.
                 Aby uzyskać dostęp, należy podać nazwę użytkownika oraz hasło:
             </p>
             <ul>
@@ -61,15 +61,15 @@ export default function SetupAutoMate() {
             </p>
             <p><b>Mechanizm resetowania danych:</b></p>
             <p>
-                Aplikacja posiada funkcję resetowania danych, która przywraca wszystkie dane (produkty i użytkowników) do stanu początkowego.
+                Aplikacja posiada funkcję resetowania danych, która przywraca wszystkie dane (produktów i pracowników) do stanu początkowego.
                 Mechanizm ten działa osobno dla każdej sesji użytkownika. W dowolnym momencie można zresetować dane, co spowoduje przywrócenie 
                 ich do wartości domyślnych.
             </p>
             <p>Jak działa resetowanie:</p>
             <ul>
                 <li>Po zalogowaniu każdy użytkownik operuje na osobnej sesji z danymi.</li>
-                <li>Przycisk resetu przywraca dane produktów i użytkowników do ich pierwotnej postaci.</li>
-                <li>Dane są resetowane wyłącznie dla bieżącej sesji, więc inne sesje nie są na to narażone.</li>
+                <li>Przycisk resetu przywraca dane produktów i pracowników do ich pierwotnej postaci.</li>
+                <li>Dane są resetowane wyłącznie dla bieżącej sesji, bez wpływu na pozostałe sesje.</li>
             </ul>
             <p>
                 Po zamknięciu przeglądarki dane zostają utracone, a przy ponownym otwarciu aplikacja ładuje dane początkowe.

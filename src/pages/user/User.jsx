@@ -142,7 +142,7 @@ export default function User() {
 
   const handleDelete = () => {
     if (!selectedUserId) {
-      setAlert({ severity: 'error', message: 'Nie można usunąć pracownika: brak ID użytkownika' });
+      setAlert({ severity: 'error', message: 'Nie można usunąć pracownika: brak ID pracownika' });
       return;
     }
 

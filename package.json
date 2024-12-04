@@ -34,7 +34,8 @@
     "build": "react-scripts build",
     "build:production": "env-cmd -f .env.production react-scripts build",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "test": "react-scripts test"
   },
   "eslintConfig": {
     "extends": [
