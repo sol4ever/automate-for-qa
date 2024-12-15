@@ -59,12 +59,14 @@ describe('Strona Listy Pracowników', () => {
       <h4>Edytowanie danych Pracownika</h4>
       <p>Zweryfikuj, czy strona Szczegółów/Edytowania Pracownika ładuje się poprawnie, z uzupełnionymi danymi pracownika.</p>
       <p>Upewnij się, że edytowanie informacji o pracowniku i zapisanie ich aktualizuje dane pracownika.</p>
+      <p>Upewnij się, że zmienione informacji o pracowniku po zapisaniu widoczne są w sekcji Analityczne.</p>
       <p>Sprawdź walidacje formularza (np. pola wymagane, prawidłowy format e-maila).</p>
       <p>Upewnij się, że anulowanie edycji nie zmienia danych pracownika.</p>
 
       <h4>Usuwanie Pracownika</h4>
       <p>Zweryfikuj, że kliknięcie przycisku usuwania wyświetla modal z potwierdzeniem.</p>
       <p>Upewnij się, że potwierdzenie usunięcia usuwa pracownika z listy.</p>
+      <p>Upewnij się, że potwierdzenie usunięcia zmienia status pracownika na 'usunięty', a status widoczny jest na stronie Analityczne.</p>
       <p>Sprawdź, że anulowanie usunięcia nie powoduje usunięcia pracownika.</p>
       <p>Potwierdź, że po pomyślnym usunięciu, dane pracownika widoczne są na stronie Listy usuniętyuch Pracowników.</p>
 

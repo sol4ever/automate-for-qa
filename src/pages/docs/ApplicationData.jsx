@@ -81,7 +81,7 @@ const users = [
 
       <p>Możliwe jest także oznaczanie produktów i pracowników jako "usuniętych". W praktyce oznacza to, że dane te nie są trwale usuwane, lecz jedynie oznaczane jako niedostępne w głównych listach produktów lub pracowników. W dowolnym momencie można przywrócić usunięty element do widoczności.</p>
 
-      <p>Warto zaznaczyć, że wszystkie dane przechowywane w aplikacji mają charakter tymczasowy. Po zresetowaniu serwera lub ponownym uruchomieniu aplikacji, wszelkie zmiany wprowadzone w trakcie sesji zostaną utracone, a dane zostaną załadowane na nowo z przykładowych plików.</p>
+      <p>Warto zaznaczyć, że wszystkie dane przechowywane w aplikacji mają charakter tymczasowy. Po zresetowaniu serwera lub ponownym uruchomieniu aplikacji, wszelkie zmiany wprowadzone w trakcie sesji zostaną utracone, a dane zostaną załadowane na nowo z plików <strong>dummyUsers</strong> i <strong>dummyProducts</strong>.</p>
 
       <p>Dzięki temu aplikacja umożliwia szybkie testowanie różnych scenariuszy bez obaw o utratę danych rzeczywistych lub konieczność pracy na wrażliwych informacjach.</p>
     </div>

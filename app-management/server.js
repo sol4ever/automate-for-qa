@@ -378,7 +378,7 @@ app.get('/check-tests', authenticateToken, (req, res) => {
 });
 
 
-//---------------------- Image upload endpoint
+//---------------------- Image upload endpoint currently not used
 app.post('/upload', (req, res) => {
   upload(req, res, (err) => {
     if (err) {
@@ -394,6 +394,7 @@ app.post('/upload', (req, res) => {
   });
 });
 
+//---------------------- Images 
 app.get('/images/list', authenticateToken, (req, res) => {
   const type = req.query.type;
   const imagesDir = type === 'users' ? IMAGES_DIR_USERS : IMAGES_DIR_PRODUCTS;

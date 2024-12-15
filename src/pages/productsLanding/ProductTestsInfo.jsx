@@ -78,7 +78,6 @@ describe('Strona Listy Produktów', () => {
       <h4>Lista Usuniętych Produktów</h4>
       <p>Zweryfikuj, czy strona Listy Usuniętych Produktów ładuje się poprawnie, a wszystkie elementy są wyświetlane.</p>
       <p>Upewnij się, że usunięte produkty nie są dostępne na głównej liście produktów.</p>
-      <p>Sprawdź, czy przywrócenie produktu przenosi go z listy usuniętych na główną listę produktów.</p>
       <p>Zweryfikuj, że kliknięcie w produkt na liście usuniętych przenosi na szczegóły produktu.</p>
 
       <h3>Strategia automatyzacji testów:</h3>
