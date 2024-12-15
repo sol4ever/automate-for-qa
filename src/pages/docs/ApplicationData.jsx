@@ -53,18 +53,18 @@ const users = [
 
   return (
     <div className="application-data">
-      <p>W aplikacji dane dotyczące <strong>produktów</strong> oraz <strong>pracowników</strong> są generowane przy każdorazowym uruchomieniu aplikacji na podstawie przykładowych danych (ang. dummy data). Dane te nie są zapisywane trwale w systemie, a wszelkie zmiany wprowadzone przez użytkownika, takie jak tworzenie nowych produktów, edytowanie danych pracowników czy oznaczanie elementów jako usunięte, są przechowywane jedynie w trakcie trwania sesji.</p>
+      <p>W aplikacji dane dotyczące <strong>produktów</strong> oraz <strong>pracowników</strong> są każdorazowo wgrywane z plików (z ang. dummy data). Dane te nie są zapisywane trwale w systemie, a wszelkie zmiany wprowadzone przez użytkownika, takie jak tworzenie nowych produktów, edytowanie danych pracowników czy oznaczanie elementów jako usunięte, są przechowywane jedynie w trakcie trwania sesji.</p>
 
-      <p>Po ponownym uruchomieniu serwera, aplikacja zostaje zresetowana, a wszystkie dane są ładowane ponownie na podstawie danych predefiniowanych w plikach <strong>dummyUsers</strong> i <strong>dummyProducts</strong>. Dzięki temu możliwe jest szybkie testowanie funkcjonalności bez konieczności zarządzania prawdziwą bazą danych.</p>
+      <p>Po ponownym uruchomieniu serwera, aplikacja zostaje zresetowana, a wszystkie dane są ładowane ponownie na podstawie danych predefiniowanych w plikach <strong>dummyUsers</strong> i <strong>dummyProducts</strong>. Dzięki temu możliwe jest szybkie testowanie funkcjonalności bez konieczności zarządzania bazą danych.</p>
 
       <h3>Zalety takiego podejścia</h3>
       <p>Jedną z głównych zalet seedowania danych przy każdym uruchomieniu aplikacji jest <strong>bezpieczeństwo danych</strong>. Ponieważ aplikacja nie wykorzystuje prawdziwej bazy danych, ryzyko przypadkowego zapisania lub utraty wrażliwych danych jest całkowicie wyeliminowane. Jest to szczególnie ważne w aplikacjach mających na celu naukę, takich jak ta, która służy do szkolenia i testowania automatyzacji testów frontendu przy użyciu WebdriverIO.</p>
 
       <p>Nieutrzymywanie trwałych danych pozwala na nieograniczone i bezpieczne eksperymentowanie bez obaw o potencjalne konsekwencje nieprawidłowego działania kodu. Każdy użytkownik może wielokrotnie uruchamiać aplikację i testować różne scenariusze, bez konieczności przywracania stanu aplikacji czy usuwania błędnych danych.</p>
 
-      <p>Co więcej, dzięki losowo generowanym danym dla produktów i pracowników, możliwe jest testowanie w szerokim zakresie scenariuszy, takich jak tworzenie, edytowanie, czy usuwanie elementów, bez wpływu na innych użytkowników, ponieważ każda instancja aplikacji działa w izolacji od innych.</p>
+      <p>Dzięki wgrywaniu każdorazowo tych samych danych dla produktów i pracowników, możliwe jest wielokrotne testowanie w szerokim zakresie scenariuszy, takich jak tworzenie, edytowanie, czy usuwanie elementów- w kontrolowanych warunkach.</p>
 
-      <p>Podsumowując, takie podejście do zarządzania danymi jest <strong>niskokosztowe, bezpieczne i elastyczne</strong>. Nie tylko pozwala na szybkie testowanie funkcji, ale także na pełną kontrolę nad danymi, co jest kluczowe w nauce automatyzacji testów.</p>
+      <p>Takie podejście do zarządzania danymi jest <strong>niskokosztowe, bezpieczne i elastyczne</strong>. Nie tylko pozwala na szybkie testowanie funkcji, ale także na pełną kontrolę nad danymi, co jest kluczowe w nauce automatyzacji testów.</p>
 
       <h3>Przykładowe dane dla produktów</h3>
       <p>W aplikacji zaimplementowano różnorodne produkty, w tym telefony komórkowe, akcesoria oraz ładowarki. Poniżej znajduje się przykładowy kod danych produktów:</p>
