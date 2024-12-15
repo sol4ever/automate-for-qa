@@ -55,7 +55,7 @@ const users = [
     <div className="application-data">
       <p>W aplikacji dane dotyczące <strong>produktów</strong> oraz <strong>pracowników</strong> są generowane przy każdorazowym uruchomieniu aplikacji na podstawie przykładowych danych (ang. dummy data). Dane te nie są zapisywane trwale w systemie, a wszelkie zmiany wprowadzone przez użytkownika, takie jak tworzenie nowych produktów, edytowanie danych pracowników czy oznaczanie elementów jako usunięte, są przechowywane jedynie w trakcie trwania sesji.</p>
 
-      <p>Po ponownym uruchomieniu serwera, aplikacja zostaje zresetowana, a wszystkie dane są ładowane od nowa na podstawie tych samych przykładowych danych. Dzięki temu możliwe jest szybkie testowanie funkcjonalności bez konieczności zarządzania prawdziwą bazą danych.</p>
+      <p>Po ponownym uruchomieniu serwera, aplikacja zostaje zresetowana, a wszystkie dane są ładowane ponownie na podstawie danych predefiniowanych w plikach <strong>dummyUsers</strong> i <strong>dummyProducts</strong>. Dzięki temu możliwe jest szybkie testowanie funkcjonalności bez konieczności zarządzania prawdziwą bazą danych.</p>
 
       <h3>Zalety takiego podejścia</h3>
       <p>Jedną z głównych zalet seedowania danych przy każdym uruchomieniu aplikacji jest <strong>bezpieczeństwo danych</strong>. Ponieważ aplikacja nie wykorzystuje prawdziwej bazy danych, ryzyko przypadkowego zapisania lub utraty wrażliwych danych jest całkowicie wyeliminowane. Jest to szczególnie ważne w aplikacjach mających na celu naukę, takich jak ta, która służy do szkolenia i testowania automatyzacji testów frontendu przy użyciu WebdriverIO.</p>
@@ -81,7 +81,7 @@ const users = [
 
       <p>Możliwe jest także oznaczanie produktów i pracowników jako "usuniętych". W praktyce oznacza to, że dane te nie są trwale usuwane, lecz jedynie oznaczane jako niedostępne w głównych listach produktów lub pracowników. W dowolnym momencie można przywrócić usunięty element do widoczności.</p>
 
-      <p>Warto zaznaczyć, że wszystkie dane przechowywane w aplikacji mają charakter tymczasowy. Po zresetowaniu serwera lub ponownym uruchomieniu aplikacji, wszelkie zmiany wprowadzone w trakcie sesji zostaną utracone, a dane zostaną załadowane na nowo z plików <strong>dummyUsers</strong> i <strong>dummyProducts</strong>.</p>
+      <p>Wszystkie dane przechowywane w aplikacji mają charakter tymczasowy. Po zresetowaniu serwera lub ponownym uruchomieniu aplikacji, wszelkie zmiany wprowadzone w trakcie sesji zostaną utracone, a dane zostaną załadowane na nowo z plików <strong>dummyUsers</strong> i <strong>dummyProducts</strong>.</p>
 
       <p>Dzięki temu aplikacja umożliwia szybkie testowanie różnych scenariuszy bez obaw o utratę danych rzeczywistych lub konieczność pracy na wrażliwych informacjach.</p>
     </div>
