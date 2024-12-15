@@ -43,7 +43,7 @@ export default function SetupAutoMate() {
             <p>Aplikacja <b>AutoMate</b> powinna automatycznie uruchomić się w przeglądarce pod adresem:</p>
             <CodeBlock code={`http://localhost:3000/home`} />
 
-            <p><b>Informacje o sekcjach ograniczonych:</b></p>
+            <p><b>Informacje o sekcjach o ograniczonym dostępie:</b></p>
             <p>
                 W aplikacji AutoMate dostęp do sekcji <b>Analityczne, Produkty</b> oraz <b>Pracownicy</b> jest ograniczony i wymaga logowania.
                 Aby uzyskać dostęp, należy podać nazwę użytkownika oraz hasło:
