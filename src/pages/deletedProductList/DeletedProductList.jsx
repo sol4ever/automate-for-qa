@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
-import axios from 'axios';
+import axios from '../../utils/axiosConfig';
 import ProductContext from '../../components/context/ProductContext';
 import ProductDetailsPreviewModal from '../../components/productDetailsPreviewModal/ProductDetailsPreviewModal';
 import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';

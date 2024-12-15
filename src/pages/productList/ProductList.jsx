@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import axios from '../../utils/axiosConfig';
 import ProductContext from '../../components/context/ProductContext';
 import Notification from '../../components/notification/Notification';
 import DeleteConfirmationModal from '../../components/deleteConfirmationModal/DeleteConfirmationModal';

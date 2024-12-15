@@ -3,7 +3,7 @@ import UserDetailModal from '../../components/userDetailModal/UserDetailModal';
 import React, { useState, useEffect } from 'react';
 import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
 import UserAccountPreviewModal from '../userAccountPreviewModal/UserAccountPreviewModal'
-import axios from 'axios';
+import axios from '../../utils/axiosConfig';
 import DOMPurify from 'dompurify';
 
 

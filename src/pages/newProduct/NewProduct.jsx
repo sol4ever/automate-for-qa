@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { alpha, styled } from '@mui/material/styles';
 import Switch from '@mui/material/Switch';
-import axios from 'axios';
+import axios from '../../utils/axiosConfig';
 import GeneralInfo from '../product/GeneralInfo';
 import MobilePhoneFields from '../product/MobilePhoneFields';
 import AccessoriesFields from '../product/AccessoriesFields';

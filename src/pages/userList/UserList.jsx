@@ -3,7 +3,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import { useNavigate } from 'react-router-dom';
 import UserContext from '../../components/context/UserContext';
-import axios from 'axios';
+import axios from '../../utils/axiosConfig';
 import DeleteConfirmationModal from '../../components/deleteConfirmationModal/DeleteConfirmationModal';
 import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
 import Notification from '../../components/notification/Notification';

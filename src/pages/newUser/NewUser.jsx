@@ -2,7 +2,7 @@ import './newUser.css';
 import Switch from '@mui/material/Switch';
 import { useState, useContext, useEffect } from 'react';
 import { alpha, styled } from '@mui/material/styles';
-import axios from 'axios';
+import axios from '../../utils/axiosConfig';
 import { useNavigate } from 'react-router-dom';
 import UserContext from '../../components/context/UserContext';
 import { validateUserForm } from '../../utils/validation';

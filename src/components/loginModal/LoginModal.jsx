@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Modal, Box, Typography, Button, TextField } from '@mui/material';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';  
+import axios from '../../utils/axiosConfig';
+import { useNavigate } from 'react-router-dom';
 
 const LoginModal = ({ open, onClose, onLoginSuccess }) => {
     const [username, setUsername] = useState('');
@@ -11,8 +11,8 @@ const LoginModal = ({ open, onClose, onLoginSuccess }) => {
 
     const validateInputs = () => {
         if (username.length < 10 || username.length > 20 || password.length < 10 || password.length > 20) {
-          setError('Nazwa użytkownika musi mieć min. 10, max. 20 znaków. Hasło musi mieć min. 10, max. 20 znaków.');
-          return false;
+            setError('Nazwa użytkownika musi mieć min. 10, max. 20 znaków. Hasło musi mieć min. 10, max. 20 znaków.');
+            return false;
         }
         return true;
     };
@@ -25,7 +25,7 @@ const LoginModal = ({ open, onClose, onLoginSuccess }) => {
                     withCredentials: true
                 }
             );
-           
+
             sessionStorage.setItem('authToken', response.data.token);
             onLoginSuccess();
             setError('');
@@ -34,6 +34,14 @@ const LoginModal = ({ open, onClose, onLoginSuccess }) => {
             navigate('/home');
         }
     };
+
+    useEffect(() => {
+        if (open) {
+            setUsername('');
+            setPassword('');
+            setError('');
+        }
+    }, [open]);
 
     return (
         <Modal open={open} onClose={onClose} className="entityModal" data-testid="login-modal">

@@ -1,5 +1,5 @@
 import { currentDateAndTime } from '../utilities/helpers.timeGenerators';
-import axios from 'axios';
+import axios from '../../../src/utils/axiosConfig';
 
 describe('API Test: Update User Status', () => {
     const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';

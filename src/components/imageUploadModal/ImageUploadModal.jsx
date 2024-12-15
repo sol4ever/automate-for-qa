@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Modal, Box, Typography, Grid } from '@mui/material';
-import axios from 'axios';
+import axios from '../../utils/axiosConfig';
 import './imageUploadModal.css';
 import DOMPurify from 'dompurify';
 

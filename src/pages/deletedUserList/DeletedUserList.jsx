@@ -4,7 +4,7 @@ import { DataGrid } from '@mui/x-data-grid';
 import UserContext from '../../components/context/UserContext';
 import UserAccountPreviewModal from '../../components/userAccountPreviewModal/UserAccountPreviewModal';
 import { useLocation } from 'react-router-dom';
-import axios from 'axios';
+import axios from '../../utils/axiosConfig';
 import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
 import DOMPurify from 'dompurify';
 

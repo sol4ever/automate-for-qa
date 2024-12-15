@@ -188,6 +188,7 @@ setInterval(() => {
 }, 15 * 60 * 1000); // Run every 15 minutes
 
 
+
 //------------------- Product endpoints
 app.get('/products', authenticateToken, (req, res) => {
   res.json(req.sessionData.products);
@@ -354,7 +355,7 @@ let testProcess = null;
 
 app.post('/run-tests', authenticateToken, (req, res) => {
   const environment = process.env.NODE_ENV || 'production';
-  
+
   if (environment !== 'local') {
     return res.status(403).json({ message: 'Tests can only be run in the local environment.' });
   }
@@ -369,7 +370,7 @@ app.post('/run-tests', authenticateToken, (req, res) => {
     }
     console.log(`Test results: ${stdout}`);
   });
-  
+
   res.status(200).json({ message: 'Tests started successfully' });
 });
 

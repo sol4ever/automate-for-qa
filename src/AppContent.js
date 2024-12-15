@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Route, Routes, useLocation } from 'react-router-dom';
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import NavTabs from './components/navTabs/NavTabs.jsx';
 import Home from './pages/home/Home.jsx';
 import Analytics from './pages/analytics/Analytics.jsx';
@@ -18,12 +18,28 @@ import DeletedProductList from './pages/deletedProductList/DeletedProductList.js
 import ProductTestsInfo from './pages/productsLanding/ProductTestsInfo.jsx';
 import RestrictedComponent from './components/restrictedComponent/RestrictedComponent.jsx';
 import LoginModal from './components/loginModal/LoginModal.jsx';
+import SessionExpiredModal from './components/SessionExpiredModal/SessionExpiredModal.jsx';
 import './app.css';
 
 function AppContent() {
   const location = useLocation();
+  const navigate = useNavigate();
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isSessionExpired, setIsSessionExpired] = useState(false);
+
+  // Detect session expiration globally
+  useEffect(() => {
+    const handleSessionExpired = () => {
+      setIsSessionExpired(true);
+    };
+
+    window.addEventListener('sessionExpired', handleSessionExpired);
+
+    return () => {
+      window.removeEventListener('sessionExpired', handleSessionExpired);
+    };
+  }, []);
 
   useEffect(() => {
     const restrictedPaths = [
@@ -52,7 +68,14 @@ function AppContent() {
 
   const handleLoginSuccess = () => {
     setIsLoginModalOpen(false);
-    setIsLoggedIn(true); 
+    setIsLoggedIn(true);
+  };
+
+  const handleReload = () => {
+    sessionStorage.clear();
+    setIsSessionExpired(false);
+    setIsLoggedIn(false); 
+    navigate('/home'); 
   };
 
   return (
@@ -63,6 +86,7 @@ function AppContent() {
         onClose={() => setIsLoginModalOpen(false)}
         onLoginSuccess={handleLoginSuccess}
       />
+      <SessionExpiredModal open={isSessionExpired} onReload={handleReload} />
       <div className="container">
         <Routes>
           <Route path="/home" element={<Home />} />

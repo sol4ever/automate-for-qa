@@ -5,7 +5,7 @@ import './navTabs.css';
 import automateLogo from '../../images/logo autoMate.png';
 import UserContext from '../../components/context/UserContext';
 import ProductContext from '../../components/context/ProductContext';
-import axios from 'axios';
+import axios from '../../utils/axiosConfig';
 import ResetConfirmationModal from '../../components/resetConfirmationModal/ResetConfirmationModal';
 import Notification from '../../components/notification/Notification';
 import LoginModal from '../../components/loginModal/LoginModal';

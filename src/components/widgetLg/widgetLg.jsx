@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './widgetLg.css';
 import UserAccountPreviewModal from '../userAccountPreviewModal/UserAccountPreviewModal'
-import axios from 'axios';
+import axios from '../../utils/axiosConfig';
 import DOMPurify from 'dompurify';
 
 export default function WidgetLg() {
