@@ -20,6 +20,7 @@ import DeleteConfirmationModal from '../../components/deleteConfirmationModal/De
 import PhotoCameraOutlinedIcon from '@mui/icons-material/PhotoCameraOutlined';
 import Notification from '../../components/notification/Notification';
 import DOMPurify from 'dompurify';
+import noImage from '../../images/noimage.jpg';
 
 
 
@@ -199,7 +200,7 @@ export default function User() {
         <div className="userShow">
           <div className="userShowTop">
             <img
-              src={userData.avatar ? `${process.env.REACT_APP_API_URL}${userData.avatar}` : 'https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg'}
+              src={userData.avatar ? `${process.env.REACT_APP_API_URL}${userData.avatar}` : noImage}
               alt=""
               className="userShowImg"
               data-testid="user-avatar"
@@ -433,7 +434,7 @@ export default function User() {
               <div className="userUpdateRight">
                 <div className="userUpdateUpload">
                   <img
-                    src={formData.avatar ? `${process.env.REACT_APP_API_URL}${formData.avatar}` : 'https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg'}
+                    src={formData.avatar ? `${process.env.REACT_APP_API_URL}${formData.avatar}` : noImage}
                     alt=""
                     className="userUpdateImg"
                     onClick={() => setModalOpen(true)}

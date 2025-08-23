@@ -5,6 +5,7 @@ import ProductContext from '../../components/context/ProductContext';
 import ProductDetailsPreviewModal from '../../components/productDetailsPreviewModal/ProductDetailsPreviewModal';
 import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
 import DOMPurify from 'dompurify';
+import noImage from '../../images/noimage.jpg';
 
 export default function DeletedProductList() {
   const { products, setProducts } = useContext(ProductContext);
@@ -57,7 +58,7 @@ export default function DeletedProductList() {
         <div className='entityListItem' data-testid={`product-item-${params.row.id}`}>
           <img
             className='entityListImg'
-            src={DOMPurify.sanitize(params.row.img ? `${process.env.REACT_APP_API_URL}${params.row.img}` : 'https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg')}
+            src={DOMPurify.sanitize(params.row.img ? `${process.env.REACT_APP_API_URL}${params.row.img}` : noImage)}
             alt={DOMPurify.sanitize(params.row.name)}
             data-testid={`product-img-${params.row.id}`}
           />

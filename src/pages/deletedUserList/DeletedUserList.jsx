@@ -7,6 +7,7 @@ import { useLocation } from 'react-router-dom';
 import axios from '../../utils/axiosConfig';
 import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
 import DOMPurify from 'dompurify';
+import noImage from '../../images/noimage.jpg';
 
 export default function DeletedUserList() {
   const { users, setUsers } = useContext(UserContext);
@@ -59,7 +60,7 @@ export default function DeletedUserList() {
         <div className='entityListItem' data-testid={`user-item-${params.row.id}`}>
           <img
             className='entityListImg'
-            src={DOMPurify.sanitize(params.row.avatar ? `${process.env.REACT_APP_API_URL}${params.row.avatar}` : 'https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg')}
+            src={DOMPurify.sanitize(params.row.avatar ? `${process.env.REACT_APP_API_URL}${params.row.avatar}` : noImage)}
             alt={DOMPurify.sanitize(params.row.userName)}
             data-testid={`user-avatar-${params.row.id}`}
           />

@@ -15,6 +15,7 @@ import { Select, MenuItem } from '@mui/material';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import './product.css';
 import DOMPurify from 'dompurify';
+import noImage from '../../images/noimage.jpg';
 
 const categories = {
   'Telefony komórkowe': ['Smartfony', 'Feature Phones'],
@@ -355,7 +356,7 @@ const Product = () => {
         <h2 className="productOverview" data-testid="product-overview">Szczegóły produktu</h2>
         <div className="productTopContent">
           <img
-            src={DOMPurify.sanitize(productData.img ? `${process.env.REACT_APP_API_URL}${productData.img}` : 'https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg')}
+            src={DOMPurify.sanitize(productData.img ? `${process.env.REACT_APP_API_URL}${productData.img}` : noImage)}
             alt=""
             className="productInfoImgLarge"
             data-testid="product-image"

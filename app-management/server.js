@@ -50,7 +50,7 @@ app.use((req, res, next) => {
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
     "font-src 'self' https://fonts.gstatic.com; " +
     "script-src 'self'; " +
-    "img-src 'self' data: https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg; " +
+    "img-src 'self' data:; " +
     "connect-src 'self'");
   next();
 });

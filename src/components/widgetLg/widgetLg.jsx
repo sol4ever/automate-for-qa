@@ -3,6 +3,7 @@ import './widgetLg.css';
 import UserAccountPreviewModal from '../userAccountPreviewModal/UserAccountPreviewModal'
 import axios from '../../utils/axiosConfig';
 import DOMPurify from 'dompurify';
+import noImage from '../../images/noimage.jpg';
 
 export default function WidgetLg() {
   const [users, setUsers] = useState([]);
@@ -59,7 +60,7 @@ export default function WidgetLg() {
           <tr className="widgetLgTr" key={user.id}>
             <td className="widgetLgUser" onClick={() => handleOpenModal(user)}>
               <img
-                src={DOMPurify.sanitize(user.avatar ? `${process.env.REACT_APP_API_URL}${user.avatar}` : 'https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg')}
+                src={DOMPurify.sanitize(user.avatar ? `${process.env.REACT_APP_API_URL}${user.avatar}` : noImage)}
                 alt={DOMPurify.sanitize(user.userName)}
                 className="widgetUserImg"
               />

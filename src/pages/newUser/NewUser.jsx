@@ -18,6 +18,7 @@ import PhotoCameraOutlinedIcon from '@mui/icons-material/PhotoCameraOutlined';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import Notification from '../../components/notification/Notification';
 import DOMPurify from 'dompurify';
+import noImage from '../../images/noimage.jpg';
 
 
 const GreenSwitch = styled(Switch)(({ theme }) => ({
@@ -248,7 +249,7 @@ export default function NewUser() {
                         <div className="userUpdateRight">
                             <div className="userUpdateUpload">
                                 <img
-                                    src={DOMPurify.sanitize(formData.avatar ? `${process.env.REACT_APP_API_URL}${formData.avatar}` : 'https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg')}
+                                    src={DOMPurify.sanitize(formData.avatar ? `${process.env.REACT_APP_API_URL}${formData.avatar}` : noImage)}
                                     alt=""
                                     className="userUpdateImg"
                                     onClick={() => setIsModalOpen(true)}

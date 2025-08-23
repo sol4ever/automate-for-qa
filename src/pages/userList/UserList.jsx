@@ -10,6 +10,7 @@ import Notification from '../../components/notification/Notification';
 import EditNoteOutlinedIcon from '@mui/icons-material/EditNoteOutlined';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import DOMPurify from 'dompurify';
+import noImage from '../../images/noimage.jpg';
 
 export default function UserList() {
 
@@ -91,7 +92,7 @@ export default function UserList() {
         <div className='entityListItem' data-testid={`entityListItem-${params.row.id}`}>
           <img
             className='entityListImg'
-            src={params.row.avatar ? `${process.env.REACT_APP_API_URL}${DOMPurify.sanitize(params.row.avatar)}` : 'https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg'}
+            src={params.row.avatar ? `${process.env.REACT_APP_API_URL}${DOMPurify.sanitize(params.row.avatar)}` : noImage}
             alt={DOMPurify.sanitize(params.row.userName)}
           />
           {DOMPurify.sanitize(params.row.userName)}

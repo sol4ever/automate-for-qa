@@ -2,6 +2,7 @@ import React from 'react';
 import { Modal, Box, Typography } from '@mui/material';
 import './productDetailsPreviewModal.css';
 import DOMPurify from 'dompurify';
+import noImage from '../../images/noimage.jpg';
 
 const ProductDetailsPreviewModal = ({ open, onClose, product }) => {
   const renderProductInfoItem = (label, value) => (
@@ -64,7 +65,7 @@ const ProductDetailsPreviewModal = ({ open, onClose, product }) => {
         <div className="entityShowTop">
           <div className="entityShowImgContainer">
             <img
-              src={product.img ? `${process.env.REACT_APP_API_URL}${DOMPurify.sanitize(product.img)}` : 'https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg'}
+              src={product.img ? `${process.env.REACT_APP_API_URL}${DOMPurify.sanitize(product.img)}` : noImage}
               alt=""
               className="modalProductInfoImgLarge"
             />

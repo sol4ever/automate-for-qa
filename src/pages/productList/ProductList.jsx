@@ -9,6 +9,7 @@ import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOu
 import EditNoteOutlinedIcon from '@mui/icons-material/EditNoteOutlined';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import DOMPurify from 'dompurify';
+import noImage from '../../images/noimage.jpg';
 
 export default function ProductList() {
   const { products, setProducts } = useContext(ProductContext);
@@ -98,7 +99,7 @@ export default function ProductList() {
         <div className='entityListItem' data-testid={`product-item-${params.row.id}`}>
           <img
             className='entityListImg'
-            src={DOMPurify.sanitize(params.row.img ? `${process.env.REACT_APP_API_URL}${params.row.img}` : 'https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg')}
+            src={DOMPurify.sanitize(params.row.img ? `${process.env.REACT_APP_API_URL}${params.row.img}` : noImage)}
             alt={DOMPurify.sanitize(params.row.name)}
             data-testid={`product-img-${params.row.id}`}
           />
