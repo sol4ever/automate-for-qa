@@ -383,7 +383,7 @@ export default function User() {
                   </MenuItem>
                   <MenuItem value="Kobieta">Kobieta</MenuItem>
                   <MenuItem value="Mężczyzna">Mężczyzna</MenuItem>
-                  <MenuItem value="Inna">Inne</MenuItem>
+                  <MenuItem value="Inna">Inna</MenuItem>
                   <MenuItem value="Nie podano">Nie podano</MenuItem>
                 </Select>
                 {errors.gender && <span className="error" data-testid="error-gender">{errors.gender}</span>}
