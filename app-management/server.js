@@ -449,10 +449,20 @@ app.get('/', (req, res) => {
 });
 
 const clientBuildPath = path.join(__dirname, '../build');
-app.use(express.static(clientBuildPath));
-app.get('*', (req, res) => {
-  res.sendFile(path.join(clientBuildPath, 'index.html'));
-});
+if (process.env.NODE_ENV === 'production') {
+  if (fs.existsSync(clientBuildPath)) {
+    app.use(express.static(clientBuildPath));
+    app.get('*', (req, res) => {
+      res.sendFile(path.join(clientBuildPath, 'index.html'));
+    });
+    console.log(`Serving React build from: ${clientBuildPath}`);
+  } else {
+    console.error(`ERROR: React build folder not found at: ${clientBuildPath}`);
+    app.get('*', (req, res) => {
+      res.status(500).send('Frontend build not found. Please check your deployment.');
+    });
+  }
+}
 
 
 app.use(helmet());
