@@ -17,7 +17,7 @@ const LoginModal = ({ open, onClose, onLoginSuccess }) => {
         return true;
     };
 
-    const handleLogin = async () => {
+    const handleLogin = async (e)  => {
         e.preventDefault();
 
         if (!validateInputs()) return;
