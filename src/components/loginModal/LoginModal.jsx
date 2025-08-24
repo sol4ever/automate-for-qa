@@ -55,77 +55,79 @@ const LoginModal = ({ open, onClose, onLoginSuccess }) => {
                 >
                     Login
                 </Typography>
-                <TextField
-                    fullWidth
-                    label="Nazwa użytkownika (10-20 dowolnych znaków)"
-                    variant="outlined"
-                    margin="normal"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    inputProps={{ 'data-testid': 'username-input' }}
-                    sx={{
-                        '& .MuiOutlinedInput-root': {
-                            '& fieldset': {
-                                borderColor: '#F2561D',
+                <Box component="form" onSubmit={handleLogin} noValidate>
+                    <TextField
+                        fullWidth
+                        label="Nazwa użytkownika (10-20 dowolnych znaków)"
+                        variant="outlined"
+                        margin="normal"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                        inputProps={{ 'data-testid': 'username-input' }}
+                        sx={{
+                            '& .MuiOutlinedInput-root': {
+                                '& fieldset': {
+                                    borderColor: '#F2561D',
+                                },
+                                '&:hover fieldset': {
+                                    borderColor: '#F2561D',
+                                },
+                                '&.Mui-focused fieldset': {
+                                    borderColor: '#F2561D',
+                                },
                             },
-                            '&:hover fieldset': {
-                                borderColor: '#F2561D',
+                            '& .MuiInputLabel-root.Mui-focused': {
+                                color: '#F2561D',
                             },
-                            '&.Mui-focused fieldset': {
-                                borderColor: '#F2561D',
+                        }}
+                    />
+                    <TextField
+                        fullWidth
+                        label="Hasło (10-20 dowolnych znaków)"
+                        type="password"
+                        variant="outlined"
+                        margin="normal"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        inputProps={{ 'data-testid': 'password-input' }}
+                        sx={{
+                            '& .MuiOutlinedInput-root': {
+                                '& fieldset': {
+                                    borderColor: '#F2561D',
+                                },
+                                '&:hover fieldset': {
+                                    borderColor: '#F2561D',
+                                },
+                                '&.Mui-focused fieldset': {
+                                    borderColor: '#F2561D',
+                                },
                             },
-                        },
-                        '& .MuiInputLabel-root.Mui-focused': {
-                            color: '#F2561D',
-                        },
-                    }}
-                />
-                <TextField
-                    fullWidth
-                    label="Hasło (10-20 dowolnych znaków)"
-                    type="password"
-                    variant="outlined"
-                    margin="normal"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    inputProps={{ 'data-testid': 'password-input' }}
-                    sx={{
-                        '& .MuiOutlinedInput-root': {
-                            '& fieldset': {
-                                borderColor: '#F2561D',
+                            '& .MuiInputLabel-root.Mui-focused': {
+                                color: '#F2561D',
                             },
-                            '&:hover fieldset': {
-                                borderColor: '#F2561D',
-                            },
-                            '&.Mui-focused fieldset': {
-                                borderColor: '#F2561D',
-                            },
-                        },
-                        '& .MuiInputLabel-root.Mui-focused': {
-                            color: '#F2561D',
-                        },
-                    }}
-                />
-                {error && (
-                    <Typography color="error" style={{ textAlign: 'center', marginBottom: '15px', color: '#F2561D' }} data-testid="login-error">
-                        {error.split('\n').map((line, index) => (
-                            <span key={index}>
-                                {line}
-                                <br />
-                            </span>
-                        ))}
-                    </Typography>
-                )}
+                        }}
+                    />
+                    {error && (
+                        <Typography color="error" style={{ textAlign: 'center', marginBottom: '15px', color: '#F2561D' }} data-testid="login-error">
+                            {error.split('\n').map((line, index) => (
+                                <span key={index}>
+                                    {line}
+                                    <br />
+                                </span>
+                            ))}
+                        </Typography>
+                    )}
 
-                <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={handleLogin}
-                    style={{ width: '100%', marginBottom: '10px', backgroundColor: '#b44809' }}
-                    data-testid="login-button"
-                >
-                    Login
-                </Button>
+                    <Button
+                        type="submit"
+                        variant="contained"
+                        color="primary"
+                        style={{ width: '100%', marginBottom: '10px', backgroundColor: '#b44809' }}
+                        data-testid="login-button"
+                    >
+                        Login
+                    </Button>
+                </Box>
             </Box>
         </Modal>
     );
