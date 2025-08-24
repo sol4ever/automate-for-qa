@@ -18,6 +18,8 @@ const LoginModal = ({ open, onClose, onLoginSuccess }) => {
     };
 
     const handleLogin = async () => {
+        event.preventDefault();
+
         if (!validateInputs()) return;
         try {
             const response = await axios.post(`${process.env.REACT_APP_API_URL}/login`, { username, password },
