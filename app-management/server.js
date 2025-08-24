@@ -51,7 +51,7 @@ app.use((req, res, next) => {
     "font-src 'self' https://fonts.gstatic.com; " +
     "script-src 'self'; " +
     "img-src 'self' data:; " +
-    "connect-src 'self'")
+    "connect-src 'self';")
   next();
 });
 app.use(express.json());
