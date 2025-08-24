@@ -51,7 +51,7 @@ app.use((req, res, next) => {
     "font-src 'self' https://fonts.gstatic.com; " +
     "script-src 'self'; " +
     "img-src 'self' data:; " +
-    `connect-src 'self' ${process.env.FRONTEND_APP_URL}`);
+    "connect-src 'self'")
   next();
 });
 app.use(express.json());
@@ -448,9 +448,12 @@ app.get('/', (req, res) => {
   res.send('Welcome to the Automate 4 QA API');
 });
 
+const clientBuildPath = path.join(__dirname, '../build');
+app.use(express.static(clientBuildPath));
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../build', 'index.html'));
+  res.sendFile(path.join(clientBuildPath, 'index.html'));
 });
+
 
 app.use(helmet());
 
