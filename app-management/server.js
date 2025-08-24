@@ -444,9 +444,9 @@ app.use((err, req, res, next) => {
   res.status(err.status || 500).json({ message: err.message || 'An error occurred' });
 });
 
-app.get('/', (req, res) => {
-  res.send('Welcome to the Automate 4 QA API');
-});
+// app.get('/', (req, res) => {
+//   res.send('Welcome to the Automate 4 QA API');
+// });
 
 const clientBuildPath = path.join(__dirname, '../build');
 if (process.env.NODE_ENV === 'production') {
