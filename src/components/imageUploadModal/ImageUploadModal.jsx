@@ -11,7 +11,7 @@ const ImageUploadModal = ({ open, onClose, onSelect, imageType }) => {
   useEffect(() => {
     const fetchImages = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_API_URL}/images/list?type=${imageType}`, {
+        const response = await axios.get(`/api/images/list?type=${imageType}`, {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -46,7 +46,7 @@ const ImageUploadModal = ({ open, onClose, onSelect, imageType }) => {
               className="imageContainer">
               <div onClick={() => handleImageClick(image)}>
                 <img
-                  src={`${DOMPurify.sanitize(process.env.REACT_APP_API_URL)}/images/${DOMPurify.sanitize(imageType)}/${DOMPurify.sanitize(image)}`}
+                  src={`/images/${imageType}/${image}`}
                   alt={DOMPurify.sanitize(image)}
                   className="modalImage"
                 />

@@ -34,7 +34,7 @@ const UserAccountPreviewModal = ({ open, onClose, user }) => {
 
                         <div className="entityShowImgContainer">
                             <img
-                                src={DOMPurify.sanitize(user.avatar ? `${process.env.REACT_APP_API_URL}${user.avatar}` : noImage)}
+                                src={user.avatar ? user.avatar : noImage}
                                 alt="User Avatar"
                                 className="entityShowImg"
                             />

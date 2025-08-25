@@ -23,7 +23,7 @@ export default function UserList() {
   const token = sessionStorage.getItem('authToken');
 
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_API_URL}/users`, {
+    axios.get('/api/users', {
       headers: {
         Authorization: `Bearer ${token}`
       }
@@ -55,7 +55,7 @@ export default function UserList() {
   );
 
   const handleDelete = () => {
-    axios.put(`${process.env.REACT_APP_API_URL}/users/${selectedUserId}`, { status: 'usunięty' }, {
+    axios.put(`/api/users/${selectedUserId}`, { status: 'usunięty' }, {
       headers: {
         Authorization: `Bearer ${token}`
       }
@@ -92,7 +92,7 @@ export default function UserList() {
         <div className='entityListItem' data-testid={`entityListItem-${params.row.id}`}>
           <img
             className='entityListImg'
-            src={params.row.avatar ? `${process.env.REACT_APP_API_URL}${DOMPurify.sanitize(params.row.avatar)}` : noImage}
+            src={params.row.avatar ? params.row.avatar : noImage}
             alt={DOMPurify.sanitize(params.row.userName)}
           />
           {DOMPurify.sanitize(params.row.userName)}

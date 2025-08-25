@@ -1,12 +1,7 @@
 import axios from 'axios';
 
-const baseURL =
-  process.env.REACT_APP_API_URL && process.env.REACT_APP_API_URL.trim() !== ''
-    ? process.env.REACT_APP_API_URL
-    : window.location.origin;
-
 const instance = axios.create({
-  baseURL,
+  baseURL: '/api',
   withCredentials: true,
 });
 

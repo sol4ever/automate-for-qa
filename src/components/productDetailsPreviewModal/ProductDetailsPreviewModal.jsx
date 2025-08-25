@@ -65,7 +65,7 @@ const ProductDetailsPreviewModal = ({ open, onClose, product }) => {
         <div className="entityShowTop">
           <div className="entityShowImgContainer">
             <img
-              src={product.img ? `${process.env.REACT_APP_API_URL}${DOMPurify.sanitize(product.img)}` : noImage}
+              src={product.img ? product.img : noImage}
               alt=""
               className="modalProductInfoImgLarge"
             />

@@ -8,7 +8,7 @@ const ImageUpload = ({ img, onClick, label }) => {
   return (
     <div className="imageUploadContainer" onClick={onClick}>
       <img
-        src={img ? `${DOMPurify.sanitize(process.env.REACT_APP_API_URL)}${DOMPurify.sanitize(img)}` : noImage}
+        src={img ? img : noImage}
         alt=""
         className="imageUploadImg"
       />

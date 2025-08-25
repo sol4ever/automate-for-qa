@@ -176,7 +176,7 @@ const NewProduct = () => {
     if (valid) {
       const dataToSend = { ...productData, status: productData.status || '' };
 
-      axios.post(`${process.env.REACT_APP_API_URL}/products`, dataToSend, {
+      axios.post('/api/products', dataToSend, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

@@ -52,7 +52,7 @@ export default function User() {
       setFormData(user);
     } else {
       axios
-        .get(`${process.env.REACT_APP_API_URL}/users/${userId}`, {
+        .get(`/api/users/${userId}`, {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -104,7 +104,7 @@ export default function User() {
 
     if (valid) {
       axios
-        .put(`${process.env.REACT_APP_API_URL}/users/${userId}`, formData, {
+        .put(`/api/users/${userId}`, formData, {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -147,7 +147,7 @@ export default function User() {
       return;
     }
 
-    axios.put(`${process.env.REACT_APP_API_URL}/users/${selectedUserId}`, { status: 'usunięty' }, {
+    axios.put(`/api/users/${selectedUserId}`, { status: 'usunięty' }, {
       headers: {
         Authorization: `Bearer ${token}`
       }
@@ -200,7 +200,7 @@ export default function User() {
         <div className="userShow">
           <div className="userShowTop">
             <img
-              src={userData.avatar ? `${process.env.REACT_APP_API_URL}${userData.avatar}` : noImage}
+              src={userData.avatar ? userData.avatar : noImage}
               alt=""
               className="userShowImg"
               data-testid="user-avatar"
@@ -434,7 +434,7 @@ export default function User() {
               <div className="userUpdateRight">
                 <div className="userUpdateUpload">
                   <img
-                    src={formData.avatar ? `${process.env.REACT_APP_API_URL}${formData.avatar}` : noImage}
+                    src={formData.avatar ? formData.avatar : noImage}
                     alt=""
                     className="userUpdateImg"
                     onClick={() => setModalOpen(true)}

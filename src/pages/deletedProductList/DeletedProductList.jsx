@@ -16,7 +16,7 @@ export default function DeletedProductList() {
 
 
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_API_URL}/products`, {
+    axios.get('/api/products', {
       headers: {
         Authorization: `Bearer ${token}`
       }
@@ -58,7 +58,7 @@ export default function DeletedProductList() {
         <div className='entityListItem' data-testid={`product-item-${params.row.id}`}>
           <img
             className='entityListImg'
-            src={DOMPurify.sanitize(params.row.img ? `${process.env.REACT_APP_API_URL}${params.row.img}` : noImage)}
+            src={params.row.img ? params.row.img : noImage}
             alt={DOMPurify.sanitize(params.row.name)}
             data-testid={`product-img-${params.row.id}`}
           />

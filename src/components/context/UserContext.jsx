@@ -12,7 +12,7 @@ export const UserProvider = ({ children }) => {
       console.warn("No authorization token found. Redirecting to login...");
       return;
     }
-    axios.get(`${process.env.REACT_APP_API_URL}/users`, {
+    axios.get('/api/users', {
       headers: {
         Authorization: `Bearer ${token}`
       }

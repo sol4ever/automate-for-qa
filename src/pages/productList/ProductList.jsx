@@ -21,7 +21,7 @@ export default function ProductList() {
   const token = sessionStorage.getItem('authToken');
 
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_API_URL}/products`, {
+    axios.get('/api/products', {
       headers: {
         Authorization: `Bearer ${token}`
       }
@@ -61,7 +61,7 @@ export default function ProductList() {
     const payload = { status: 'deleted' };
     // console.log('Payload:', payload);
 
-    axios.put(`${process.env.REACT_APP_API_URL}/products/${productIdAsString}`, payload, {
+    axios.put(`/api/products/${productIdAsString}`, payload, {
       headers: {
         Authorization: `Bearer ${token}`
       }
@@ -99,7 +99,7 @@ export default function ProductList() {
         <div className='entityListItem' data-testid={`product-item-${params.row.id}`}>
           <img
             className='entityListImg'
-            src={DOMPurify.sanitize(params.row.img ? `${process.env.REACT_APP_API_URL}${params.row.img}` : noImage)}
+            src={params.row.img ? params.row.img : noImage}
             alt={DOMPurify.sanitize(params.row.name)}
             data-testid={`product-img-${params.row.id}`}
           />

@@ -101,7 +101,7 @@ const SESSION_EXPIRY_MS = 60 * 60 * 1000; // 1 hour
 
 //-------------------- Authentication endpoint for login
 
-app.post('/login', (req, res) => {
+app.post('/api/login', (req, res) => {
   const { username, password } = req.body;
 
   // Use test credentials in CI pipeline
@@ -190,11 +190,11 @@ setInterval(() => {
 
 
 //------------------- Product endpoints
-app.get('/products', authenticateToken, (req, res) => {
+app.get('/api/products', authenticateToken, (req, res) => {
   res.json(req.sessionData.products);
 });
 
-app.get('/products/:id', authenticateToken, (req, res) => {
+app.get('/api/products/:id', authenticateToken, (req, res) => {
   const product = req.sessionData.products.find(p => p.id == req.params.id);
   if (product) {
     res.json(product);
@@ -203,7 +203,7 @@ app.get('/products/:id', authenticateToken, (req, res) => {
   }
 });
 
-app.put('/products/:id', authenticateToken, (req, res) => {
+app.put('/api/products/:id', authenticateToken, (req, res) => {
   const productId = req.params.id.toString();
   const index = req.sessionData.products.findIndex(p => p.id === productId);
 
@@ -241,7 +241,7 @@ app.put('/products/:id', authenticateToken, (req, res) => {
 
 
 
-app.post('/products', authenticateToken, (req, res) => {
+app.post('/api/products', authenticateToken, (req, res) => {
   try {
     const { valid, errors } = sanitizeAndValidateProduct(req.body);
     // console.log('Validation result:', { valid, errors }); // Debugging
@@ -278,11 +278,11 @@ app.post('/products', authenticateToken, (req, res) => {
 
 
 //---------------------- User endpoints
-app.get('/users', authenticateToken, (req, res) => {
+app.get('/api/users', authenticateToken, (req, res) => {
   res.json(req.sessionData.users);
 });
 
-app.get('/users/:id', authenticateToken, (req, res) => {
+app.get('/api/users/:id', authenticateToken, (req, res) => {
   const user = req.sessionData.users.find(u => u.id == req.params.id);
   if (user) {
     res.json(user);
@@ -291,7 +291,7 @@ app.get('/users/:id', authenticateToken, (req, res) => {
   }
 });
 
-app.put('/users/:id', authenticateToken, (req, res) => {
+app.put('/api/users/:id', authenticateToken, (req, res) => {
   const index = req.sessionData.users.findIndex(u => u.id == req.params.id);
   if (index === -1) {
     return res.status(404).send('User not found');
@@ -315,7 +315,7 @@ app.put('/users/:id', authenticateToken, (req, res) => {
 
 
 
-app.post('/users', authenticateToken, (req, res) => {
+app.post('/api/users', authenticateToken, (req, res) => {
   try {
     const { valid, errors } = sanitizeAndValidateUser(req.body);
     if (!valid) {
@@ -341,7 +341,7 @@ app.post('/users', authenticateToken, (req, res) => {
 
 
 //---------------------- Reset endpoint
-app.post('/reset', authenticateToken, (req, res) => {
+app.post('/api/reset', authenticateToken, (req, res) => {
   req.sessionData.products = [...initialProducts];  // Reset the user's product data
   req.sessionData.users = [...initialUsers];  // Reset the user's user data
 
@@ -353,7 +353,7 @@ app.post('/reset', authenticateToken, (req, res) => {
 let isTestRunning = false;
 let testProcess = null;
 
-app.post('/run-tests', authenticateToken, (req, res) => {
+app.post('/api/run-tests', authenticateToken, (req, res) => {
   const environment = process.env.NODE_ENV || 'production';
 
   if (environment !== 'local') {
@@ -374,13 +374,13 @@ app.post('/run-tests', authenticateToken, (req, res) => {
   res.status(200).json({ message: 'Tests started successfully' });
 });
 
-app.get('/check-tests', authenticateToken, (req, res) => {
+app.get('/api/check-tests', authenticateToken, (req, res) => {
   res.status(200).json({ isTestRunning });
 });
 
 
 //---------------------- Image upload endpoint currently not used
-app.post('/upload', (req, res) => {
+app.post('/api/upload', (req, res) => {
   upload(req, res, (err) => {
     if (err) {
       return res.status(500).json({ error: err.message });
@@ -396,7 +396,7 @@ app.post('/upload', (req, res) => {
 });
 
 //---------------------- Images 
-app.get('/images/list', authenticateToken, (req, res) => {
+app.get('/api/images/list', authenticateToken, (req, res) => {
   const type = req.query.type;
   const imagesDir = type === 'users' ? IMAGES_DIR_USERS : IMAGES_DIR_PRODUCTS;
 
@@ -418,7 +418,7 @@ app.get('/images/list', authenticateToken, (req, res) => {
 
 
 //---------------- Currently not used endpoint (instead of delete- there is put to change state)
-app.delete('/products/:id', authenticateToken, (req, res) => {
+app.delete('/api/products/:id', authenticateToken, (req, res) => {
   const index = req.sessionData.products.findIndex(p => p.id == req.params.id);
   if (index !== -1) {
     req.sessionData.products.splice(index, 1);
@@ -429,7 +429,7 @@ app.delete('/products/:id', authenticateToken, (req, res) => {
 });
 
 //---------------- Currently not used endpoint (instead of delete- there is put to change state)
-app.delete('/users/:id', authenticateToken, (req, res) => {
+app.delete('/api/users/:id', authenticateToken, (req, res) => {
   const index = req.sessionData.users.findIndex(u => u.id == req.params.id);
   if (index !== -1) {
     req.sessionData.users.splice(index, 1);
@@ -443,10 +443,6 @@ app.delete('/users/:id', authenticateToken, (req, res) => {
 app.use((err, req, res, next) => {
   res.status(err.status || 500).json({ message: err.message || 'An error occurred' });
 });
-
-// app.get('/', (req, res) => {
-//   res.send('Welcome to the Automate 4 QA API');
-// });
 
 const clientBuildPath = path.join(__dirname, '../build');
 if (process.env.NODE_ENV === 'production') {

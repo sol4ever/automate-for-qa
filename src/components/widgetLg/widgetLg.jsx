@@ -12,7 +12,7 @@ export default function WidgetLg() {
   const token = sessionStorage.getItem('authToken');
 
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_API_URL}/users`, {
+    axios.get('/api/users', {
       headers: {
         Authorization: `Bearer ${token}`
       }
@@ -60,7 +60,7 @@ export default function WidgetLg() {
           <tr className="widgetLgTr" key={user.id}>
             <td className="widgetLgUser" onClick={() => handleOpenModal(user)}>
               <img
-                src={DOMPurify.sanitize(user.avatar ? `${process.env.REACT_APP_API_URL}${user.avatar}` : noImage)}
+                src={user.avatar ? user.avatar : noImage}
                 alt={DOMPurify.sanitize(user.userName)}
                 className="widgetUserImg"
               />

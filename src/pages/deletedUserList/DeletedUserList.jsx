@@ -19,7 +19,7 @@ export default function DeletedUserList() {
 
   useEffect(() => {
     if (location.state?.refresh) {
-      axios.get(`${process.env.REACT_APP_API_URL}/users`, {
+      axios.get('/api/users', {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -60,7 +60,7 @@ export default function DeletedUserList() {
         <div className='entityListItem' data-testid={`user-item-${params.row.id}`}>
           <img
             className='entityListImg'
-            src={DOMPurify.sanitize(params.row.avatar ? `${process.env.REACT_APP_API_URL}${params.row.avatar}` : noImage)}
+            src={params.row.avatar ? params.row.avatar : noImage}
             alt={DOMPurify.sanitize(params.row.userName)}
             data-testid={`user-avatar-${params.row.id}`}
           />

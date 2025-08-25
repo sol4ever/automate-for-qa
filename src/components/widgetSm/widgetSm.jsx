@@ -38,7 +38,7 @@ export default function WidgetSm() {
 
 
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_API_URL}/users`, {
+        axios.get('/api/users', {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -60,7 +60,7 @@ export default function WidgetSm() {
                     <tr className="widgetSmTr" key={user.id}>
                         <td className="widgetSmUser" onClick={() => handleOpenAccountModal(user)}>
                             <img
-                                src={DOMPurify.sanitize(user.avatar ? `${process.env.REACT_APP_API_URL}${user.avatar}` : noImage)}
+                                src={user.avatar ? user.avatar : noImage}
                                 alt={DOMPurify.sanitize(user.userName)}
                                 className="widgetUserImg"
                             />

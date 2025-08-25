@@ -73,7 +73,7 @@ const Product = () => {
     if (!token) {
       navigate('/login');
     }
-    axios.get(`${process.env.REACT_APP_API_URL}/products/${productId}`, {
+    axios.get(`/api/products/${productId}`, {
       headers: {
         Authorization: `Bearer ${token}`
       }
@@ -198,7 +198,7 @@ const Product = () => {
 
     const { valid, formErrors } = validateProductForm(updatedProductData);
     if (valid) {
-      axios.put(`${process.env.REACT_APP_API_URL}/products/${productId}`, updatedDataToSubmit, {
+      axios.put(`/api/products/${productId}`, updatedDataToSubmit, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -229,7 +229,7 @@ const Product = () => {
 
 
   const handleDelete = () => {
-    axios.put(`${process.env.REACT_APP_API_URL}/products/${selectedProductId}`,
+    axios.put(`/api/products/${selectedProductId}`,
       { status: 'deleted' },
       {
         headers: {
@@ -356,7 +356,7 @@ const Product = () => {
         <h2 className="productOverview" data-testid="product-overview">Szczegóły produktu</h2>
         <div className="productTopContent">
           <img
-            src={DOMPurify.sanitize(productData.img ? `${process.env.REACT_APP_API_URL}${productData.img}` : noImage)}
+            src={productData.img ? productData.img : noImage}
             alt=""
             className="productInfoImgLarge"
             data-testid="product-image"

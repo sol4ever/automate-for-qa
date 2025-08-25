@@ -93,7 +93,7 @@ export default function NewUser() {
         setErrors(errors);
     
         if (valid) {
-            axios.post(`${process.env.REACT_APP_API_URL}/users`, { ...formData, id: Date.now().toString() }, {
+            axios.post('/api/users', { ...formData, id: Date.now().toString() }, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -249,7 +249,7 @@ export default function NewUser() {
                         <div className="userUpdateRight">
                             <div className="userUpdateUpload">
                                 <img
-                                    src={DOMPurify.sanitize(formData.avatar ? `${process.env.REACT_APP_API_URL}${formData.avatar}` : noImage)}
+                                    src={formData.avatar ? formData.avatar : noImage}
                                     alt=""
                                     className="userUpdateImg"
                                     onClick={() => setIsModalOpen(true)}

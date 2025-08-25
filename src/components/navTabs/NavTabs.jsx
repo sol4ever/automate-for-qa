@@ -100,18 +100,18 @@ export default function NavTabs() {
   const handleReset = () => {
     // console.log('Resetting users and products...');
 
-    axios.post(`${process.env.REACT_APP_API_URL}/reset`, {}, {
+    axios.post('/reset', {}, {
       headers: {
         Authorization: `Bearer ${token}`
       }
     }).then(response => {
       // console.log('Reset successful:', response.data);
-      axios.get(`${process.env.REACT_APP_API_URL}/users`, {
+      axios.get('/users', {
         headers: {
           Authorization: `Bearer ${token}`
         }
       }).then(res => setUsers(res.data));
-      axios.get(`${process.env.REACT_APP_API_URL}/products`, {
+      axios.get('/products', {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -157,7 +157,7 @@ export default function NavTabs() {
       setAlert({ severity: 'info', message: "Testy wykonują się. Nie wyłączaj localhost'a", persistent: true });
     }, 3000);
 
-    axios.post(`${process.env.REACT_APP_API_URL}/run-tests`, {}, {
+    axios.post('/run-tests', {}, {
       headers: {
         Authorization: `Bearer ${token}`
       }
@@ -174,7 +174,7 @@ export default function NavTabs() {
     let intervalId;
     if (testInProgress) {
       intervalId = setInterval(() => {
-        axios.get(`${process.env.REACT_APP_API_URL}/check-tests`, {
+        axios.get('/check-tests', {
           headers: { Authorization: `Bearer ${token}` }
         }).then(response => {
           if (!response.data.isTestRunning) {
