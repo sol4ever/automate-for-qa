@@ -22,7 +22,7 @@ const LoginModal = ({ open, onClose, onLoginSuccess }) => {
 
         if (!validateInputs()) return;
         try {
-            const response = await axios.post('/api/login', { username, password },
+            const response = await axios.post('/login', { username, password },
                 {
                     withCredentials: true
                 }

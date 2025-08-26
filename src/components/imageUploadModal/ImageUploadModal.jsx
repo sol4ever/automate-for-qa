@@ -11,7 +11,7 @@ const ImageUploadModal = ({ open, onClose, onSelect, imageType }) => {
   useEffect(() => {
     const fetchImages = async () => {
       try {
-        const response = await axios.get(`/api/images/list?type=${imageType}`, {
+        const response = await axios.get(`/images/list?type=${imageType}`, {
           headers: {
             Authorization: `Bearer ${token}`
           }

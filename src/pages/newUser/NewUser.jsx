@@ -93,7 +93,7 @@ export default function NewUser() {
         setErrors(errors);
     
         if (valid) {
-            axios.post('/api/users', { ...formData, id: Date.now().toString() }, {
+            axios.post('/users', { ...formData, id: Date.now().toString() }, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }

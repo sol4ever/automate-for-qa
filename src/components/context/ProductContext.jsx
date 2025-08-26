@@ -12,7 +12,7 @@ export const ProductProvider = ({ children }) => {
             console.warn("No authorization token found. Redirecting to login...");
             return;
         }
-        axios.get('/api/products', {
+        axios.get('/products', {
             headers: {
                 Authorization: `Bearer ${token}`
             }

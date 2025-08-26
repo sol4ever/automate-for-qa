@@ -16,7 +16,7 @@ export default function DeletedProductList() {
 
 
   useEffect(() => {
-    axios.get('/api/products', {
+    axios.get('/products', {
       headers: {
         Authorization: `Bearer ${token}`
       }

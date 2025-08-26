@@ -52,7 +52,7 @@ export default function User() {
       setFormData(user);
     } else {
       axios
-        .get(`/api/users/${userId}`, {
+        .get(`/users/${userId}`, {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -104,7 +104,7 @@ export default function User() {
 
     if (valid) {
       axios
-        .put(`/api/users/${userId}`, formData, {
+        .put(`/users/${userId}`, formData, {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -147,7 +147,7 @@ export default function User() {
       return;
     }
 
-    axios.put(`/api/users/${selectedUserId}`, { status: 'usunięty' }, {
+    axios.put(`/users/${selectedUserId}`, { status: 'usunięty' }, {
       headers: {
         Authorization: `Bearer ${token}`
       }

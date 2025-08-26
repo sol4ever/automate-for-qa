@@ -176,7 +176,7 @@ const NewProduct = () => {
     if (valid) {
       const dataToSend = { ...productData, status: productData.status || '' };
 
-      axios.post('/api/products', dataToSend, {
+      axios.post('/products', dataToSend, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

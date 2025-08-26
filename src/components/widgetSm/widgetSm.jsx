@@ -38,7 +38,7 @@ export default function WidgetSm() {
 
 
     useEffect(() => {
-        axios.get('/api/users', {
+        axios.get('/users', {
             headers: {
                 Authorization: `Bearer ${token}`
             }

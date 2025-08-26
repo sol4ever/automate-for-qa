@@ -21,7 +21,7 @@ export default function ProductList() {
   const token = sessionStorage.getItem('authToken');
 
   useEffect(() => {
-    axios.get('/api/products', {
+    axios.get('/products', {
       headers: {
         Authorization: `Bearer ${token}`
       }
@@ -61,7 +61,7 @@ export default function ProductList() {
     const payload = { status: 'deleted' };
     // console.log('Payload:', payload);
 
-    axios.put(`/api/products/${productIdAsString}`, payload, {
+    axios.put(`/products/${productIdAsString}`, payload, {
       headers: {
         Authorization: `Bearer ${token}`
       }

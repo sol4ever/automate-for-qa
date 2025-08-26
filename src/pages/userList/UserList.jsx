@@ -23,7 +23,7 @@ export default function UserList() {
   const token = sessionStorage.getItem('authToken');
 
   useEffect(() => {
-    axios.get('/api/users', {
+    axios.get('/users', {
       headers: {
         Authorization: `Bearer ${token}`
       }
@@ -55,7 +55,7 @@ export default function UserList() {
   );
 
   const handleDelete = () => {
-    axios.put(`/api/users/${selectedUserId}`, { status: 'usunięty' }, {
+    axios.put(`/users/${selectedUserId}`, { status: 'usunięty' }, {
       headers: {
         Authorization: `Bearer ${token}`
       }

@@ -19,7 +19,7 @@ export default function DeletedUserList() {
 
   useEffect(() => {
     if (location.state?.refresh) {
-      axios.get('/api/users', {
+      axios.get('/users', {
         headers: {
           Authorization: `Bearer ${token}`
         }

@@ -73,7 +73,7 @@ const Product = () => {
     if (!token) {
       navigate('/login');
     }
-    axios.get(`/api/products/${productId}`, {
+    axios.get(`/products/${productId}`, {
       headers: {
         Authorization: `Bearer ${token}`
       }
@@ -198,7 +198,7 @@ const Product = () => {
 
     const { valid, formErrors } = validateProductForm(updatedProductData);
     if (valid) {
-      axios.put(`/api/products/${productId}`, updatedDataToSubmit, {
+      axios.put(`/products/${productId}`, updatedDataToSubmit, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -229,7 +229,7 @@ const Product = () => {
 
 
   const handleDelete = () => {
-    axios.put(`/api/products/${selectedProductId}`,
+    axios.put(`/products/${selectedProductId}`,
       { status: 'deleted' },
       {
         headers: {

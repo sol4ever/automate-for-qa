@@ -12,7 +12,7 @@ export default function WidgetLg() {
   const token = sessionStorage.getItem('authToken');
 
   useEffect(() => {
-    axios.get('/api/users', {
+    axios.get('/users', {
       headers: {
         Authorization: `Bearer ${token}`
       }
